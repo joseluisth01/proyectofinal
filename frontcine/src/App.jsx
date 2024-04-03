@@ -7,7 +7,7 @@ function App() {
   
   return (
     <>
-      <h1>hola Chaval Pablo hdp</h1>
+      <h1>hola Chaval Joselu tu jefe te va a encular</h1>
     </>
   )
 }
