@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Esto es laravel</h1>
+    <h1>Esto es laravel Chaval</h1>
 </body>
 </html>
