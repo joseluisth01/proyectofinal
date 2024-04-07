@@ -2,12 +2,14 @@
     background-color: black;
     width: 100%;
     color: white;
-    padding: 20px 50px
+    height: 80px;
+    display: flex; /* Utilizar flexbox */
+    align-items: center;
 }
 
 /* === removing default button style ===*/
 .logoheader {
-    margin: 0;
+    margin-left: 3%;
     height: auto;
     background: transparent;
     padding: 0;
@@ -18,13 +20,13 @@
 /* button styling */
 .logoheader {
     --border-right: 6px;
-    --text-stroke-color: rgba(255, 255, 255, 0.6);
+    --text-stroke-color: rgb(255, 255, 255);
     --animation-color: #37FF8B;
-    --fs-size: 2em;
+    --fs-size: 2.5em;
     letter-spacing: 3px;
     text-decoration: none;
     font-size: var(--fs-size);
-    font-family: "Arial";
+    font-family: "Bebas Neue", sans-serif;
     position: relative;
     text-transform: uppercase;
     color: transparent;
@@ -48,15 +50,30 @@
 /* hover */
 .logoheader:hover .hover-text {
     width: 100%;
-    filter: drop-shadow(0 0 23px var(--animation-color));
+    filter: drop-shadow(0 0 20px var(--animation-color));
+    /* box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.7); */
 }
 
-.location-icon {
-    margin-right: 10px;
-    width: 30px;
-    /* Espacio entre el icono y el texto */
-}
 
-.iconoubi{
-    width: 30px;
+.selectheader{
+    margin-left: 3%;
+    background-color: transparent; 
+    color: white;
+    border: 0px;
+    padding: 10px; 
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
 }
+.selectheader:hover{
+    color: #37FF8B;
+    cursor: pointer;
+    border: 0px;
+}
+.opcion {
+    background-color: black;
+    border: 0px;
+    color: white;
+    font-size: 20px;
+    padding: 20px; 
+    height: auto;}
+

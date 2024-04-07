@@ -1,0 +1,18 @@
+.divfooter {
+    background-color: black;
+    width: 100%;
+    color: white;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.divfooter > div {
+    width: 25%; /* Cada div ocupa el 33% del ancho */
+    box-sizing: border-box; /* El ancho incluirá padding y borde */
+    margin: 0; /* Elimina el margen para evitar espacios extra */
+    padding: 10px; /* Añade espacio interno para separar el texto del borde */
+    text-align: left; /* Centra el texto dentro del div */
+}
