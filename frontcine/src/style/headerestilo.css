@@ -3,11 +3,10 @@
     width: 100%;
     color: white;
     height: 80px;
-    display: flex; /* Utilizar flexbox */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
-
-/* === removing default button style ===*/
 .logoheader {
     margin-left: 3%;
     height: auto;
@@ -16,8 +15,6 @@
     border: none;
     cursor: pointer;
 }
-
-/* button styling */
 .logoheader {
     --border-right: 6px;
     --text-stroke-color: rgb(255, 255, 255);
@@ -32,8 +29,6 @@
     color: transparent;
     -webkit-text-stroke: 1px var(--text-stroke-color);
 }
-
-/* this is the text, when you hover on button */
 .hover-text {
     position: absolute;
     box-sizing: border-box;
@@ -46,34 +41,45 @@
     transition: 0.5s;
     -webkit-text-stroke: 1px var(--animation-color);
 }
-
-/* hover */
 .logoheader:hover .hover-text {
     width: 100%;
     filter: drop-shadow(0 0 20px var(--animation-color));
-    /* box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.7); */
 }
 
 
-.selectheader{
+.selectheader {
     margin-left: 3%;
-    background-color: transparent; 
+    background-color: transparent;
     color: white;
     border: 0px;
-    padding: 10px; 
+    padding: 10px;
     font-family: "Bebas Neue", sans-serif;
     font-size: 20px;
 }
-.selectheader:hover{
+
+.selectheader:hover {
     color: #37FF8B;
     cursor: pointer;
     border: 0px;
 }
+
 .opcion {
     background-color: black;
     border: 0px;
     color: white;
     font-size: 20px;
-    padding: 20px; 
-    height: auto;}
+    padding: 20px;
+    height: auto;
+}
 
+.usuario {
+    width: 30px;
+    margin-left: auto;
+    margin-right: 4%;
+    transition: transform 0.3s ease;
+}
+.usuario:hover{
+    cursor: pointer;
+    filter: drop-shadow(0 0 10px #37FF8B);
+    transform: scale(1.2);
+}

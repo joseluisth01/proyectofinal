@@ -1,18 +1,54 @@
+
 .divfooter {
     background-color: black;
     width: 100%;
-    color: white;
     bottom: 0;
     position: fixed;
     left: 0;
+
+}
+.bloque1footer{
+    color: white;
     display: flex;
     justify-content: center;
 }
 
-.divfooter > div {
-    width: 25%; /* Cada div ocupa el 33% del ancho */
-    box-sizing: border-box; /* El ancho incluirá padding y borde */
-    margin: 0; /* Elimina el margen para evitar espacios extra */
-    padding: 10px; /* Añade espacio interno para separar el texto del borde */
-    text-align: left; /* Centra el texto dentro del div */
+.bloque1footer>div {
+    width: 25%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px;
+    text-align: left;
+}
+
+.linkfooter:hover {
+    color: #37FF8B;
+    cursor: pointer;
+}
+
+.partners{
+    width: 80%;
+    background-color: #37FF8B;
+    text-align: center;
+    color: black;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+    height: 40px;
+    font-weight: bold;
+}
+
+.avisoslegales_footer{
+    margin-top: 2%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.avisoslegales_footer p{
+    margin: 0 70px;
+}
+.linkavisoslegales:hover{
+    color: #37FF8B;
+    cursor: pointer;
 }
