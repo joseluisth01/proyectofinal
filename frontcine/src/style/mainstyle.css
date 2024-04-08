@@ -1,0 +1,22 @@
+.divmain{
+    margin: 0 auto;
+    background-image: url('../public/img/fondo15.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.bloque1{
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+}
+
+.imgportada{
+    width: 40%;
+    margin: 0 auto;
+}

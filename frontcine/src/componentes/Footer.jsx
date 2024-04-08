@@ -14,19 +14,17 @@ export const Footer = () => {
         </div>
         <div className='infotapacos'>
           <h3>TAPACOS CINEMAS</h3>
-          <p className='linkfooter'>Sesiones</p>
+          <p className='linkfooter'>Cartelera</p>
           <p className='linkfooter'>Ofertas</p>
-          <p className='linkfooter'>Versiones VOSE</p>
-          <p className='linkfooter'>Tarjeta Tapacos</p>
-          <p className='linkfooter'>Proximamente</p>
+          <p className='linkfooter'>VOSE</p>
+          <p className='linkfooter'>Tarjeta Socio Tapacos</p>
         </div>
         <div className='acercadenosotros'>
           <h3>ACERCA DE NOSOTROS</h3>
           <p className='linkfooter'>Contacto</p>
+          <p className='linkfooter'>Quienes somos</p>
           <p className='linkfooter'>Preguntas frecuentes</p>
           <p className='linkfooter'>Política de devoluciones</p>
-          <p className='linkfooter'>Política de privacidad</p>
-          <p className='linkfooter'>Política de Cookies</p>
         </div>
       </div>
       <div class="avisoslegales_footer">
