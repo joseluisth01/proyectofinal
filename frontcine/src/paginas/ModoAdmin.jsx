@@ -36,12 +36,32 @@ export const ModoAdmin = () => {
 
     const handleSearchInputChange = (event) => {
         setSearchQuery(event.target.value);
-        setPage(1); // Reset page number when performing a new search
+        setPage(1);
     };
 
     const loadMoreMovies = () => {
         setPage(prevPage => prevPage + 1);
     };
+
+    const insertarPelicula = (movieId) => {
+        const url = 'http://localhost/proyectofinal/back/public/api/insertarPelicula';
+        const datosPelicula = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ movieId: movieId }),
+        };
+        fetch(url, datosPelicula)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to insert movie');
+                }
+                console.log('Película insertada correctamente');
+            })
+            .catch((error) => console.error('Error inserting movie:', error));
+    };
+
     return (
         <div className="movie-list-container">
             <div className="search-container">
@@ -57,6 +77,7 @@ export const ModoAdmin = () => {
                     <div key={movie.id} className="movie-item anim-upp">
                         <img className='poster' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                         <h2 className='titulopeli'>{movie.title}</h2>
+                        <button onClick={() => insertarPelicula(movie.id)}>Añadir</button>
                     </div>
                 ))}
             </div>
