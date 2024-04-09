@@ -50,6 +50,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User Created Successfully',
+                'nombre' => $user->nombre,
                 'token' => $user->createToken("API TOKEN")->plainTextToken
             ], 200);
 
@@ -100,6 +101,7 @@ class AuthController extends Controller
                     'status' => true,
                     'message' => 'Admin Logged In Successfully',
                     'isAdmin' => true,
+                    'nombre' => $user->nombre,
                     'token' => $user->createToken("API TOKEN")->plainTextToken
                 ], 200);
             } else {
@@ -132,6 +134,7 @@ class AuthController extends Controller
                     'status' => true,
                     'message' => 'User Logged In Successfully',
                     'isAdmin' => false,
+                    'nombre' => $user->nombre,
                     'token' => $user->createToken("API TOKEN")->plainTextToken
                 ], 200);
             }

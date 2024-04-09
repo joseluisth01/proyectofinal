@@ -1,0 +1,96 @@
+.movie-list-container {
+    margin: 0 auto;
+    padding: 30px;
+    /* background-image: url('../public/img/fondo12.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* width: 100%; */
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.movie-item {
+    width: 23%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.poster {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.poster:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.titulopeli {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.buttoncargar {
+    background-color: #181414;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bolder;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.buttoncargar:hover {
+    background-color: #484040;
+    border: 1px solid black;
+}
+
+.anim-upp {
+    animation: animateUp 0.5s ease;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    background-color: #ccc;
+    border-radius: 7px;
+    overflow: hidden;
+    /* Asegura que el borde redondeado se aplique correctamente */
+}
+
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    /* Hace que el fondo del campo de entrada sea transparente */
+}
+
+.search-container input[type="text"]:focus {
+    outline: none;
+}
+
+@keyframes animateUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

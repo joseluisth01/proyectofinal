@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { Header } from './componentes/Header'
 import { Footer } from './componentes/Footer'
 import { Main } from './componentes/Main'
+import { ModoAdmin } from './paginas/ModoAdmin';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Main/>}/>
+        <Route path='/ModoAdmin' element={<ModoAdmin/>} />
       </Routes>
 
       <Footer/>

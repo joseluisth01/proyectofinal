@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import '../style/headerestilo.css';
 
@@ -8,6 +8,18 @@ export const Header = () => {
     const [nombre, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [nombreUsuario, setNombreUsuario] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+        if (token) {
+            const nombreGuardado = localStorage.getItem('nombre');
+            setNombreUsuario(nombreGuardado);
+        }
+    }, []);
 
     const usuarioHover = '/img/usuarioverde.png';
 
@@ -27,14 +39,45 @@ export const Header = () => {
         setModalOpen(false);
     };
 
-    // FETCH REGISTRO USUARIO
-    const datosregistro = {
+    const logout = () => {
+        localStorage.clear();
+        window.location.reload();
+    };
+
+    const loginUsuario = (e) => {
+        e.preventDefault();
+        const url = 'http://localhost/proyectofinal/back/public/api/login';
+        cerrarModal();
+        fetch(url, datoslogin)
+            .then((resultado) => {
+                if (!resultado.ok) {
+                    throw new Error('Usuario y contraseña incorrectos');
+                }
+                return resultado.json();
+            })
+            .then((respuesta) => {
+                setNombreUsuario(respuesta.nombre);
+                localStorage.setItem('token', respuesta.token);
+                localStorage.setItem('isAdmin', respuesta.isAdmin);
+                localStorage.setItem('nombre', respuesta.nombre);
+                setIsLoggedIn(true); // Usuario ha iniciado sesión
+                console.log('Token guardado en el localStorage:', respuesta.token);
+                console.log('Nombre del usuario:', respuesta.nombre);
+            })
+            .catch((err) => {
+                console.log(err.message);
+                alert(err.message);
+            });
+    };
+
+    const datoslogin = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, email, password }),
+        body: JSON.stringify({ email, password }),
     };
+
     const registroUsuario = (e) => {
         e.preventDefault();
         const url = 'http://localhost/proyectofinal/back/public/api/register';
@@ -42,18 +85,29 @@ export const Header = () => {
         fetch(url, datosregistro)
             .then((resultado) => resultado.json())
             .then((respuesta) => {
+                setNombreUsuario(respuesta.nombre);
                 localStorage.setItem('token', respuesta.token);
+                setIsLoggedIn(true); // Usuario ha iniciado sesión
                 console.log('Token guardado en el localStorage:', respuesta.token);
+                console.log('Nombre del usuario:', respuesta.nombre);
             })
             .catch((err) => console.log(err));
     };
 
+    const datosregistro = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nombre, email, password }),
+    };
+
     return (
         <header className='divheader'>
-            <button className="logoheader" data-text="Awesome">
+            <a href='/' className="logoheader" data-text="Awesome">
                 <span className="actual-text">&nbsp;TAPACOS&nbsp;</span>
                 <span aria-hidden="true" className="hover-text">&nbsp;TAPACOS&nbsp;</span>
-            </button>
+            </a>
 
             <select className="selectheader" onChange={() => cambiarTexto()}>
                 <option disabled selected value="">Selecciona la ciudad</option>
@@ -61,9 +115,22 @@ export const Header = () => {
                 <option className='opcion' value="opcion2">TAPACOS SEVILLA</option>
                 <option className='opcion' value="opcion2">TAPACOS MÁLAGA</option>
             </select>
-            <button onClick={abrirModalInicio} className='linkusuario' >
-                <img className='usuario' src={usuarioImg} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} alt="Usuario" />
-            </button>
+
+            {isLoggedIn ? (
+                <div className="usuariologin dropdown">
+                    <button class="dropbtn"><h2>{nombreUsuario.charAt(0).toUpperCase()}</h2></button>
+                    <div class="dropdown-content">
+                        <a href="#">Mi perfil</a>
+                        <a href="#">Mis entradas</a>
+                        {isAdmin && <Link to='/ModoAdmin'>Modo Admin</Link>}
+                        <a onClick={logout}>Cerrar sesión</a>
+                    </div>
+                </div>
+            ) : (
+                <button onClick={abrirModalInicio} className='linkusuario' >
+                    <img className='usuario' src={usuarioImg} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} alt="Usuario" />
+                </button>
+            )}
 
             {modalOpen && (
                 <div className="wrapper fondo">
@@ -76,9 +143,9 @@ export const Header = () => {
                                 <div className="flip-card__front">
                                     <button className="close-btn" onClick={cerrarModal}>X</button>
                                     <div className="title">INICIAR SESIÓN</div>
-                                    <form className="flip-card__form" action="">
-                                        <input className="flip-card__input" name="email" placeholder="Email" type="email" />
-                                        <input className="flip-card__input" name="password" placeholder="Contraseña" type="password" />
+                                    <form className="flip-card__form" onSubmit={(e) => loginUsuario(e)}>
+                                        <input className="flip-card__input" name="email" placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                        <input className="flip-card__input" name="password" placeholder="Contraseña" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                                         <button className="flip-card__btn">OK!</button>
                                     </form>
                                 </div>
@@ -97,7 +164,6 @@ export const Header = () => {
                     </div>
                 </div>
             )}
-
         </header>
     );
 };

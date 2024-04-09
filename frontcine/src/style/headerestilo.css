@@ -326,4 +326,74 @@
     z-index: 101;
 }
 
+/* AVATAR */
+.usuariologin {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(68, 68, 68);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    margin-right: 3%;
+    border: 3px solid #37FF8B;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+}
+
+.usuariologin:hover{
+    transform: scale(1.05);
+}
+
+.usuariologin button {
+    margin: 0;
+    font-size: 40px;
+    color: #fff;
+    border: none;
+    padding: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgb(51, 51, 51);
+    color: white;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 1px;
+}
+  
+.dropdown-content a {
+    color: white !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+.dropdown-content a:hover {background-color: rgb(76, 76, 76);}
+  
+.dropdown:hover .dropdown-content {display: block;}
+  
+/* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
 
