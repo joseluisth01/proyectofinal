@@ -44,13 +44,13 @@ export const ModoAdmin = () => {
         setPage(prevPage => prevPage + 1);
     };
 
-    const insertarPelicula = (movieId) => {
+    const insertarPelicula = (idPelicula, nombrePelicula) => {
         const datosPelicula = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ movieId: movieId }), // Enviar un objeto con la propiedad movieId
+            body: JSON.stringify({idPelicula,nombrePelicula}),
         };
     
         const url = 'http://localhost/proyectofinal/back/public/api/insertarPelicula';
@@ -79,7 +79,7 @@ export const ModoAdmin = () => {
                     <div key={movie.id} className="movie-item anim-upp">
                         <img className='poster' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                         <h2 className='titulopeli'>{movie.title}</h2>
-                        <button onClick={() => insertarPelicula(movie.id)}>Añadir</button>
+                        <button onClick={() => insertarPelicula(movie.id,movie.title)}>Añadir</button>
                     </div>
                 ))}
             </div>
