@@ -7,6 +7,7 @@ export const ModoAdmin = () => {
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const idPrueba = 999;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,23 +45,24 @@ export const ModoAdmin = () => {
     };
 
     const insertarPelicula = (movieId) => {
-        const url = 'http://localhost/proyectofinal/back/public/api/insertarPelicula';
         const datosPelicula = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ movieId: movieId }),
+            body: JSON.stringify({ movieId: movieId }), // Enviar un objeto con la propiedad movieId
         };
+    
+        const url = 'http://localhost/proyectofinal/back/public/api/insertarPelicula';
         fetch(url, datosPelicula)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Failed to insert movie');
-                }
+            .then((resultado) => resultado.json())
+            .then((respuesta) => {
                 console.log('Película insertada correctamente');
+                alert("Película añadida correctamente");
             })
-            .catch((error) => console.error('Error inserting movie:', error));
+            .catch((err) => console.log(err));
     };
+    
 
     return (
         <div className="movie-list-container">
