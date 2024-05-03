@@ -9,5 +9,5 @@ class Pelicula extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['idPelicula', 'nombre'];
+    protected $fillable = ['idPelicula', 'nombrePelicula', 'fecha', 'hora'];
 }

@@ -7,7 +7,8 @@ export const ModoAdmin = () => {
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const idPrueba = 999;
+    const [fecha, setFecha] = useState('');
+    const [hora, setHora] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -45,14 +46,19 @@ export const ModoAdmin = () => {
     };
 
     const insertarPelicula = (idPelicula, nombrePelicula) => {
+        if (!fecha || !hora) {
+            alert("Debes rellenar todos los campos de fecha y hora antes de añadir una película.");
+            return;
+        }
+
         const datosPelicula = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({idPelicula,nombrePelicula}),
+            body: JSON.stringify({ idPelicula, nombrePelicula, fecha, hora }),
         };
-    
+
         const url = 'http://localhost/proyectofinal/back/public/api/insertarPelicula';
         fetch(url, datosPelicula)
             .then((resultado) => resultado.json())
@@ -62,24 +68,33 @@ export const ModoAdmin = () => {
             })
             .catch((err) => console.log(err));
     };
-    
+
+    const today = new Date().toISOString().split('T')[0];
 
     return (
         <div className="movie-list-container">
-            <div className="search-container">
-                <input
-                    type="text"
-                    placeholder="Buscar películas..."
-                    value={searchQuery}
-                    onChange={handleSearchInputChange}
-                />
+            <div className='buscadores'>
+                <div className="input-container">
+                    <input type="date" min={today} value={fecha} onChange={e => setFecha(e.target.value)} />
+                    <input type="time" value={hora} onChange={e => setHora(e.target.value)} />
+                </div>
+                <div className="search-container">
+                    <input
+                        type="text"
+                        placeholder="Buscar película               🔎"
+                        value={searchQuery}
+                        onChange={handleSearchInputChange}
+                    />
+                </div>
             </div>
+
+
             <div className="movie-list">
                 {movies.map(movie => (
                     <div key={movie.id} className="movie-item anim-upp">
                         <img className='poster' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                         <h2 className='titulopeli'>{movie.title}</h2>
-                        <button onClick={() => insertarPelicula(movie.id,movie.title)}>Añadir</button>
+                        <button onClick={() => insertarPelicula(movie.id, movie.title)}>Añadir</button>
                     </div>
                 ))}
             </div>

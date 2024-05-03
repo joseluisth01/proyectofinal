@@ -14,8 +14,10 @@ return new class extends Migration
         //
         Schema::create('peliculas', function (Blueprint $table) {
             $table->id();
-            $table->string("idPelicula");
-            $table->string('nombre');
+            $table->integer("idPelicula");
+            $table->string('nombrePelicula');
+            $table->string('fecha');
+            $table->string('hora');
             $table->timestamps();
         });
     }

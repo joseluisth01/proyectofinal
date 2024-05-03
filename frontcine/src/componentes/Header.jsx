@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import '../style/headerestilo.css';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
     const [usuarioImg, setUsuarioImg] = useState('/img/usuario.png');
@@ -11,6 +12,7 @@ export const Header = () => {
     const [nombreUsuario, setNombreUsuario] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -41,6 +43,7 @@ export const Header = () => {
 
     const logout = () => {
         localStorage.clear();
+        navigate('/');
         window.location.reload();
     };
 

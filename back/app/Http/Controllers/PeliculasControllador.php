@@ -15,11 +15,15 @@ class PeliculasControllador extends Controller
             $request->validate([
                 'idPelicula' => 'required|int',
                 'nombrePelicula' => 'required|string',
+                'fecha' => 'required|string',
+                'hora' => 'required|string',
             ]);
     
             $peli = new Pelicula();
             $peli->idPelicula = $request->idPelicula;
             $peli->nombrePelicula = $request->nombrePelicula;
+            $peli->fecha = $request->fecha;
+            $peli->hora = $request->hora;
             $peli->save();
     
             return response()->json(['message' => 'Pelicula agregada correctamente'], 201);
