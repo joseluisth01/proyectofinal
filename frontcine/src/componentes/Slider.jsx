@@ -12,37 +12,34 @@ export const Slider = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) =>
-                prevIndex === images.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 5000); // Cambia cada 5 segundos
+            setCurrentImageIndex(prevIndex => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+        }, 5000); // Change every 5 seconds
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <div class="banner_nuestraempresa">
-            <div class="imagen_container">
-                <img class="img_banner_nuestraempresa" src="../../public/img/tapacosautocinemas2et.jpg"
-                    alt="" />
-                <img class="img_banner_nuestraempresa" src="../../public/img/autocinemas5bueno.jpg"
-                    alt="" />
-                <img class="img_banner_nuestraempresa" src="../../public/img/prueba.png"
-                    alt="" />
-            </div>
-            <div class="contenedor_banner_nuestraempresa">
-                <h2 class="titulo_banner_nuestraempresa">INSTALA PLACAS SOLARES Y ELIMINA TU FACTURA DE LUZ CON SUBVENCIONES YA
-                    DISPONIBLES EN <span>ANDALUCÍA</span></h2>
-                <h3 class="subtitulo_banner_nuestraempresa">Empresa instaladora de cosas<span class="placassolares">placas solares</span> en Córdoba</h3>
-                <div class="botones_slider_inicio">
-                    <div class="boton1_slider_inicio">
-                        <p class="textobotones_slider_inicio">Solicita información</p>
-                    </div>
-                    <div class="boton2_slider_inicio">
-                        <p class="textobotones_slider_inicio">LLAMAR AL 627 256 254</p>
+        <div className="banner_nuestraempresa">
+            <div className="sliderfull">
+                {images.map((img, index) => (
+                    <div
+                        key={img}
+                        className={`slide ${index === currentImageIndex ? 'active zoom-background' : ''}`}
+                        style={{ backgroundImage: `url(${img})` }}
+                    ></div>
+                ))}
+                <div className="overlay">
+                    <h2 className="titulocentral">TAPACOS<br/>AUTOCINEMAS</h2>
+                    <div className="botones_slider_inicio">
+                        <div className="boton1_slider_inicio">
+                            <p className="textobotones_slider_inicio">TEXTO BOTÓN 1</p>
+                        </div>
+                        <div className="boton2_slider_inicio">
+                            <p className="textobotones_slider_inicio">TEXTO BOTÓN 2</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
