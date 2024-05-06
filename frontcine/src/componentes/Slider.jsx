@@ -34,7 +34,7 @@ export const Slider = () => {
                             <p className="textobotones_slider_inicio">pablo putero</p>
                         </div>
                         <div className="boton2_slider_inicio">
-                            <p className="textobotones_slider_inicio">TEXTO BOTÓN 2</p>
+                            <p className="textobotones_slider_inicio">jose maricon reconocido</p>
                         </div>
                     </div>
                 </div>
