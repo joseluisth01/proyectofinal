@@ -31,7 +31,7 @@ export const Slider = () => {
                     <h2 className="titulocentral">TAPACOS<br/>AUTOCINEMAS</h2>
                     <div className="botones_slider_inicio">
                         <div className="boton1_slider_inicio">
-                            <p className="textobotones_slider_inicio">TEXTO BOTÓN 1</p>
+                            <p className="textobotones_slider_inicio">pablo putero</p>
                         </div>
                         <div className="boton2_slider_inicio">
                             <p className="textobotones_slider_inicio">TEXTO BOTÓN 2</p>
