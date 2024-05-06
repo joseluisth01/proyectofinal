@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../style/mainstyle.css';
+import { Slider } from './Slider';
+
+
 
 export const Main = () => {
+
   return (
     <div className='divmain'>
-        <div className="bloque1">
-            <img className='imgportada' src="/img/portada.jpg" alt="" />
-        </div>
+      <Slider/>
+      <br /><br /><br /><br /><br />
+
     </div>
   )
 }

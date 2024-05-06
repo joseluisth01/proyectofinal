@@ -1,22 +1,297 @@
-.divmain{
-    margin: 0 auto;
-    background-image: url('../public/img/fondo15.png');
+.sliderfull {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    /* Ajusta la altura según necesites */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    transition: transform 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.zoom-background {
+    animation: zoom-background 5s forwards;
+}
+
+@keyframes zoom-background {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Capa oscura */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.titulocentral {
+    text-align: center;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 7px;
+    line-height: 100px;
+    font-size: 80px;
+    /* color: transparent; */
+}
+
+
+.botones_slider_inicio {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton1_slider_inicio {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.boton2_slider_inicio {
+    display: inline-block;
+    background-color: #3fb38c;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.boton1_slider_inicio:hover {
+    color: #3fb38c;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+.boton2_slider_inicio:hover {
+    color: black;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+.textobotones_slider_inicio {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+
+
+
+
+.banner_nuestraempresa {
+    position: relative;
     width: 100%;
-    overflow-x: hidden;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    letter-spacing: 8px;
+    color: #FAC349;
+    padding: 0;
 }
 
-.bloque1{
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 5%;
+.imagen_container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
 }
 
-.imgportada{
-    width: 40%;
-    margin: 0 auto;
+.img_banner_nuestraempresa {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1.2s ease-in-out, transform 3s ease-in-out;
+    transform: scale(1.0);
+}
+
+.contenedor_banner_nuestraempresa {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    width: 85%;
+    z-index: 2;
+}
+
+.imagen_container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.titulo_banner_nuestraempresa {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+    letter-spacing: 4px;
+    line-height: 60px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitulo_banner_nuestraempresa {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 4px;
+    line-height: 50px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 3%;
+}
+
+.botones_slider_inicio {
+    padding-top: 5%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botones2_slider_inicio {
+    padding-top: 10%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icono-telefono {
+    transition: src 0.3s ease;
+}
+
+.boton1_slider_inicio {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.boton2_slider_inicio {
+    display: inline-block;
+    background-color: #3fb38c;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.boton1_slider_inicio:hover {
+    color: #3fb38c;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+.boton2_slider_inicio:hover {
+    color: black;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+.textobotones_slider_inicio {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.placassolares:hover {
+    text-decoration: underline;
+    text-decoration-color: #3fb38c;
+    cursor: pointer;
+    text-decoration-offset: 2px;
+    text-underline-offset: 6px;
+    color: #3fb38c;
+}
+
+@media (max-width: 600px) {
+    .titulo_banner_nuestraempresa {
+        font-size: 30px;
+    }
+
+    .subtitulo_banner_nuestraempresa {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 450px) {
+    .titulo_banner_nuestraempresa {
+        font-size: 20px;
+        line-height: 40px;
+    }
 }

@@ -108,7 +108,7 @@ export const Header = () => {
     return (
         <header className='divheader'>
             <a href='/' className="logoheader" data-text="Awesome">
-                <span className="actual-text">&nbsp;TAPACOS&nbsp;</span>
+                <span className="actual-text">&nbsp;TAPACOS</span>
                 <span aria-hidden="true" className="hover-text">&nbsp;TAPACOS&nbsp;</span>
             </a>
 
