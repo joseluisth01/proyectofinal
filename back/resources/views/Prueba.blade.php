@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Esto es laravel Chaval soy un jefe</h1>
+    <h1>Esto es laravel Chaval soy un jefazo</h1>
 </body>
 </html>
