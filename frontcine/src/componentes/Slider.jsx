@@ -32,7 +32,7 @@ export const Slider = () => {
             <div class="contenedor_banner_nuestraempresa">
                 <h2 class="titulo_banner_nuestraempresa">INSTALA PLACAS SOLARES Y ELIMINA TU FACTURA DE LUZ CON SUBVENCIONES YA
                     DISPONIBLES EN <span>ANDALUCÍA</span></h2>
-                <h3 class="subtitulo_banner_nuestraempresa">Empresa instaladora de <span class="placassolares">placas solares</span> en Córdoba</h3>
+                <h3 class="subtitulo_banner_nuestraempresa">Empresa instaladora de cosas<span class="placassolares">placas solares</span> en Córdoba</h3>
                 <div class="botones_slider_inicio">
                     <div class="boton1_slider_inicio">
                         <p class="textobotones_slider_inicio">Solicita información</p>
