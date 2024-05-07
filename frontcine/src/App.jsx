@@ -7,6 +7,7 @@ import { Header } from './componentes/Header'
 import { Footer } from './componentes/Footer'
 import { Main } from './componentes/Main'
 import { ModoAdmin } from './paginas/ModoAdmin';
+import { Cartelera } from './paginas/Cartelera';
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main/>}/>
         <Route path='/ModoAdmin' element={<ModoAdmin/>} />
+        <Route path='/Cartelera' element={<Cartelera/>} />
       </Routes>
 
       <Footer/>

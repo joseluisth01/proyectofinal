@@ -119,6 +119,8 @@ export const Header = () => {
                 <option className='opcion' value="opcion2">TAPACOS MÁLAGA</option>
             </select>
 
+            <Link to='/Cartelera'>Cartelera</Link>
+
             {isLoggedIn ? (
                 <div className="usuariologin dropdown">
                     <button class="dropbtn"><h2>{nombreUsuario.charAt(0).toUpperCase()}</h2></button>
