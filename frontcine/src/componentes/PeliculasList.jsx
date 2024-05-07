@@ -49,16 +49,24 @@ const PeliculasList = () => {
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <div className="peliculas-list">
-                    {filteredMovies.map(pelicula => (
-                        <div key={pelicula.id} className="pelicula-item">
-                            <img src={pelicula.posterUrl} alt={`Poster de ${pelicula.nombrePelicula}`} />
-                            <h2>{pelicula.nombrePelicula}</h2>
-                            <p className="fecha-hora">Hora: {pelicula.hora}</p>
-                        </div>
-                    ))}
-                </div>
-
+                <table className="peliculas-table">
+                    <thead>
+                        <tr>
+                            <th>Poster</th>
+                            {/* <th>Nombre</th> */}
+                            <th>Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredMovies.map(pelicula => (
+                            <tr key={pelicula.id}>
+                                <td><img src={pelicula.posterUrl} alt={`Poster de ${pelicula.nombrePelicula}`} style={{ width: "100px" }} /></td>
+                                {/* <td>{pelicula.nombrePelicula}</td> */}
+                                <td>{pelicula.hora}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             )}
         </div>
     );
