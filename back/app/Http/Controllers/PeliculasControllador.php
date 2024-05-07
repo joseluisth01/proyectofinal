@@ -31,4 +31,15 @@ class PeliculasControllador extends Controller
             return response()->json(['message' => 'Error al insertar película: ' . $e->getMessage()], 500);
         }
     }
+
+    public function obtenerPeliculas()
+    {
+        try {
+            $peliculas = Pelicula::all();
+            return response()->json(['peliculas' => $peliculas], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error al obtener películas: ' . $e->getMessage()], 500);
+        }
+    }
+
 }

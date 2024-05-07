@@ -24,3 +24,7 @@ Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
 
 Route::post('/insertarPelicula', [PeliculasControllador::class, 'insertarPelicula']);
+
+/* INSERTAR PELICULA EN FRONT */
+Route::get('/peliculas', [PeliculasControllador::class, 'obtenerPeliculas']);
+
