@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import '../style/peliculasList.css';
+import format from 'date-fns/format';
 import addDays from 'date-fns/addDays';
 
 const PeliculasList = () => {
     const [peliculas, setPeliculas] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [startDate, setStartDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     useEffect(() => {
         const fetchPeliculas = async () => {
@@ -29,26 +28,31 @@ const PeliculasList = () => {
         fetchPeliculas();
     }, []);
 
-    const filteredMovies = peliculas.filter(pelicula =>
-        new Date(pelicula.fecha).toDateString() === startDate.toDateString()
-    );
+    const datesToShow = [0, 1, 2, 3].map(offset => addDays(selectedDate, offset));
 
     return (
         <div className="peliculas-container">
-            <DatePicker
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-                dateFormat="yyyy-MM-dd"
-            />
+            <div className="day-selector">
+                {datesToShow.map(date => (
+                    <button
+                        key={date}
+                        className={`day-button ${format(date, 'yyyy-MM-dd') === format(selectedDate, 'yyyy-MM-dd') ? 'active' : ''}`}
+                        onClick={() => setSelectedDate(date)}
+                    >
+                        {format(date, 'EEE dd/MM')}
+                    </button>
+                ))}
+            </div>
             {loading ? (
                 <p>Loading...</p>
             ) : (
                 <div className="peliculas-list">
-                    {filteredMovies.map(pelicula => (
+                    {peliculas.filter(pelicula =>
+                        format(new Date(pelicula.fecha), 'yyyy-MM-dd') === format(selectedDate, 'yyyy-MM-dd')
+                    ).map(pelicula => (
                         <div key={pelicula.id} className="pelicula-item">
-                            <h2>{pelicula.nombrePelicula}</h2>
-                            <p className="fecha-hora">Fecha: {pelicula.fecha}</p>
-                            <p className="fecha-hora">Hora: {pelicula.hora}</p>
+                            <div className="pelicula-title">{pelicula.nombrePelicula}</div>
+                            <div className="pelicula-info">Hora: {pelicula.hora}</div>
                         </div>
                     ))}
                 </div>

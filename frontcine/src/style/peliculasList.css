@@ -23,4 +23,45 @@
     font-size: 14px;
     color: #666;
   }
+
+
+  .peliculas-container {
+    font-family: Arial, sans-serif;
+}
+
+.day-selector {
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.day-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.day-button.active {
+    background-color: #d32f2f;
+}
+
+.pelicula-item {
+    background-color: #fdd835;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.pelicula-title {
+    font-size: 18px;
+    color: #333;
+}
+
+.pelicula-info {
+    font-size: 16px;
+    color: #666;
+}
+
   
