@@ -1,34 +1,77 @@
+/* peliculasList.css */
+
 .peliculas-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .pelicula-item {
-    width: 300px;
-    margin: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .pelicula-item h2 {
-    margin-top: 0;
-  }
-  
-  .fecha-hora {
-    margin-top: 10px;
-    font-style: italic;
-    font-size: 14px;
-    color: #666;
-  }
-
-
-  .peliculas-container {
-    font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0; /* Color de fondo suave */
 }
 
+.peliculas-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Crea un diseño de cuadrícula responsivo */
+  gap: 20px; /* Espacio entre tarjetas de películas */
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo del contenedor */
+}
 
+.pelicula-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para las tarjetas */
+  overflow: hidden; /* Asegura que todo dentro de la tarjeta se quede adentro */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos dentro de la tarjeta */
+  transition: transform 0.2s; /* Transición suave para el hover */
+}
 
-  
+.pelicula-item:hover {
+  transform: scale(1.05); /* Efecto de hover para resaltar la tarjeta */
+}
+
+.pelicula-item img {
+  width: 100%; /* Asegura que la imagen cubra el ancho de la tarjeta */
+  height: auto; /* Mantiene la relación de aspecto de la imagen */
+  border-top-left-radius: 8px; /* Redondea las esquinas superiores de la imagen */
+  border-top-right-radius: 8px;
+}
+
+.titulo-pelicula, .fecha-hora {
+  padding: 10px;
+  text-align: center; /* Centra el texto dentro de la tarjeta */
+}
+
+.fecha-hora {
+  color: #555; /* Color gris para los detalles de la fecha y hora */
+  font-size: 0.9em; /* Un tamaño de fuente más pequeño para los detalles */
+  margin-bottom: 5px; /* Margen debajo de cada detalle para separación */
+}
+
+/* Botones y campos de entrada */
+.input-container, .search-container, .buttoncargar {
+  margin: 10px;
+  text-align: center;
+}
+
+.input-container input, .search-container input {
+  padding: 8px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.buttoncargar {
+  padding: 10px 20px;
+  background-color: darkred;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.buttoncargar:hover {
+  background-color: red;
+}

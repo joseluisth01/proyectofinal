@@ -18,7 +18,12 @@ const PeliculasList = () => {
                     throw new Error('Failed to fetch peliculas');
                 }
                 const data = await response.json();
-                setPeliculas(data.peliculas);
+                const moviesWithPosters = await Promise.all(data.peliculas.map(async (pelicula) => {
+                    const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${pelicula.idPelicula}?api_key=9b6ecd3e72ca170064c048d4ea07a095`);
+                    const tmdbData = await tmdbResponse.json();
+                    return { ...pelicula, posterUrl: `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` };
+                }));
+                setPeliculas(moviesWithPosters);
             } catch (error) {
                 console.error('Error fetching peliculas:', error);
             } finally {
@@ -28,6 +33,7 @@ const PeliculasList = () => {
 
         fetchPeliculas();
     }, []);
+
 
     const filteredMovies = peliculas.filter(pelicula =>
         new Date(pelicula.fecha).toDateString() === startDate.toDateString()
@@ -46,14 +52,13 @@ const PeliculasList = () => {
                 <div className="peliculas-list">
                     {filteredMovies.map(pelicula => (
                         <div key={pelicula.id} className="pelicula-item">
+                            <img src={pelicula.posterUrl} alt={`Poster de ${pelicula.nombrePelicula}`} />
                             <h2>{pelicula.nombrePelicula}</h2>
-                            <p className="fecha-hora">Fecha: {pelicula.fecha}</p>
                             <p className="fecha-hora">Hora: {pelicula.hora}</p>
-                            <p className="fecha-hora">id: {pelicula.id}</p>
-                            <p className="fecha-hora">idPelicula: {pelicula.idPelicula}</p>
                         </div>
                     ))}
                 </div>
+
             )}
         </div>
     );
