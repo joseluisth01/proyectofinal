@@ -35,6 +35,10 @@
     font-weight: bold;
 }
 
+.partners p{
+    padding-top: 8px;
+}
+
 .avisoslegales_footer{
     margin-top: 2%;
     margin-bottom: 15px;
@@ -44,7 +48,7 @@
 }
 
 .avisoslegales_footer p{
-    margin: 0 70px;
+    margin: 0 30px;
 }
 .linkavisoslegales:hover{
     color: #37FF8B;
