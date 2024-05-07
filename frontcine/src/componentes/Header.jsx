@@ -119,7 +119,7 @@ export const Header = () => {
                 <option className='opcion' value="opcion2">TAPACOS MÁLAGA</option>
             </select>
 
-            <Link to='/Cartelera'>Cartelera</Link>
+            <Link className="enlacecartelera" to='/Cartelera'>Cartelera</Link>
 
             {isLoggedIn ? (
                 <div className="usuariologin dropdown">

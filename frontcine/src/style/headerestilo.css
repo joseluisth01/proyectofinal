@@ -68,6 +68,22 @@
     border: 0px;
 }
 
+.enlacecartelera {
+    margin-left: 3%;
+    background-color: transparent;
+    color: white;
+    border: 0px;
+    padding: 10px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+}
+
+.enlacecartelera:hover {
+    color: #37FF8B;
+    cursor: pointer;
+    border: 0px;
+}
+
 .opcion {
     background-color: black;
     border: 0px;
