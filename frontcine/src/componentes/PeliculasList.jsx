@@ -49,6 +49,8 @@ const PeliculasList = () => {
                             <h2>{pelicula.nombrePelicula}</h2>
                             <p className="fecha-hora">Fecha: {pelicula.fecha}</p>
                             <p className="fecha-hora">Hora: {pelicula.hora}</p>
+                            <p className="fecha-hora">id: {pelicula.id}</p>
+                            <p className="fecha-hora">idPelicula: {pelicula.idPelicula}</p>
                         </div>
                     ))}
                 </div>

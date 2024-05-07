@@ -28,3 +28,5 @@ Route::post('/insertarPelicula', [PeliculasControllador::class, 'insertarPelicul
 /* INSERTAR PELICULA EN FRONT */
 Route::get('/peliculas', [PeliculasControllador::class, 'obtenerPeliculas']);
 
+/* DATOS PELICULAS */
+Route::get('/peliculas/detalles', [PeliculasControllador::class, 'obtenerPeliculasConDetalles']);
