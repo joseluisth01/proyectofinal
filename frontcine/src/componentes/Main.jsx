@@ -3,7 +3,7 @@ import '../style/mainstyle.css';
 import { Slider } from './Slider';
 
 // Asegúrate de tener la imagen en el directorio `public` para poder utilizarla directamente.
-const garfieldImg = '/img/GARFIELD.png'; // Reemplaza este con el nombre correcto de tu imagen
+const garfieldImg = '/img/GARFIELD.jpg'; // Reemplaza este con el nombre correcto de tu imagen
 
 export const Main = () => {
   return (
