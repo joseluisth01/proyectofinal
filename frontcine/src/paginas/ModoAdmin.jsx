@@ -69,6 +69,30 @@ export const ModoAdmin = () => {
             .catch((err) => console.log(err));
     };
 
+    const insertarEstreno = (idPelicula, nombrePelicula) => {
+        if (!fecha || !hora) {
+            alert("Debes rellenar todos los campos de fecha y hora antes de añadir una película.");
+            return;
+        }
+
+        const datosPeliculaEstrenos = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ idPelicula, nombrePelicula, fecha, hora }),
+        };
+
+        const url2 = 'http://localhost/proyectofinal/back/public/api/insertarEstreno';
+        fetch(url2, datosPeliculaEstrenos)
+            .then((resultado) => resultado.json())
+            .then((respuesta) => {
+                console.log('Proximo estreno insertado correctamente');
+                alert("Próximo estreno añadido correctamente");
+            })
+            .catch((err) => console.log(err));
+    };
+
     const today = new Date().toISOString().split('T')[0];
 
     return (
@@ -95,6 +119,7 @@ export const ModoAdmin = () => {
                         <img className='poster' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                         <h2 className='titulopeli'>{movie.title}</h2>
                         <button onClick={() => insertarPelicula(movie.id, movie.title)}>Añadir</button>
+                        <button onClick={() => insertarEstreno(movie.id, movie.title)}>Añadir Estreno</button>
                     </div>
                 ))}
             </div>

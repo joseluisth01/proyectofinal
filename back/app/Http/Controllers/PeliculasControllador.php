@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estrenos;
 use App\Models\Pelicula;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
@@ -21,6 +22,29 @@ class PeliculasControllador extends Controller
             ]);
     
             $peli = new Pelicula();
+            $peli->idPelicula = $request->idPelicula;
+            $peli->nombrePelicula = $request->nombrePelicula;
+            $peli->fecha = $request->fecha;
+            $peli->hora = $request->hora;
+            $peli->save();
+    
+            return response()->json(['message' => 'Pelicula agregada correctamente'], 201);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error al insertar película: ' . $e->getMessage()], 500);
+        }
+    }
+
+    public function insertarEstreno(Request $request)
+    {
+        try {
+            $request->validate([
+                'idPelicula' => 'required|int',
+                'nombrePelicula' => 'required|string',
+                'fecha' => 'required|string',
+                'hora' => 'required|string',
+            ]);
+    
+            $peli = new Estrenos();
             $peli->idPelicula = $request->idPelicula;
             $peli->nombrePelicula = $request->nombrePelicula;
             $peli->fecha = $request->fecha;
