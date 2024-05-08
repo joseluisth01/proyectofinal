@@ -126,29 +126,26 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: black; /* Fondo blanco */
-    border: 2px solid #FF9900; /* Bordes color Garfield */
-    border-radius: 8px;
-    padding: 20px;
+    background-color: black; 
+    padding: 50px;
     color: #fff;
   }
   
   .garfield-content {
     max-width: 60%;
-    
+    margin-left: 5em;
   }
   
   .garfield-content h2, .garfield-content h3 {
-    margin: 0 0 10px 0;
     font-weight: bold;
   }
   
   .garfield-content h2 {
-    font-size: 24px;
+    font-size: 33px;
   }
   
   .garfield-content h3 {
-    font-size: 20px;
+    font-size: 22px;
   }
   
   .garfield-content p, .garfield-content ul, .garfield-content a {
@@ -168,6 +165,57 @@
   .garfield-img {
     max-width: 500px;
     border-radius: 8px;
-    margin-left: 20px;
+    padding: 2em;
   }
   
+
+/* PROMO */
+
+.team-promotion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+  }
+  
+  .team-img {
+    max-width: 40%;
+    border-radius: 8px;
+    margin-left: 12em;
+  }
+  
+  .team-content {
+    max-width: 45%;
+    color: #fff;
+    text-align: left;
+  }
+  
+  .team-content h3 {
+    font-size: 45px;
+    font-weight: bold;
+  }
+  
+  .team-content h2 {
+    margin: 10px 0;
+    font-size: 28px;
+  }
+  
+  .team-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-btn {
+    background-color: #e40000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .contact-btn:hover {
+    background-color: #cc0000;
+  }
