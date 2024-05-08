@@ -1,13 +1,16 @@
 .movie-list-container {
     margin: 0 auto;
     padding: 30px;
-    /* background-image: url('../public/img/fondo12.jpg'); */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     /* width: 100%; */
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.fondo{
+    background-image: url('../public/img/fondo15.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .movie-list {
@@ -40,7 +43,7 @@
     text-align: center;
 }
 
-.buttoncargar {
+.buttoncargaradmin {
     background-color: #181414;
     color: white;
     padding: 10px 20px;
@@ -53,7 +56,7 @@
     border: 1px solid black;
 }
 
-.buttoncargar:hover {
+.buttoncargaradmin:hover {
     background-color: #484040;
     border: 1px solid black;
 }

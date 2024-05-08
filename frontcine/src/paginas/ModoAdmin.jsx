@@ -96,37 +96,40 @@ export const ModoAdmin = () => {
     const today = new Date().toISOString().split('T')[0];
 
     return (
-        <div className="movie-list-container">
-            <div className='buscadores'>
-                <div className="input-container">
-                    <input type="date" min={today} value={fecha} onChange={e => setFecha(e.target.value)} />
-                    <input type="time" value={hora} onChange={e => setHora(e.target.value)} />
-                </div>
-                <div className="search-container">
-                    <input
-                        type="text"
-                        placeholder="Buscar película               🔎"
-                        value={searchQuery}
-                        onChange={handleSearchInputChange}
-                    />
-                </div>
-            </div>
-
-
-            <div className="movie-list">
-                {movies.map(movie => (
-                    <div key={movie.id} className="movie-item anim-upp">
-                        <img className='poster' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-                        <h2 className='titulopeli'>{movie.title}</h2>
-                        <button onClick={() => insertarPelicula(movie.id, movie.title)}>Añadir</button>
-                        <button onClick={() => insertarEstreno(movie.id, movie.title)}>Añadir Estreno</button>
+        <div className="fondo">
+            <div className="movie-list-container">
+                <div className='buscadores'>
+                    <div className="input-container">
+                        <input type="date" min={today} value={fecha} onChange={e => setFecha(e.target.value)} />
+                        <input type="time" value={hora} onChange={e => setHora(e.target.value)} />
                     </div>
-                ))}
+                    <div className="search-container">
+                        <input
+                            type="text"
+                            placeholder="Buscar película               🔎"
+                            value={searchQuery}
+                            onChange={handleSearchInputChange}
+                        />
+                    </div>
+                </div>
+
+
+                <div className="movie-list">
+                    {movies.map(movie => (
+                        <div key={movie.id} className="movie-item anim-upp">
+                            <img className='poster' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                            <h2 className='titulopeli'>{movie.title}</h2>
+                            <button onClick={() => insertarPelicula(movie.id, movie.title)}>Añadir</button>
+                            <button onClick={() => insertarEstreno(movie.id, movie.title)}>Añadir Estreno</button>
+                        </div>
+                    ))}
+                </div>
+                {loading && <p>Loading...</p>}
+                {!searchQuery && (
+                    <button className='buttoncargaradmin' onClick={loadMoreMovies}>Cargar más</button>
+                )}
             </div>
-            {loading && <p>Loading...</p>}
-            {!searchQuery && (
-                <button className='buttoncargar' onClick={loadMoreMovies}>Cargar más</button>
-            )}
         </div>
+
     )
 }
