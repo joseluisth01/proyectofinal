@@ -124,28 +124,50 @@
 
 .garfield-promotion {
     display: flex;
-    align-items: center;
-    background-color: #FF9900; /* Color similar al de Garfield */
-    padding: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: black; /* Fondo blanco */
+    border: 2px solid #FF9900; /* Bordes color Garfield */
     border-radius: 8px;
-  }
-  
-  .garfield-img {
-    max-width: 300px;
-    margin-right: 20px;
-  }
-  
-  .garfield-content {
+    padding: 20px;
     color: #fff;
   }
   
-  .garfield-content h2 {
-    margin: 0;
-    font-size: 24px;
+  .garfield-content {
+    max-width: 60%;
+    
+  }
+  
+  .garfield-content h2, .garfield-content h3 {
+    margin: 0 0 10px 0;
     font-weight: bold;
   }
   
-  .garfield-content p {
-    font-size: 18px;
+  .garfield-content h2 {
+    font-size: 24px;
+  }
+  
+  .garfield-content h3 {
+    font-size: 20px;
+  }
+  
+  .garfield-content p, .garfield-content ul, .garfield-content a {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .garfield-content ul {
+    list-style: none;
+    padding-left: 1em;
+  }
+  
+  .garfield-content li {
+    margin-bottom: 5px;
+  }
+  
+  .garfield-img {
+    max-width: 500px;
+    border-radius: 8px;
+    margin-left: 20px;
   }
   
