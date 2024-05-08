@@ -41,6 +41,7 @@ const PeliculasList = () => {
 
     return (
         <div className="peliculas-container">
+
             <DatePicker
                 selected={startDate}
                 onChange={date => setStartDate(date)}

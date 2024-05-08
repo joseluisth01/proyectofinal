@@ -1,12 +1,13 @@
 .divheader {
     background-color: black;
-    position: relative;
     width: 100%;
     color: white;
     height: 80px;
     display: flex;
     align-items: center;
     z-index: 5;
+    position: fixed;
+    top: 0;
 }
 
 .logoheader {
@@ -71,7 +72,7 @@
 .enlacecartelera {
     position: absolute;
     right: 0;
-    margin-right: 10%;
+    margin-right: 20%;
     background-color: transparent;
     color: white;
     border: 0px;
@@ -82,6 +83,25 @@
 }
 
 .enlacecartelera:hover {
+    color: #37FF8B;
+    cursor: pointer;
+    border: 0px;
+}
+
+.enlaceestrenos {
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+    background-color: transparent;
+    color: white;
+    border: 0px;
+    padding: 10px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.enlaceestrenos:hover {
     color: #37FF8B;
     cursor: pointer;
     border: 0px;

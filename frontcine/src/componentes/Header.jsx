@@ -121,6 +121,8 @@ export const Header = () => {
 
             <Link className="enlacecartelera" to='/Cartelera'>Cartelera</Link>
 
+            <Link className="enlaceestrenos" to='/Estrenos'>Próximos Estrenos</Link>
+
             {isLoggedIn ? (
                 <div className="usuariologin dropdown">
                     <button class="dropbtn"><h2>{nombreUsuario.charAt(0).toUpperCase()}</h2></button>
