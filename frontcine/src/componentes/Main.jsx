@@ -41,7 +41,7 @@ export const Main = () => {
         <section className='team-promotion'>
           <img src={teamImage} alt='Equipo de trabajo' className='team-img' />
           <div className='team-content'>
-            <h3>TAPACOS MULTICINES</h3>
+            <h3>TAPACOS AUTOCINEMAS</h3>
             <h2>Compra entradas de cine para recompensar el trabajo bien hecho de tu equipo</h2>
             <p>
               Los programas de reconocimiento a empleados establecen una cultura positiva, en la que el esfuerzo
