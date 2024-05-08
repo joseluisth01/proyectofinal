@@ -1,6 +1,7 @@
 import React from 'react';
 import '../style/mainstyle.css';
 import { Slider } from './Slider';
+import { Header } from '../componentes/Header'
 
 const garfieldImg = '/img/GARFIELD.jpg'; // Ruta de la imagen guardada
 
@@ -10,6 +11,7 @@ export const Main = () => {
       <header>
       </header>
       <main>
+        <Header/>
         <Slider />
         <br /><br /><br /><br /><br />
         <section className='garfield-promotion'>

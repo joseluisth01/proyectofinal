@@ -13,6 +13,16 @@ export const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
     const navigate = useNavigate();
+    const [headerSolid, setHeaderSolid] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setHeaderSolid(window.scrollY > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -106,7 +116,7 @@ export const Header = () => {
     };
 
     return (
-        <header className='divheader'>
+        <header className={`divheader ${headerSolid ? 'header-solid' : ''}`}>
             <a href='/' className="logoheader" data-text="Awesome">
                 <span className="actual-text">&nbsp;TAPACOS</span>
                 <span aria-hidden="true" className="hover-text">&nbsp;TAPACOS&nbsp;</span>

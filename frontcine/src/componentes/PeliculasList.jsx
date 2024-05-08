@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import '../style/peliculasList.css';
 import addDays from 'date-fns/addDays';
 
+
 const PeliculasList = () => {
     const [peliculas, setPeliculas] = useState([]);
     const [loading, setLoading] = useState(false);

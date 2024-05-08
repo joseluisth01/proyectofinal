@@ -1,5 +1,4 @@
 .divheader {
-    background-color: transparent;
     width: 100%;
     color: white;
     height: 80px;
@@ -8,6 +7,15 @@
     z-index: 5;
     position: fixed;
     top: 0;
+    transition: background-color 0.3s ease;
+}
+
+.header-solid {
+    background-color: black;
+}
+
+.divheader:not(.header-solid) {
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 }
 
 .logoheader {
@@ -72,7 +80,7 @@
 .enlacecartelera {
     position: absolute;
     right: 0;
-    margin-right: 20%;
+    margin-right: 21%;
     background-color: transparent;
     color: white;
     border: 0px;

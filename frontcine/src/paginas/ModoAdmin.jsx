@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import '../style/modoAdmin.css';
+import { Header } from '../componentes/Header'
 
 export const ModoAdmin = () => {
     const [movies, setMovies] = useState([]);
@@ -97,6 +98,7 @@ export const ModoAdmin = () => {
 
     return (
         <div className="fondo">
+            <Header/>
             <div className="movie-list-container">
                 <div className='buscadores'>
                     <div className="input-container">
