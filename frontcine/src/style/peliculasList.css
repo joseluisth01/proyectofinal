@@ -5,7 +5,6 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #f0f0f0; /* Color de fondo suave */
   padding-top: 80px;
 }
 
@@ -75,4 +74,11 @@
 
 .buttoncargar:hover {
   background-color: red;
+}
+
+.fondo{
+  background-image: url('../public/img/fondo15.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }

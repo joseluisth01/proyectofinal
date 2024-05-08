@@ -4,7 +4,7 @@ import { Header } from '../componentes/Header'
 
 export const Cartelera = () => {
   return (
-    <div>
+    <div className="fondo">
         <Header/>
         <PeliculasList/>
     </div>
