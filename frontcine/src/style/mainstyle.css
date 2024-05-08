@@ -120,3 +120,32 @@
     letter-spacing: 2px;
 }
 
+/* GARFIELD */
+
+.garfield-promotion {
+    display: flex;
+    align-items: center;
+    background-color: #FF9900; /* Color similar al de Garfield */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .garfield-img {
+    max-width: 300px;
+    margin-right: 20px;
+  }
+  
+  .garfield-content {
+    color: #fff;
+  }
+  
+  .garfield-content h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .garfield-content p {
+    font-size: 18px;
+  }
+  
