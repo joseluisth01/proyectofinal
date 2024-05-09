@@ -10,52 +10,71 @@
 
 .peliculas-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Crea un diseño de cuadrícula responsivo */
-  gap: 20px; /* Espacio entre tarjetas de películas */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* Crea un diseño de cuadrícula responsivo */
+  gap: 20px;
+  /* Espacio entre tarjetas de películas */
   width: 100%;
-  max-width: 1200px; /* Ancho máximo del contenedor */
+  max-width: 1200px;
+  /* Ancho máximo del contenedor */
 }
 
 .pelicula-item {
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para las tarjetas */
-  overflow: hidden; /* Asegura que todo dentro de la tarjeta se quede adentro */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra suave para las tarjetas */
+  overflow: hidden;
+  /* Asegura que todo dentro de la tarjeta se quede adentro */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra los elementos dentro de la tarjeta */
-  transition: transform 0.2s; /* Transición suave para el hover */
+  align-items: center;
+  /* Centra los elementos dentro de la tarjeta */
+  transition: transform 0.2s;
+  /* Transición suave para el hover */
 }
 
 .pelicula-item:hover {
-  transform: scale(1.05); /* Efecto de hover para resaltar la tarjeta */
+  transform: scale(1.05);
+  /* Efecto de hover para resaltar la tarjeta */
 }
 
 .pelicula-item img {
-  width: 100%; /* Asegura que la imagen cubra el ancho de la tarjeta */
-  height: auto; /* Mantiene la relación de aspecto de la imagen */
-  border-top-left-radius: 8px; /* Redondea las esquinas superiores de la imagen */
+  width: 100%;
+  /* Asegura que la imagen cubra el ancho de la tarjeta */
+  height: auto;
+  /* Mantiene la relación de aspecto de la imagen */
+  border-top-left-radius: 8px;
+  /* Redondea las esquinas superiores de la imagen */
   border-top-right-radius: 8px;
 }
 
-.titulo-pelicula, .fecha-hora {
+.titulo-pelicula,
+.fecha-hora {
   padding: 10px;
-  text-align: center; /* Centra el texto dentro de la tarjeta */
+  text-align: center;
+  /* Centra el texto dentro de la tarjeta */
 }
 
 .fecha-hora {
-  color: #555; /* Color gris para los detalles de la fecha y hora */
-  font-size: 0.9em; /* Un tamaño de fuente más pequeño para los detalles */
-  margin-bottom: 5px; /* Margen debajo de cada detalle para separación */
+  color: #555;
+  /* Color gris para los detalles de la fecha y hora */
+  font-size: 0.9em;
+  /* Un tamaño de fuente más pequeño para los detalles */
+  margin-bottom: 5px;
+  /* Margen debajo de cada detalle para separación */
 }
 
 /* Botones y campos de entrada */
-.input-container, .search-container, .buttoncargar {
+.input-container,
+.search-container,
+.buttoncargar {
   margin: 10px;
   text-align: center;
 }
 
-.input-container input, .search-container input {
+.input-container input,
+.search-container input {
   padding: 8px;
   margin: 5px;
   border: 1px solid #ccc;
@@ -76,9 +95,64 @@
   background-color: red;
 }
 
-.fondo{
+.fondo {
   background-image: url('../public/img/fondo15.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+
+
+.calendar {
+  background-color: #ff6d6d;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.calendar button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: #ff6d6d;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.calendar button.active {
+  background-color: #e53935;
+}
+
+.calendar .arrow-btn {
+  flex: 0 0 40px;
+  background-color: #c62828;
+  cursor: pointer;
+}
+
+.calendar .arrow-btn:hover {
+  background-color: #b71c1c;
+}
+
+.peliculas-table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+.peliculas-table th,
+.peliculas-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.peliculas-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.calendar .arrow-btn.disabled {
+  background-color: grey;
+  cursor: not-allowed;
 }

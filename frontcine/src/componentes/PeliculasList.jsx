@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
 import '../style/peliculasList.css';
-import addDays from 'date-fns/addDays';
-
 
 const PeliculasList = () => {
     const [peliculas, setPeliculas] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [startDate, setStartDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [dateRangeStart, setDateRangeStart] = useState(new Date());
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reiniciar a la medianoche
+    const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
 
     useEffect(() => {
         const fetchPeliculas = async () => {
@@ -34,19 +35,68 @@ const PeliculasList = () => {
         fetchPeliculas();
     }, []);
 
-
     const filteredMovies = peliculas.filter(pelicula =>
-        new Date(pelicula.fecha).toDateString() === startDate.toDateString()
+        new Date(pelicula.fecha).toDateString() === selectedDate.toDateString()
     );
+
+    const getDayLabel = (date) => {
+        const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        if (date.toDateString() === today.toDateString()) {
+            return "Hoy";
+        } else {
+            return `${days[date.getDay()]} ${date.getDate()}/${date.getMonth() + 1}`;
+        }
+    };
+
+    const moveDateRange = (days) => {
+        const newDateRangeStart = new Date(dateRangeStart.getTime() + days * 86400000);
+        // Verificar límites de rango, permitiendo retroceder hasta el día actual (inclusivo)
+        if (newDateRangeStart.getTime() >= today.getTime() && newDateRangeStart.getTime() <= fourteenDaysLater.getTime()) {
+            setDateRangeStart(newDateRangeStart);
+        }
+    };
+
+    const handleDateSelection = (offset) => {
+        const newDate = new Date(dateRangeStart.getTime() + offset * 86400000);
+        setSelectedDate(newDate);
+    };
+
+    // Verificar si el rango actual ya está en el día actual (inclusivo)
+    const isPreviousDisabled = dateRangeStart.getTime() <= today.getTime();
+    const isNextDisabled = dateRangeStart.getTime() + 3 * 86400000 >= fourteenDaysLater.getTime();
 
     return (
         <div className="peliculas-container">
+            <div className="calendar">
+                <button
+                    className={`arrow-btn ${isPreviousDisabled ? "disabled" : ""}`}
+                    onClick={() => moveDateRange(-1)}
+                    disabled={isPreviousDisabled}
+                >
+                    ❮
+                </button>
+                {[...Array(4)].map((_, index) => {
+                    const dayDate = new Date(dateRangeStart.getTime() + index * 86400000);
+                    const isActive = dayDate.toDateString() === selectedDate.toDateString();
+                    return (
+                        <button
+                            key={index}
+                            className={isActive ? "active" : ""}
+                            onClick={() => handleDateSelection(index)}
+                        >
+                            {getDayLabel(dayDate)}
+                        </button>
+                    );
+                })}
+                <button
+                    className={`arrow-btn ${isNextDisabled ? "disabled" : ""}`}
+                    onClick={() => moveDateRange(1)}
+                    disabled={isNextDisabled}
+                >
+                    ❯
+                </button>
+            </div>
 
-            <DatePicker
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-                dateFormat="yyyy-MM-dd"
-            />
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -54,15 +104,19 @@ const PeliculasList = () => {
                     <thead>
                         <tr>
                             <th>Poster</th>
-                            {/* <th>Nombre</th> */}
                             <th>Hora</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredMovies.map(pelicula => (
                             <tr key={pelicula.id}>
-                                <td><img src={pelicula.posterUrl} alt={`Poster de ${pelicula.nombrePelicula}`} style={{ width: "100px" }} /></td>
-                                {/* <td>{pelicula.nombrePelicula}</td> */}
+                                <td>
+                                    <img
+                                        src={pelicula.posterUrl}
+                                        alt={`Poster de ${pelicula.nombrePelicula}`}
+                                        style={{ width: "100px" }}
+                                    />
+                                </td>
                                 <td>{pelicula.hora}</td>
                             </tr>
                         ))}
