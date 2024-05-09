@@ -1,143 +1,75 @@
-/* peliculasList.css */
-
+/* General container for responsive design */
 .peliculas-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  padding-top: 80px;
+  padding-top: 10%;
 }
 
-.peliculas-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  /* Crea un diseño de cuadrícula responsivo */
-  gap: 20px;
-  /* Espacio entre tarjetas de películas */
-  width: 100%;
-  max-width: 1200px;
-  /* Ancho máximo del contenedor */
-}
-
-.pelicula-item {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Sombra suave para las tarjetas */
-  overflow: hidden;
-  /* Asegura que todo dentro de la tarjeta se quede adentro */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Centra los elementos dentro de la tarjeta */
-  transition: transform 0.2s;
-  /* Transición suave para el hover */
-}
-
-.pelicula-item:hover {
-  transform: scale(1.05);
-  /* Efecto de hover para resaltar la tarjeta */
-}
-
-.pelicula-item img {
-  width: 100%;
-  /* Asegura que la imagen cubra el ancho de la tarjeta */
-  height: auto;
-  /* Mantiene la relación de aspecto de la imagen */
-  border-top-left-radius: 8px;
-  /* Redondea las esquinas superiores de la imagen */
-  border-top-right-radius: 8px;
-}
-
-.titulo-pelicula,
-.fecha-hora {
-  padding: 10px;
-  text-align: center;
-  /* Centra el texto dentro de la tarjeta */
-}
-
-.fecha-hora {
-  color: #555;
-  /* Color gris para los detalles de la fecha y hora */
-  font-size: 0.9em;
-  /* Un tamaño de fuente más pequeño para los detalles */
-  margin-bottom: 5px;
-  /* Margen debajo de cada detalle para separación */
-}
-
-/* Botones y campos de entrada */
-.input-container,
-.search-container,
-.buttoncargar {
-  margin: 10px;
-  text-align: center;
-}
-
-.input-container input,
-.search-container input {
-  padding: 8px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.buttoncargar {
-  padding: 10px 20px;
-  background-color: darkred;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.buttoncargar:hover {
-  background-color: red;
-}
-
-.fondo {
-  background-image: url('../public/img/fondo15.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-
+/* Calendar styles */
 .calendar {
-  background-color: #ff6d6d;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 3%;
   overflow: hidden;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .calendar button {
   flex: 1;
-  padding: 10px;
+  padding: 20px;
   border: none;
-  background-color: #ff6d6d;
+  background-color: rgb(0, 0, 0);
   color: white;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  letter-spacing: 1.22px;
+  min-width: 60px;
+  text-align: center;
 }
 
 .calendar button.active {
-  background-color: #e53935;
+  background-color: rgb(102, 102, 102);
+  color: #37FF8B;
 }
+
 
 .calendar .arrow-btn {
   flex: 0 0 40px;
-  background-color: #c62828;
+  background-color: black;
   cursor: pointer;
 }
 
 .calendar .arrow-btn:hover {
-  background-color: #b71c1c;
+  background-color: rgb(87, 87, 87);
+  color: #37FF8B;
 }
 
+.calendar .arrow-btn.disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.calendar .arrow-btn.disabled:hover {
+  background-color: grey;
+  color: white;
+}
+
+/* Movie table styles */
 .peliculas-table {
   border-collapse: collapse;
   width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
 }
 
 .peliculas-table th,
@@ -152,7 +84,31 @@
   font-weight: bold;
 }
 
-.calendar .arrow-btn.disabled {
-  background-color: grey;
-  cursor: not-allowed;
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+  .peliculas-table {
+    width: 100%;
+  }
+
+  .calendar {
+    max-width: 100%;
+    flex-direction: column;
+    /* Stack buttons vertically */
+  }
+
+  .calendar button {
+    flex: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    margin: 2px;
+  }
+
+  .calendar .arrow-btn {
+    flex: none;
+    padding: 10px;
+  }
+
+  .peliculas-container {
+    padding: 10px;
+  }
 }

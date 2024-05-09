@@ -42,11 +42,12 @@ const PeliculasList = () => {
     const getDayLabel = (date) => {
         const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
         if (date.toDateString() === today.toDateString()) {
-            return "Hoy";
+            return `${days[date.getDay()]}\n${date.getDate()}/${date.getMonth() + 1}`;
         } else {
-            return `${days[date.getDay()]} ${date.getDate()}/${date.getMonth() + 1}`;
+            return `${days[date.getDay()]}\n${date.getDate()}/${date.getMonth() + 1}`;
         }
     };
+    
 
     const moveDateRange = (days) => {
         const newDateRangeStart = new Date(dateRangeStart.getTime() + days * 86400000);
