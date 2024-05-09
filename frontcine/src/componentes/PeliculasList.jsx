@@ -19,12 +19,18 @@ const PeliculasList = () => {
                     throw new Error('Failed to fetch peliculas');
                 }
                 const data = await response.json();
-                const moviesWithPosters = await Promise.all(data.peliculas.map(async (pelicula) => {
+                const moviesWithDetails = await Promise.all(data.peliculas.map(async (pelicula) => {
                     const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${pelicula.idPelicula}?api_key=9b6ecd3e72ca170064c048d4ea07a095`);
                     const tmdbData = await tmdbResponse.json();
-                    return { ...pelicula, posterUrl: `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` };
+                    return {
+                        ...pelicula,
+                        posterUrl: `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}`,
+                        duracion: tmdbData.runtime,
+                        genero: tmdbData.genres.map(genre => genre.name).join(', '),
+                        valoracion: tmdbData.vote_average
+                    };
                 }));
-                setPeliculas(moviesWithPosters);
+                setPeliculas(moviesWithDetails);
             } catch (error) {
                 console.error('Error fetching peliculas:', error);
             } finally {
@@ -34,6 +40,7 @@ const PeliculasList = () => {
 
         fetchPeliculas();
     }, []);
+
 
     const filteredMovies = peliculas.filter(pelicula =>
         new Date(pelicula.fecha).toDateString() === selectedDate.toDateString()
@@ -47,7 +54,7 @@ const PeliculasList = () => {
             return `${days[date.getDay()]}\n${date.getDate()}/${date.getMonth() + 1}`;
         }
     };
-    
+
 
     const moveDateRange = (days) => {
         const newDateRangeStart = new Date(dateRangeStart.getTime() + days * 86400000);
@@ -101,29 +108,30 @@ const PeliculasList = () => {
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <table className="peliculas-table">
-                    <thead>
-                        <tr>
-                            <th>Poster</th>
-                            <th>Hora</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredMovies.map(pelicula => (
-                            <tr key={pelicula.id}>
-                                <td>
-                                    <img
-                                        src={pelicula.posterUrl}
-                                        alt={`Poster de ${pelicula.nombrePelicula}`}
-                                        style={{ width: "100px" }}
-                                    />
-                                </td>
-                                <td>{pelicula.hora}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                filteredMovies.map(pelicula => (
+                    <div className="movie-card" key={pelicula.id}>
+                        <div className="divflex">
+                            <div className='postercartelera'>
+                                <img
+                                    className="movie-poster"
+                                    src={pelicula.posterUrl}
+                                    alt={`Poster de ${pelicula.nombrePelicula}`}
+                                />
+                            </div>
+                            <div className="movie-info">
+                                <p className='titulopelicartelera'>{pelicula.nombrePelicula}</p>
+                                <p>Duración: {pelicula.duracion} minutos</p>
+                                <p>Género: {pelicula.genero}</p>
+                                <p>Valoración: {pelicula.valoracion} / 10</p>
+                                <p>{pelicula.hora}</p>
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+
+                ))
             )}
+
         </div>
     );
 };

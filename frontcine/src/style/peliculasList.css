@@ -16,7 +16,6 @@
   align-items: center;
   background-color: black;
   border-radius: 8px;
-  margin-bottom: 3%;
   overflow: hidden;
   font-family: "Bebas Neue", sans-serif;
 }
@@ -111,4 +110,33 @@
   .peliculas-container {
     padding: 10px;
   }
+}
+
+.movie-card{
+  width: 60%;
+}
+.divflex{
+  width: 100%;
+  display: flex;
+  margin-bottom: 5%;
+  margin-top: 4%;
+}
+
+.movie-poster{
+  max-width: 260px;
+}
+
+.postercartelera{
+  width: 45%;
+  display: flex;
+  justify-content: flex-end;
+}
+.movie-info{
+  width: 40%;
+  padding-left: 4%;
+}
+
+.titulopelicartelera{
+  font-size: 30px;
+  font-weight: bold;
 }
