@@ -5,7 +5,7 @@ import { Header } from '../componentes/Header'
 export const Estrenos = () => {
   return (
     <div className='divestrenos'>
-      <Header/>
+      <Header />
       HOLA
     </div>
   )

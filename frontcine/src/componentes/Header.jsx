@@ -137,8 +137,8 @@ export const Header = () => {
                 <div className="usuariologin dropdown">
                     <button class="dropbtn"><h2>{nombreUsuario.charAt(0).toUpperCase()}</h2></button>
                     <div class="dropdown-content">
-                        <a href="#">Mi perfil</a>
-                        <a href="#">Mis entradas</a>
+                        <Link to='/Perfil'>Mi perfil</Link>
+                        <Link to='/Entradas'>Mis entradas</Link>
                         {isAdmin && <Link to='/ModoAdmin'>Modo Admin</Link>}
                         <a onClick={logout}>Cerrar sesión</a>
                     </div>
