@@ -120,7 +120,7 @@ const PeliculasList = () => {
                             </div>
                             <div className="movie-info">
                                 <p className='titulopelicartelera'>{pelicula.nombrePelicula}</p>
-                                <p>Duración: {pelicula.duracion} minutos</p>
+                                <p>{pelicula.duracion} minutos</p>
                                 <p>Género: {pelicula.genero}</p>
                                 <p>Valoración: {pelicula.valoracion} / 10</p>
                                 <p>{pelicula.hora}</p>
