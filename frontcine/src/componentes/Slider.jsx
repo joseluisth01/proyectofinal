@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../style/mainstyle.css';
 
 const images = [
-    '/img/tapacosautocinemas2et.jpg',
-    '/img/autocinemas5bueno.jpg',
+    '/img/autocine2.webp',
+    '/img/autocine.jpg',
     '/img/prueba.png'
 ];
 

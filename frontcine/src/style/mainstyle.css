@@ -1,7 +1,7 @@
 .sliderfull {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
     z-index: 1;
 }
@@ -23,7 +23,7 @@
 }
 
 .zoom-background {
-    animation: zoom-background 6s forwards;
+    animation: zoom-background 10s forwards;
 }
 
 @keyframes zoom-background {
