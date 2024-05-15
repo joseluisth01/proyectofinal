@@ -67,6 +67,16 @@ class PeliculasControllador extends Controller
         }
     }
 
+    public function obtenerEstrenos()
+    {
+        try {
+            $estrenos = Estrenos::all();
+            return response()->json(['peliculas' => $estrenos], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error al obtener películas: ' . $e->getMessage()], 500);
+        }
+    }
+
 
 
     public function obtenerPeliculasConDetalles()
