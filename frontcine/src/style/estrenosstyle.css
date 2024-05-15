@@ -1,0 +1,29 @@
+.estrenos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.estreno-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.estreno-poster {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.hr-divider {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 10px 0;
+}
