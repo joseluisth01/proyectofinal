@@ -6,9 +6,10 @@ import { EstrenosList } from '../componentes/EstrenosList'
 export const Cartelera = () => {
   return (
     <div className="fondo">
+      <Header />
       <div class="cartelerapatida">
         <div className="carteleraizq">
-          <Header />
+          
           <PeliculasList />
         </div>
         <div className="carteleraderch">

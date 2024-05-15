@@ -100,7 +100,9 @@
 }
 
 .movie-poster{
-  max-width: 260px;
+  max-width: 350px;
+  height: 500px;
+  object-fit: cover;
 }
 
 .postercartelera{

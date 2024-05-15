@@ -6,7 +6,6 @@ const PeliculasList = () => {
     const [loading, setLoading] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [dateRangeStart, setDateRangeStart] = useState(new Date());
-    const [movieDeleted, setMovieDeleted] = useState(false); // Nuevo estado para manejar el borrado de películas
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Reiniciar a la medianoche
     const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
@@ -65,7 +64,7 @@ const PeliculasList = () => {
         };
 
         fetchPeliculas();
-    }, [movieDeleted]); // Actualizar películas cuando se elimine una película
+    }, []); // Solo se ejecuta una vez al montar el componente
 
     const filteredMovies = peliculas.filter(pelicula =>
         new Date(pelicula.fecha).toDateString() === selectedDate.toDateString()
@@ -80,7 +79,7 @@ const PeliculasList = () => {
         }
     };
 
-    const borrarPelicula = (idPelicula) => {
+    const borrarPelicula = async (idPelicula) => {
         const datosPelicula = {
             method: 'DELETE',
             headers: {
@@ -89,26 +88,23 @@ const PeliculasList = () => {
             body: JSON.stringify({ id: idPelicula }),
         };
     
-        fetch('http://localhost/proyectofinal/back/public/api/borrarPeliculas', datosPelicula)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al borrar película');
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert(data.message);
-                setMovieDeleted(true); // Establecer el estado de movieDeleted como verdadero después de eliminar la película
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Ocurrió un error al borrar la película');
-            });
+        try {
+            const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarPeliculas', datosPelicula);
+            if (!response.ok) {
+                throw new Error('Error al borrar película');
+            }
+            const data = await response.json();
+            alert(data.message);
+            // Filtrar las películas eliminadas
+            setPeliculas(prevPeliculas => prevPeliculas.filter(pelicula => pelicula.id !== idPelicula));
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Ocurrió un error al borrar la película');
+        }
     };
 
     const moveDateRange = (days) => {
         const newDateRangeStart = new Date(dateRangeStart.getTime() + days * 86400000);
-        // Verificar límites de rango, permitiendo retroceder hasta el día actual (inclusivo)
         if (newDateRangeStart.getTime() >= today.getTime() && newDateRangeStart.getTime() <= fourteenDaysLater.getTime()) {
             setDateRangeStart(newDateRangeStart);
         }
@@ -123,7 +119,6 @@ const PeliculasList = () => {
     const isPreviousDisabled = dateRangeStart.getTime() <= today.getTime();
     const isNextDisabled = dateRangeStart.getTime() + 3 * 86400000 >= fourteenDaysLater.getTime();
 
-
     const StarRating = ({ rating }) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
@@ -136,7 +131,6 @@ const PeliculasList = () => {
         return <div className="star-rating">{stars}</div>;
     };
     
-
     return (
         <div className="peliculas-container">
             <div className="calendar">
