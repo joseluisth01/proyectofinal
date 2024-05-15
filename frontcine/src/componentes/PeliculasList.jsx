@@ -23,7 +23,6 @@ const PeliculasList = () => {
                     const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${pelicula.idPelicula}?api_key=9b6ecd3e72ca170064c048d4ea07a095`);
                     const tmdbData = await tmdbResponse.json();
                     const genresInSpanish = tmdbData.genres.map(genre => {
-                        // Mapeo de géneros en inglés a español
                         const genreMapping = {
                             "Action": "Acción",
                             "Adventure": "Aventura",

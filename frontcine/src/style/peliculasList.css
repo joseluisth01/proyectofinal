@@ -4,13 +4,12 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  padding-top: 10%;
 }
 
 /* Calendar styles */
 .calendar {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -128,11 +127,11 @@
 }
 
 .carteleraizq{
-  width: 60%;
-  margin-top: 5%;
+  width: 70%;
+  margin-top: 8%;
 }
 
 .carteleraderch{
-  width: 40%;
+  width: 20%;
   margin-top: 12%;
 }
