@@ -100,7 +100,7 @@ export const Header = () => {
             .then((respuesta) => {
                 setNombreUsuario(respuesta.nombre);
                 localStorage.setItem('token', respuesta.token);
-                setIsLoggedIn(true); // Usuario ha iniciado sesión
+                setIsLoggedIn(true);
                 console.log('Token guardado en el localStorage:', respuesta.token);
                 console.log('Nombre del usuario:', respuesta.nombre);
             })
