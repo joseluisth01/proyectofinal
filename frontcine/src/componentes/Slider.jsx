@@ -31,10 +31,10 @@ export const Slider = () => {
                     <h2 className="titulocentral">TAPACOS<br/>AUTOCINEMAS</h2>
                     <div className="botones_slider_inicio">
                         <div className="boton1_slider_inicio">
-                            <p className="textobotones_slider_inicio">pablo putero</p>
+                            <p className="textobotones_slider_inicio">Cartelera</p>
                         </div>
                         <div className="boton2_slider_inicio">
-                            <p className="textobotones_slider_inicio">jose maricon reconocido</p>
+                            <p className="textobotones_slider_inicio">Próximos Estrenos</p>
                         </div>
                     </div>
                 </div>
