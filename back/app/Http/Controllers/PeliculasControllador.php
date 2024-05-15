@@ -107,26 +107,27 @@ class PeliculasControllador extends Controller
         return response()->json($detallesPeliculas);
     }
     public function borrarPeliculas(Request $request)
-    {
-        try {
-            $request->validate([
-                'id' => 'required|int',
-            ]);
-    
-            $id = $request->id;
-            $pelicula = Pelicula::find($id);
-    
-            if (!$pelicula) {
-                return response()->json(['message' => 'Película no encontrada'], 404);
-            }
-    
-            $pelicula->delete();
-    
-            return response()->json(['message' => 'Película eliminada correctamente'], 200);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Error al eliminar película: ' . $e->getMessage()], 500);
+{
+    try {
+        $request->validate([
+            'id' => 'required|int',
+        ]);
+
+        $id = $request->id;
+        $pelicula = Pelicula::find($id);
+
+        if (!$pelicula) {
+            return response()->json(['message' => 'Película no encontrada'], 404);
         }
+
+        $pelicula->delete();
+
+        return response()->json(['message' => 'Película eliminada correctamente'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Error al eliminar película: ' . $e->getMessage()], 500);
     }
+}
+
     
 
 
