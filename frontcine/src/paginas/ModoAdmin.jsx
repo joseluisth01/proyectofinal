@@ -17,9 +17,9 @@ export const ModoAdmin = () => {
             try {
                 let apiUrl = '';
                 if (searchQuery) {
-                    apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=9b6ecd3e72ca170064c048d4ea07a095&query=${searchQuery}&page=${page}`;
+                    apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=9b6ecd3e72ca170064c048d4ea07a095&query=${searchQuery}&page=${page}&language=es`;
                 } else {
-                    apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=9b6ecd3e72ca170064c048d4ea07a095&page=${page}`;
+                    apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=9b6ecd3e72ca170064c048d4ea07a095&page=${page}&language=es`;
                 }
                 const response = await fetch(apiUrl);
                 if (!response.ok) {
@@ -98,15 +98,12 @@ export const ModoAdmin = () => {
 
     return (
         <div className="fondo">
-            <Header />
+            <Header/>
             <div className="movie-list-container">
                 <div className='buscadores'>
                     <div className="input-container">
                         <input type="date" min={today} value={fecha} onChange={e => setFecha(e.target.value)} />
-                        <select value={hora} onChange={e => setHora(e.target.value)}>
-                            <option value="22:00">22:00</option>
-                            <option value="24:00">24:00</option>
-                        </select>
+                        <input type="time" value={hora} onChange={e => setHora(e.target.value)} />
                     </div>
                     <div className="search-container">
                         <input
@@ -117,6 +114,7 @@ export const ModoAdmin = () => {
                         />
                     </div>
                 </div>
+
 
                 <div className="movie-list">
                     {movies.map(movie => (
@@ -134,5 +132,6 @@ export const ModoAdmin = () => {
                 )}
             </div>
         </div>
+
     )
 }
