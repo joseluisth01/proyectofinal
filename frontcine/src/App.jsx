@@ -9,6 +9,7 @@ import { Main } from './componentes/Main'
 import { ModoAdmin } from './paginas/ModoAdmin';
 import { Cartelera } from './paginas/Cartelera';
 import { Estrenos } from './paginas/Estrenos';
+import { DetallesPelicula } from './paginas/DetallesPelicula';
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
         <Route path='/ModoAdmin' element={<ModoAdmin/>} />
         <Route path='/Cartelera' element={<Cartelera/>} />
         <Route path='/Estrenos' element={<Estrenos/>} />
+        <Route path='/DetallesPelicula' element={<DetallesPelicula/>} />
       </Routes>
 
       <Footer/>

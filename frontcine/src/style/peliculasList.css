@@ -126,14 +126,14 @@
 .cartelerapatida{
   display: flex;
   width: 100%;
+  padding-top: 7%;
+  justify-content: space-between;
 }
 
 .carteleraizq{
   width: 70%;
-  margin-top: 8%;
 }
 
 .carteleraderch{
   width: 20%;
-  margin-top: 12%;
 }

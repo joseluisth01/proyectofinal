@@ -9,7 +9,6 @@ export const Cartelera = () => {
       <Header />
       <div class="cartelerapatida">
         <div className="carteleraizq">
-          
           <PeliculasList />
         </div>
         <div className="carteleraderch">

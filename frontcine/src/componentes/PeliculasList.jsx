@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import '../style/peliculasList.css';
 
 const PeliculasList = () => {
@@ -184,6 +185,7 @@ const PeliculasList = () => {
                                 <p>Valoración: {pelicula.valoracion} / 10</p>
                                 <StarRating rating={pelicula.valoracion / 2} />
                                 <p>{pelicula.hora}</p>
+                                <Link to='/DetallesPelicula'>VER DETALLES</Link>
                                 <button onClick={() => borrarPelicula(pelicula.id)}>Borrar</button>
                             </div>
                         </div>
