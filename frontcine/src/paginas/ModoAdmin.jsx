@@ -71,10 +71,6 @@ export const ModoAdmin = () => {
     };
 
     const insertarEstreno = (idPelicula, nombrePelicula) => {
-        if (!fecha || !hora) {
-            alert("Debes rellenar todos los campos de fecha y hora antes de añadir una película.");
-            return;
-        }
 
         const datosPeliculaEstrenos = {
             method: 'POST',

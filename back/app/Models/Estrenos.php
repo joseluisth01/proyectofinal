@@ -9,5 +9,5 @@ class Estrenos extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['idPelicula', 'nombrePelicula', 'fecha', 'hora'];
+    protected $fillable = ['idPelicula', 'nombrePelicula'];
 }
