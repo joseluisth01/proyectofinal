@@ -21,9 +21,6 @@
     height: auto;
 }
 
-.hr-divider {
-    border: 0;
-    height: 1px;
-    background: #ddd;
-    margin: 10px 0;
+.tituloEstreno{
+    font-family: "Bebas Neue", sans-serif;
 }

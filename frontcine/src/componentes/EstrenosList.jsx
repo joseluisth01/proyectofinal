@@ -63,6 +63,7 @@ export const EstrenosList = () => {
 
     return (
         <div className="estrenos-container">
+            <h1 className='tituloEstreno'>Próximos estrenos</h1>
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -76,6 +77,7 @@ export const EstrenosList = () => {
                             />
                         </div>
                         <hr className="hr-divider" />
+                        <hr />
                     </div>
                 ))
             )}
