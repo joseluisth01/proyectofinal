@@ -6,6 +6,7 @@ const PeliculasList = () => {
     const [loading, setLoading] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [dateRangeStart, setDateRangeStart] = useState(new Date());
+    const [movieDeleted, setMovieDeleted] = useState(false); // Nuevo estado para manejar el borrado de películas
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Reiniciar a la medianoche
     const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
@@ -64,8 +65,7 @@ const PeliculasList = () => {
         };
 
         fetchPeliculas();
-    }, []);
-
+    }, [movieDeleted]); // Actualizar películas cuando se elimine una película
 
     const filteredMovies = peliculas.filter(pelicula =>
         new Date(pelicula.fecha).toDateString() === selectedDate.toDateString()
@@ -89,11 +89,7 @@ const PeliculasList = () => {
             body: JSON.stringify({ id: idPelicula }),
         };
     
-<<<<<<< HEAD
         fetch('http://localhost/proyectofinal/back/public/api/borrarPeliculas', datosPelicula)
-=======
-        fetch(`http://localhost/proyectofinal/back/public/api/borrarPeliculas`, datosPelicula)
->>>>>>> 482a73c60fa460d356e234f6820a8125b91872d4
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al borrar película');
@@ -102,17 +98,13 @@ const PeliculasList = () => {
             })
             .then(data => {
                 alert(data.message);
-                // Realizar otras acciones después de borrar la película si es necesario
+                setMovieDeleted(true); // Establecer el estado de movieDeleted como verdadero después de eliminar la película
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert('Ocurrió un error al borrar la película');
             });
     };
-    
-    
-    
-    
 
     const moveDateRange = (days) => {
         const newDateRangeStart = new Date(dateRangeStart.getTime() + days * 86400000);
