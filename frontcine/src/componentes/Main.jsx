@@ -14,7 +14,6 @@ export const Main = () => {
       <main>
         <Header/>
         <Slider />
-        {/* <br /><br /><br /><br /><br /> */}
 
         <section className='garfield-promotion'>
           <div className='garfield-content'>

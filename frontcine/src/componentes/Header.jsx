@@ -150,7 +150,7 @@ export const Header = () => {
             )}
 
             {modalOpen && (
-                <div className="wrapper fondo">
+                <div className="wrapper">
                     <div className="card-switch">
                         <label className="switch">
                             <input type="checkbox" className="toggle" />
