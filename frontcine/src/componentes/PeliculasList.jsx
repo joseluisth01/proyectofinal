@@ -123,6 +123,20 @@ const PeliculasList = () => {
     const isPreviousDisabled = dateRangeStart.getTime() <= today.getTime();
     const isNextDisabled = dateRangeStart.getTime() + 3 * 86400000 >= fourteenDaysLater.getTime();
 
+
+    const StarRating = ({ rating }) => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            if (i <= rating) {
+                stars.push(<span key={i} className="star filled">&#9733;</span>);
+            } else {
+                stars.push(<span key={i} className="star">&#9733;</span>);
+            }
+        }
+        return <div className="star-rating">{stars}</div>;
+    };
+    
+
     return (
         <div className="peliculas-container">
             <div className="calendar">
@@ -167,12 +181,14 @@ const PeliculasList = () => {
                                     src={pelicula.posterUrl}
                                     alt={`Poster de ${pelicula.nombrePelicula}`}
                                 />
+                                
                             </div>
                             <div className="movie-info">
                                 <p className='titulopelicartelera'>{pelicula.nombrePelicula}</p>
                                 <p>{pelicula.duracion} minutos</p>
                                 <p>Género: {pelicula.genero}</p>
                                 <p>Valoración: {pelicula.valoracion} / 10</p>
+                                <StarRating rating={pelicula.valoracion / 2} />
                                 <p>{pelicula.hora}</p>
                                 <button onClick={() => borrarPelicula(pelicula.id)}>Borrar</button>
                             </div>
