@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import '../style/peliculasList.css';
 
 const PeliculasList = () => {
@@ -6,6 +7,7 @@ const PeliculasList = () => {
     const [loading, setLoading] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [dateRangeStart, setDateRangeStart] = useState(new Date());
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Reiniciar a la medianoche
     const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
@@ -150,6 +152,7 @@ const PeliculasList = () => {
                                 <p>Género: {pelicula.genero}</p>
                                 <p>Valoración: {pelicula.valoracion} / 10</p>
                                 <p>{pelicula.hora}</p>
+                                {isAdmin && <Link to='/ModoAdmin'>Modo Admin</Link>}
                             </div>
                         </div>
                         <hr />
