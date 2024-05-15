@@ -62,15 +62,15 @@ export const EstrenosList = () => {
     }, []);
 
     return (
-        <div className="peliculas-container">
+        <div className="estrenos-container">
             {loading ? (
                 <p>Loading...</p>
             ) : (
                 peliculas.map(pelicula => (
-                    <div className="movie-card" key={pelicula.id}>
-                        <div className='poster-container'>
+                    <div className="estreno-card" key={pelicula.id}>
+                        <div className='estreno-container'>
                             <img
-                                className="movie-poster"
+                                className="estreno-poster"
                                 src={pelicula.posterUrl}
                                 alt={`Poster de ${pelicula.nombrePelicula}`}
                             />
