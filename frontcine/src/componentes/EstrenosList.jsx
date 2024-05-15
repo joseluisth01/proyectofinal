@@ -1,19 +1,14 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 export const EstrenosList = () => {
     const [peliculas, setPeliculas] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [dateRangeStart, setDateRangeStart] = useState(new Date());
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reiniciar a la medianoche
-    const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
 
     useEffect(() => {
         const fetchPeliculas = async () => {
             setLoading(true);
             try {
-                const response = await fetch('http://localhost/proyectofinal/back/public/api/peliculas');
+                const response = await fetch('http://localhost/proyectofinal/back/public/api/estrenos');
                 if (!response.ok) {
                     throw new Error('Failed to fetch peliculas');
                 }
@@ -65,15 +60,12 @@ export const EstrenosList = () => {
         fetchPeliculas();
     }, []);
 
-
     return (
         <div className="peliculas-container">
-
-
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                filteredMovies.map(pelicula => (
+                peliculas.map(pelicula => (
                     <div className="movie-card" key={pelicula.id}>
                         <div className="divflex">
                             <div className='postercartelera'>
@@ -89,15 +81,12 @@ export const EstrenosList = () => {
                                 <p>Género: {pelicula.genero}</p>
                                 <p>Valoración: {pelicula.valoracion} / 10</p>
                                 <p>{pelicula.hora}</p>
-                                <button onClick={() => borrarPelicula(pelicula.id)}>Borrar</button>
                             </div>
                         </div>
                         <hr />
                     </div>
-
                 ))
             )}
-
         </div>
-    )
-}
+    );
+};
