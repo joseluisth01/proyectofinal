@@ -88,8 +88,8 @@ const PeliculasList = () => {
             },
             body: JSON.stringify({ id: idPelicula }),
         };
-
-        fetch('/api/borrarPeliculas', datosPelicula)
+    
+        fetch('/http://localhost/proyectofinal/back/public/api/borrarPeliculas', datosPelicula)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error al borrar película');
@@ -97,7 +97,7 @@ const PeliculasList = () => {
                 return response.json();
             })
             .then(data => {
-                alert(data.message); // Muestra el mensaje de éxito o error
+                alert(data.message);
                 // Realizar otras acciones después de borrar la película si es necesario
             })
             .catch(error => {
@@ -105,7 +105,9 @@ const PeliculasList = () => {
                 alert('Ocurrió un error al borrar la película');
             });
     };
-
+    
+    
+    
 
     const moveDateRange = (days) => {
         const newDateRangeStart = new Date(dateRangeStart.getTime() + days * 86400000);

@@ -33,3 +33,5 @@ Route::get('/estrenos', [PeliculasControllador::class, 'obtenerEstrenos']);
 
 /* DATOS PELICULAS */
 Route::get('/peliculas/detalles', [PeliculasControllador::class, 'obtenerPeliculasConDetalles']);
+/*BORRAR PELICULAS*/
+Route::delete('/borrarPelicula', [PeliculasControllador::class, 'borrarPeliculas']);
