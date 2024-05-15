@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
 import '../style/peliculasList.css';
 
 const PeliculasList = () => {
@@ -7,7 +6,6 @@ const PeliculasList = () => {
     const [loading, setLoading] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [dateRangeStart, setDateRangeStart] = useState(new Date());
-    const isAdmin = localStorage.getItem('isAdmin') === 'true';
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Reiniciar a la medianoche
     const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
@@ -83,6 +81,32 @@ const PeliculasList = () => {
         }
     };
 
+    const borrarPelicula = (idPelicula) => {
+        const datosPelicula = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: idPelicula }),
+        };
+
+        fetch('/api/borrarPeliculas', datosPelicula)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al borrar película');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(data.message); // Muestra el mensaje de éxito o error
+                // Realizar otras acciones después de borrar la película si es necesario
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocurrió un error al borrar la película');
+            });
+    };
+
 
     const moveDateRange = (days) => {
         const newDateRangeStart = new Date(dateRangeStart.getTime() + days * 86400000);
@@ -152,7 +176,7 @@ const PeliculasList = () => {
                                 <p>Género: {pelicula.genero}</p>
                                 <p>Valoración: {pelicula.valoracion} / 10</p>
                                 <p>{pelicula.hora}</p>
-                                {isAdmin && <Link to='/ModoAdmin'>Modo Admin</Link>}
+                                <button onClick={() => borrarPelicula(pelicula.id)}>Borrar</button>
                             </div>
                         </div>
                         <hr />
