@@ -22,11 +22,37 @@ const PeliculasList = () => {
                 const moviesWithDetails = await Promise.all(data.peliculas.map(async (pelicula) => {
                     const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${pelicula.idPelicula}?api_key=9b6ecd3e72ca170064c048d4ea07a095`);
                     const tmdbData = await tmdbResponse.json();
+                    const genresInSpanish = tmdbData.genres.map(genre => {
+                        // Mapeo de géneros en inglés a español
+                        const genreMapping = {
+                            "Action": "Acción",
+                            "Adventure": "Aventura",
+                            "Animation": "Animación",
+                            "Comedy": "Comedia",
+                            "Crime": "Crimen",
+                            "Documentary": "Documental",
+                            "Drama": "Drama",
+                            "Family": "Familia",
+                            "Fantasy": "Fantasía",
+                            "History": "Historia",
+                            "Horror": "Terror",
+                            "Music": "Música",
+                            "Mystery": "Misterio",
+                            "Romance": "Romance",
+                            "Science Fiction": "Ciencia ficción",
+                            "TV Movie": "Película de TV",
+                            "Thriller": "Suspense",
+                            "War": "Guerra",
+                            "Western": "Western"
+                            // Agrega más géneros según sea necesario
+                        };
+                        return genreMapping[genre.name] || genre.name; // Si no se encuentra, se mantiene el nombre en inglés
+                    }).join(', ');
                     return {
                         ...pelicula,
                         posterUrl: `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}`,
                         duracion: tmdbData.runtime,
-                        genero: tmdbData.genres.map(genre => genre.name).join(', '),
+                        genero: genresInSpanish,
                         valoracion: tmdbData.vote_average
                     };
                 }));
