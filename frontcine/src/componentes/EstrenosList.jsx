@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../style/estrenosstyle.css';
 
 export const EstrenosList = () => {
     const [peliculas, setPeliculas] = useState([]);
@@ -67,23 +68,14 @@ export const EstrenosList = () => {
             ) : (
                 peliculas.map(pelicula => (
                     <div className="movie-card" key={pelicula.id}>
-                        <div className="divflex">
-                            <div className='postercartelera'>
-                                <img
-                                    className="movie-poster"
-                                    src={pelicula.posterUrl}
-                                    alt={`Poster de ${pelicula.nombrePelicula}`}
-                                />
-                            </div>
-                            <div className="movie-info">
-                                <p className='titulopelicartelera'>{pelicula.nombrePelicula}</p>
-                                <p>{pelicula.duracion} minutos</p>
-                                <p>Género: {pelicula.genero}</p>
-                                <p>Valoración: {pelicula.valoracion} / 10</p>
-                                <p>{pelicula.hora}</p>
-                            </div>
+                        <div className='poster-container'>
+                            <img
+                                className="movie-poster"
+                                src={pelicula.posterUrl}
+                                alt={`Poster de ${pelicula.nombrePelicula}`}
+                            />
                         </div>
-                        <hr />
+                        <hr className="hr-divider" />
                     </div>
                 ))
             )}
