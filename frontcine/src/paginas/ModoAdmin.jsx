@@ -98,12 +98,16 @@ export const ModoAdmin = () => {
 
     return (
         <div className="fondo">
-            <Header/>
+            <Header />
             <div className="movie-list-container">
                 <div className='buscadores'>
                     <div className="input-container">
                         <input type="date" min={today} value={fecha} onChange={e => setFecha(e.target.value)} />
-                        <input type="time" value={hora} onChange={e => setHora(e.target.value)} />
+                        <select value={hora} onChange={e => setHora(e.target.value)}>
+                            <option value="">Selecciona una hora</option>
+                            <option value="22:00">22:00</option>
+                            <option value="24:00">24:00</option>
+                        </select>
                     </div>
                     <div className="search-container">
                         <input
@@ -114,7 +118,6 @@ export const ModoAdmin = () => {
                         />
                     </div>
                 </div>
-
 
                 <div className="movie-list">
                     {movies.map(movie => (
@@ -132,6 +135,5 @@ export const ModoAdmin = () => {
                 )}
             </div>
         </div>
-
     )
 }
