@@ -104,7 +104,6 @@ export const ModoAdmin = () => {
                     <div className="input-container">
                         <input type="date" min={today} value={fecha} onChange={e => setFecha(e.target.value)} />
                         <select value={hora} onChange={e => setHora(e.target.value)}>
-                            <option value="">Selecciona una hora</option>
                             <option value="22:00">22:00</option>
                             <option value="24:00">24:00</option>
                         </select>
