@@ -129,9 +129,7 @@ export const Header = () => {
                 <option className='opcion' value="opcion2">TAPACOS MÁLAGA</option>
             </select>
 
-            <Link className="enlacecartelera" to='/Cartelera'>Cartelera</Link>
-
-            <Link className="enlaceestrenos" to='/Estrenos'>Próximos Estrenos</Link>
+            <Link className="enlaceestrenos" to='/Cartelera'>Cartelera</Link>
 
             {isLoggedIn ? (
                 <div className="usuariologin dropdown">

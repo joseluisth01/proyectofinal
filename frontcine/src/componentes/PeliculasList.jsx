@@ -70,7 +70,11 @@ const PeliculasList = () => {
 
     const filteredMovies = peliculas.filter(pelicula =>
         new Date(pelicula.fecha).toDateString() === selectedDate.toDateString()
-    );
+    ).sort((a, b) => {
+        const timeA = parseInt(a.hora.replace(':', ''), 10);
+        const timeB = parseInt(b.hora.replace(':', ''), 10);
+        return timeA - timeB;
+    });
 
     const getDayLabel = (date) => {
         const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
