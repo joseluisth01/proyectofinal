@@ -16,8 +16,6 @@ return new class extends Migration
             $table->id();
             $table->integer("idPelicula");
             $table->string('nombrePelicula');
-            $table->string('fecha');
-            $table->string('hora');
             $table->timestamps();
         });
     }

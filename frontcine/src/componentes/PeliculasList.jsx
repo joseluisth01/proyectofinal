@@ -10,6 +10,7 @@ const PeliculasList = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Reiniciar a la medianoche
     const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
     useEffect(() => {
         const fetchPeliculas = async () => {
@@ -88,7 +89,7 @@ const PeliculasList = () => {
             },
             body: JSON.stringify({ id: idPelicula }),
         };
-    
+
         try {
             const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarPeliculas', datosPelicula);
             if (!response.ok) {
@@ -120,18 +121,18 @@ const PeliculasList = () => {
     const isPreviousDisabled = dateRangeStart.getTime() <= today.getTime();
     const isNextDisabled = dateRangeStart.getTime() + 3 * 86400000 >= fourteenDaysLater.getTime();
 
-    const StarRating = ({ rating }) => {
-        const stars = [];
-        for (let i = 1; i <= 5; i++) {
-            if (i <= rating) {
-                stars.push(<span key={i} className="star filled">&#9733;</span>);
-            } else {
-                stars.push(<span key={i} className="star">&#9733;</span>);
-            }
-        }
-        return <div className="star-rating">{stars}</div>;
+    const calcularEstrellas = (valoracion) => {
+        const numEstrellas = Math.round(valoracion / 2);
+        return '★'.repeat(numEstrellas) + '☆'.repeat(5 - numEstrellas);
     };
-    
+
+    const formatHora = (hora) => {
+        if (hora === '24:00') {
+            return '00:00';
+        }
+        return hora;
+    };
+
     return (
         <div className="peliculas-container">
             <div className="calendar">
@@ -176,20 +177,29 @@ const PeliculasList = () => {
                                     src={pelicula.posterUrl}
                                     alt={`Poster de ${pelicula.nombrePelicula}`}
                                 />
-                                
+                                {isAdmin && <button className='borrarEstreno' onClick={() => borrarPelicula(pelicula.id)}>BORRAR</button>}
+
                             </div>
                             <div className="movie-info">
                                 <p className='titulopelicartelera'>{pelicula.nombrePelicula}</p>
-                                <p>{pelicula.duracion} minutos</p>
-                                <p>Género: {pelicula.genero}</p>
-                                <p>Valoración: {pelicula.valoracion} / 10</p>
-                                <StarRating rating={pelicula.valoracion / 2} />
-                                <p>{pelicula.hora}</p>
-                                <Link to='/DetallesPelicula'>VER DETALLES</Link>
-                                <button onClick={() => borrarPelicula(pelicula.id)}>Borrar</button>
+                                <p><b>Duración:</b> {pelicula.duracion} minutos</p>
+                                <p><b>Género:</b> {pelicula.genero}</p>
+                                <p><b>Valoración:</b> {calcularEstrellas(pelicula.valoracion)}</p>
+                                <div className="botonesdetalles">
+                                    <Link to='/DetallesPelicula'>
+                                        <div className="hora">
+                                            {formatHora(pelicula.hora)}
+                                        </div>
+                                    </Link>
+                                    <Link to='/DetallesPelicula'>
+                                        <div className="botondetalles">
+                                            VER DETALLES
+                                        </div>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                        <hr />
+                        <hr className="hrlistas" />
                     </div>
 
                 ))

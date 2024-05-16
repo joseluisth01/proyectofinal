@@ -20,14 +20,14 @@ class PeliculasControllador extends Controller
                 'fecha' => 'required|string',
                 'hora' => 'required|string',
             ]);
-    
+
             $peli = new Pelicula();
             $peli->idPelicula = $request->idPelicula;
             $peli->nombrePelicula = $request->nombrePelicula;
             $peli->fecha = $request->fecha;
             $peli->hora = $request->hora;
             $peli->save();
-    
+
             return response()->json(['message' => 'Pelicula agregada correctamente'], 201);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error al insertar película: ' . $e->getMessage()], 500);
@@ -40,17 +40,13 @@ class PeliculasControllador extends Controller
             $request->validate([
                 'idPelicula' => 'required|int',
                 'nombrePelicula' => 'required|string',
-                'fecha' => 'required|string',
-                'hora' => 'required|string',
             ]);
-    
+
             $peli = new Estrenos();
             $peli->idPelicula = $request->idPelicula;
             $peli->nombrePelicula = $request->nombrePelicula;
-            $peli->fecha = $request->fecha;
-            $peli->hora = $request->hora;
             $peli->save();
-    
+
             return response()->json(['message' => 'Pelicula agregada correctamente'], 201);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error al insertar película: ' . $e->getMessage()], 500);
@@ -107,28 +103,50 @@ class PeliculasControllador extends Controller
         return response()->json($detallesPeliculas);
     }
     public function borrarPeliculas(Request $request)
-{
-    try {
-        $request->validate([
-            'id' => 'required|int',
-        ]);
+    {
+        try {
+            $request->validate([
+                'id' => 'required|int',
+            ]);
 
-        $id = $request->id;
-        $pelicula = Pelicula::find($id);
+            $id = $request->id;
+            $pelicula = Pelicula::find($id);
 
-        if (!$pelicula) {
-            return response()->json(['message' => 'Película no encontrada'], 404);
+            if (!$pelicula) {
+                return response()->json(['message' => 'Película no encontrada'], 404);
+            }
+
+            $pelicula->delete();
+
+            return response()->json(['message' => 'Película eliminada correctamente'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error al eliminar película: ' . $e->getMessage()], 500);
         }
-
-        $pelicula->delete();
-
-        return response()->json(['message' => 'Película eliminada correctamente'], 200);
-    } catch (\Exception $e) {
-        return response()->json(['message' => 'Error al eliminar película: ' . $e->getMessage()], 500);
     }
-}
 
-    
+    public function borrarEstrenos(Request $request)
+    {
+        try {
+            $request->validate([
+                'id' => 'required|int',
+            ]);
+
+            $id = $request->id;
+            $estreno = Estrenos::find($id);
+
+            if (!$estreno) {
+                return response()->json(['message' => 'Estreno no encontrado'], 404);
+            }
+
+            $estreno->delete();
+
+            return response()->json(['message' => 'Estreno eliminado correctamente'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error al eliminar el estreno: ' . $e->getMessage()], 500);
+        }
+    }
+
+
 
 
 

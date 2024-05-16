@@ -4,6 +4,8 @@ import '../style/estrenosstyle.css';
 export const EstrenosList = () => {
     const [peliculas, setPeliculas] = useState([]);
     const [loading, setLoading] = useState(false);
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
 
     useEffect(() => {
         const fetchPeliculas = async () => {
@@ -61,9 +63,32 @@ export const EstrenosList = () => {
         fetchPeliculas();
     }, []);
 
+    const borrarEstreno = async (idPelicula) => {
+        const datosPelicula = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: idPelicula }),
+        };
+    
+        try {
+            const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarEstrenos', datosPelicula);
+            if (!response.ok) {
+                throw new Error('Error al borrar estreno');
+            }
+            const data = await response.json();
+            alert(data.message);
+            setPeliculas(prevPeliculas => prevPeliculas.filter(pelicula => pelicula.id !== idPelicula));
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Ocurrió un error al borrar el estreno');
+        }
+    };
+
     return (
         <div className="estrenos-container">
-            <h1 className='tituloEstreno'>Próximos estrenos</h1>
+            <h2 className='tituloEstreno'>Próximos estrenos</h2>
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -76,11 +101,21 @@ export const EstrenosList = () => {
                                 alt={`Poster de ${pelicula.nombrePelicula}`}
                             />
                         </div>
-                        <hr className="hr-divider" />
-                        <hr />
+                        {isAdmin && <button className="borrarEstreno" onClick={() => borrarEstreno(pelicula.id)}>BORRAR</button>}
                     </div>
                 ))
             )}
+            <h2 className='tituloEstreno'>DONDE NOS ENCONTRAMOS</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5295046748156!2d-4.7708828246453345!3d37.87129790659489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d207d83074089%3A0xc8ca16fc101afb4a!2sC.%20del%20Guadalquivir%2C%2014010%20C%C3%B3rdoba!5e0!3m2!1ses!2ses!4v1715812890043!5m2!1ses!2ses"
+                style={{ border: 0, width: '300px', height: '300px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+
+
+
         </div>
     );
 };

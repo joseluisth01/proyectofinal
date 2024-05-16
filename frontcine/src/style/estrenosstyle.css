@@ -1,17 +1,13 @@
 .estrenos-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
     padding: 20px;
 }
 
 .estreno-card {
-    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 200px;
+    margin: 0 auto;
     margin-bottom: 20px;
 }
 
@@ -22,5 +18,24 @@
 }
 
 .tituloEstreno{
+    padding-top: 5%;
+    padding-bottom: 2%;
     font-family: "Bebas Neue", sans-serif;
+    font-size: 2em;
+    margin: 0;
+}
+
+.borrarEstreno{
+    width: 100%;
+    padding: 10px;
+    color: white;
+    background-color: #d45252db;
+    font-weight: bold;
+    transition: background-color .5s;
+}
+
+.borrarEstreno:hover{
+    cursor: pointer;
+    background-color: red;
+
 }

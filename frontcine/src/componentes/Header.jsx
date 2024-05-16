@@ -54,7 +54,6 @@ export const Header = () => {
     const logout = () => {
         localStorage.clear();
         navigate('/');
-        window.location.reload();
     };
 
     const loginUsuario = (e) => {
@@ -76,6 +75,7 @@ export const Header = () => {
                 setIsLoggedIn(true); // Usuario ha iniciado sesión
                 console.log('Token guardado en el localStorage:', respuesta.token);
                 console.log('Nombre del usuario:', respuesta.nombre);
+                navigate('/');
             })
             .catch((err) => {
                 console.log(err.message);

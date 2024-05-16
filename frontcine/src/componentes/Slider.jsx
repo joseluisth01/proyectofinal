@@ -3,8 +3,8 @@ import '../style/mainstyle.css';
 
 const images = [
     '/img/autocine2.webp',
-    '/img/autocine.jpg',
-    '/img/prueba.png'
+    '/img/autocine.webp',
+    '/img/prueba.webp'
 ];
 
 export const Slider = () => {
