@@ -4,7 +4,7 @@ import '../style/mainstyle.css';
 const images = [
     '/img/autocine2.webp',
     '/img/autocine.webp',
-    '/img/prueba.webp'
+    '/img/paronamic.webp'
 ];
 
 export const Slider = () => {
