@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import YouTube from 'react-youtube';
 import '../style/detallesPelicula.css';
 
@@ -13,14 +12,15 @@ export const DetallesPelicula = () => {
     useEffect(() => {
         const fetchPelicula = async () => {
             try {
-                const response = await axios.get(`https://api.themoviedb.org/3/movie/${idPelicula}?api_key=9b6ecd3e72ca170064c048d4ea07a095&append_to_response=videos`);
-                setPelicula(response.data);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${idPelicula}?api_key=9b6ecd3e72ca170064c048d4ea07a095&append_to_response=videos`);
+                const data = await response.json();
+                setPelicula(data);
 
-                if (response.data.videos && response.data.videos.results) {
-                    const trailer = response.data.videos.results.find(
+                if (data.videos && data.videos.results) {
+                    const trailer = data.videos.results.find(
                         (vid) => vid.name === "Official Trailer"
                     );
-                    setTrailer(trailer ? trailer : response.data.videos.results[0]);
+                    setTrailer(trailer ? trailer : data.videos.results[0]);
                 }
             } catch (error) {
                 console.error('Error fetching pelicula:', error);
