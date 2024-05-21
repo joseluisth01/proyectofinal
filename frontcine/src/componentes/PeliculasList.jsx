@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../style/peliculasList.css';
 
 const PeliculasList = () => {
@@ -8,7 +8,7 @@ const PeliculasList = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [dateRangeStart, setDateRangeStart] = useState(new Date());
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reiniciar a la medianoche
+    today.setHours(0, 0, 0, 0);
     const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
@@ -45,9 +45,8 @@ const PeliculasList = () => {
                             "Thriller": "Suspense",
                             "War": "Guerra",
                             "Western": "Western"
-                            // Agrega más géneros según sea necesario
                         };
-                        return genreMapping[genre.name] || genre.name; // Si no se encuentra, se mantiene el nombre en inglés
+                        return genreMapping[genre.name] || genre.name;
                     }).join(', ');
                     return {
                         ...pelicula,
@@ -66,7 +65,7 @@ const PeliculasList = () => {
         };
 
         fetchPeliculas();
-    }, []); // Solo se ejecuta una vez al montar el componente
+    }, []);
 
     const filteredMovies = peliculas.filter(pelicula =>
         new Date(pelicula.fecha).toDateString() === selectedDate.toDateString()
@@ -97,6 +96,7 @@ const PeliculasList = () => {
         try {
             const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarPeliculas', datosPelicula);
             if (!response.ok) {
+                throw new Error('Error')              
                 throw new Error('Error al borrar película');
             }
             const data = await response.json();
@@ -121,7 +121,6 @@ const PeliculasList = () => {
         setSelectedDate(newDate);
     };
 
-    // Verificar si el rango actual ya está en el día actual (inclusivo)
     const isPreviousDisabled = dateRangeStart.getTime() <= today.getTime();
     const isNextDisabled = dateRangeStart.getTime() + 3 * 86400000 >= fourteenDaysLater.getTime();
 
@@ -182,7 +181,6 @@ const PeliculasList = () => {
                                     alt={`Poster de ${pelicula.nombrePelicula}`}
                                 />
                                 {isAdmin && <button className='borrarEstreno' onClick={() => borrarPelicula(pelicula.id)}>BORRAR</button>}
-
                             </div>
                             <div className="movie-info">
                                 <p className='titulopelicartelera'>{pelicula.nombrePelicula}</p>
@@ -190,12 +188,12 @@ const PeliculasList = () => {
                                 <p><b>Género:</b> {pelicula.genero}</p>
                                 <p><b>Valoración:</b> {calcularEstrellas(pelicula.valoracion)}</p>
                                 <div className="botonesdetalles">
-                                    <Link to='/DetallesPelicula'>
+                                    <Link to={`/DetallesPelicula/${pelicula.idPelicula}`}>
                                         <div className="hora">
                                             {formatHora(pelicula.hora)}
                                         </div>
                                     </Link>
-                                    <Link to='/DetallesPelicula'>
+                                    <Link to={`/DetallesPelicula/${pelicula.idPelicula}`}>
                                         <div className="botondetalles">
                                             VER DETALLES
                                         </div>
@@ -205,10 +203,8 @@ const PeliculasList = () => {
                         </div>
                         <hr className="hrlistas" />
                     </div>
-
                 ))
             )}
-
         </div>
     );
 };
