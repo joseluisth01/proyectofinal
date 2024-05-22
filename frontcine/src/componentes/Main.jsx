@@ -12,7 +12,6 @@ export const Main = () => {
       <header>
       </header>
       <main>
-        <Header/>
         <Slider />
 
         <section className='garfield-promotion'>
