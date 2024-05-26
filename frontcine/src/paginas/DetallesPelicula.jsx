@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import YouTube from 'react-youtube';
+import Modal from 'react-modal';
 import '../style/detallesPelicula.css';
+
+Modal.setAppElement('#root'); // Asegúrate de que esto apunte al elemento correcto en tu HTML
 
 export const DetallesPelicula = () => {
     const { idPelicula } = useParams();
     const [pelicula, setPelicula] = useState(null);
     const [trailer, setTrailer] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     useEffect(() => {
         const fetchPelicula = async () => {
@@ -64,6 +68,19 @@ export const DetallesPelicula = () => {
 
     const genresInSpanish = pelicula.genres.map(genre => genreMapping[genre.name] || genre.name).join(', ');
 
+    const openModal = () => {
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+
+    const calcularEstrellas = (valoracion) => {
+        const numEstrellas = Math.round(valoracion / 2);
+        return '★'.repeat(numEstrellas) + '☆'.repeat(5 - numEstrellas);
+    };
+
     return (
         <div className="detalles-pelicula-container">
             <div className="detalles-pelicula">
@@ -76,18 +93,29 @@ export const DetallesPelicula = () => {
                     <h1>{pelicula.title}</h1>
                     <p><b>Duración:</b> {pelicula.runtime} minutos</p>
                     <p><b>Género:</b> {genresInSpanish}</p>
-                    <p><b>Valoración:</b> {pelicula.vote_average}</p>
+                    <p><b>Valoración:</b> {calcularEstrellas(pelicula.vote_average)}</p>
                     <p><b>Descripción:</b> {pelicula.overview}</p>
                     <p><b>Fecha de lanzamiento:</b> {pelicula.release_date}</p>
+                    {trailer && (
+                        <button className="detalles-pelicula-boton" onClick={openModal}>Ver Tráiler</button>
+                    )}
                 </div>
             </div>
-            <div className="trailer-container">
+
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Tráiler"
+                className="trailer-modal"
+                overlayClassName="trailer-overlay"
+            >
+                <button onClick={closeModal} className="close-modal-button">×</button>
                 {trailer ? (
                     <YouTube videoId={trailer.key} />
                 ) : (
                     <p>No hay tráiler disponible</p>
                 )}
-            </div>
+            </Modal>
         </div>
     );
 };
