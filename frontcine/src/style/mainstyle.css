@@ -120,6 +120,19 @@
     letter-spacing: 2px;
 }
 
+
+.boton1_slider_inicio, .boton2_slider_inicio {
+  text-decoration: none; 
+  color: white; 
+}
+
+/* Elimina cualquier subrayado en los enlaces */
+.boton1_slider_inicio a, .boton2_slider_inicio a {
+  text-decoration: none;
+  color: inherit; 
+}
+
+
 /* GARFIELD */
 
 .garfield-promotion {

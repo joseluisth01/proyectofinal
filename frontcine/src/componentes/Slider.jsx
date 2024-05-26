@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../style/mainstyle.css';
 
 const images = [
@@ -30,16 +31,15 @@ export const Slider = () => {
                 <div className="overlay">
                     <h2 className="titulocentral">TAPACOS<br/>AUTOCINEMAS</h2>
                     <div className="botones_slider_inicio">
-                        <div className="boton1_slider_inicio">
+                        <Link to="/cartelera" className="boton1_slider_inicio">
                             <p className="textobotones_slider_inicio">Cartelera</p>
-                        </div>
-                        <div className="boton2_slider_inicio">
-                            <p className="textobotones_slider_inicio">Próximos Estrenos</p>
-                        </div>
+                        </Link>
+                        <Link to="/" className="boton2_slider_inicio">
+                            <p className="textobotones_slider_inicio">Mis Entradas</p>
+                        </Link>
                     </div>
                 </div>
             </div>
         </div>
     );
 }
-
