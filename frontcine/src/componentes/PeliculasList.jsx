@@ -188,7 +188,7 @@ const PeliculasList = () => {
                                 <p><b>Género:</b> {pelicula.genero}</p>
                                 <p><b>Valoración:</b> {calcularEstrellas(pelicula.valoracion)}</p>
                                 <div className="botonesdetalles">
-                                    <Link to={`/DetallesPelicula/${pelicula.idPelicula}`}>
+                                    <Link to={`/PaginaCompra/${pelicula.idPelicula}`}>
                                         <div className="hora">
                                             {formatHora(pelicula.hora)}
                                         </div>

@@ -10,6 +10,7 @@ import { ModoAdmin } from './paginas/ModoAdmin';
 import { Cartelera } from './paginas/Cartelera';
 import { Estrenos } from './paginas/Estrenos';
 import { DetallesPelicula } from './paginas/DetallesPelicula';
+import { PaginaCompra } from './paginas/PaginaCompra';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/Cartelera' element={<Cartelera />} />
         <Route path='/Estrenos' element={<Estrenos />} />
         <Route path='/DetallesPelicula/:idPelicula' element={<DetallesPelicula />} />
+        <Route path='/PaginaCompra/:idPelicula' element={<PaginaCompra />} />
       </Routes>
       <Footer />
     </>
