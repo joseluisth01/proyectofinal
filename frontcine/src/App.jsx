@@ -11,6 +11,7 @@ import { Cartelera } from './paginas/Cartelera';
 import { Estrenos } from './paginas/Estrenos';
 import { DetallesPelicula } from './paginas/DetallesPelicula';
 import { PaginaCompra } from './paginas/PaginaCompra';
+import { Perfil } from './paginas/Perfil';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/ModoAdmin' element={<ModoAdmin />} />
         <Route path='/Cartelera' element={<Cartelera />} />
         <Route path='/Estrenos' element={<Estrenos />} />
+        <Route path='/Perfil' element={<Perfil />} />
         <Route path='/DetallesPelicula/:idPelicula' element={<DetallesPelicula />} />
         <Route path='/PaginaCompra/:idPelicula' element={<PaginaCompra />} />
       </Routes>
