@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../style/paginaComprastyle.css';
 
 export const PaginaCompra = () => {
-    const { id } = useParams();  // Este id es el id único de la película de la base de datos.
+    const { id } = useParams();
     const [asientos, setAsientos] = useState([]);
     const [seleccionados, setSeleccionados] = useState([]);
-    const usuarioId = 8; // ID del usuario actual (esto debería ser dinámico)
+    const navigate = useNavigate();
+    
+    const token = localStorage.getItem('token');
+    const [usuarioId, setUsuarioId] = useState(null);
 
     useEffect(() => {
         const fetchAsientos = async () => {
             try {
-                console.log(id); // Verifica que el id se está recibiendo correctamente
+                console.log("ID de la película:", id);
                 const response = await fetch(`http://localhost/proyectofinal/back/public/api/asientos/${id}`);
                 const data = await response.json();
                 setAsientos(data.asientos);
@@ -33,25 +36,56 @@ export const PaginaCompra = () => {
     };
 
     const handleReservar = async () => {
+        if (!token) {
+            alert("Debe iniciar sesión para reservar asientos");
+            return;
+        }
+
+        let fetchedUserId;
+        try {
+            const response = await fetch('http://localhost/proyectofinal/back/public/api/getId', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const data = await response.json();
+            if (response.ok) {
+                fetchedUserId = data.id;
+            } else {
+                alert("Debe iniciar sesión para reservar asientos");
+                return;
+            }
+        } catch (error) {
+            console.error('Error fetching user ID:', error);
+            alert("Debe iniciar sesión para reservar asientos");
+            return;
+        }
+
         try {
             const response = await fetch('http://localhost/proyectofinal/back/public/api/reservarAsientos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ idPelicula: id, asientosSeleccionados: seleccionados, usuarioId }),
+                body: JSON.stringify({ idPelicula: id, asientosSeleccionados: seleccionados, usuarioId: fetchedUserId }),
             });
-            const data = await response.json();
-            alert(data.mensaje);
-            // Actualizar el estado de los asientos
-            setAsientos((prev) =>
-                prev.map((asiento) =>
-                    seleccionados.includes(asiento.asiento_numero)
-                        ? { ...asiento, estado: 'ocupado', usuario_id: usuarioId }
-                        : asiento
-                )
-            );
-            setSeleccionados([]);
+            const responseData = await response.json();
+            if (response.ok) {
+                alert(responseData.mensaje);
+                // Actualizar el estado de los asientos
+                setAsientos((prev) =>
+                    prev.map((asiento) =>
+                        seleccionados.includes(asiento.asiento_numero)
+                            ? { ...asiento, estado: 'ocupado', usuario_id: fetchedUserId }
+                            : asiento
+                    )
+                );
+                setSeleccionados([]);
+            } else {
+                alert(responseData.error || 'Ocurrió un error al reservar los asientos');
+            }
         } catch (error) {
             console.error('Error reservando asientos:', error);
             alert('Ocurrió un error al reservar los asientos');

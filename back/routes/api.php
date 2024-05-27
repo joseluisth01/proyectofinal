@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
+Route::post('/getId', [AuthController::class, 'getId']);
 
 Route::post('/insertarPelicula', [PeliculasControllador::class, 'insertarPelicula']);
 Route::post('/insertarEstreno', [PeliculasControllador::class, 'insertarEstreno']);
@@ -41,3 +42,4 @@ Route::delete('/borrarEstrenos', [PeliculasControllador::class, 'borrarEstrenos'
 
 
 Route::get('/asientos/{idPelicula}', [AsientosController::class, 'getAsientos']);
+Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']);

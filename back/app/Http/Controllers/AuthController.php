@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\TestMail;
+use Laravel\Sanctum\PersonalAccessToken;
 use Mail;
 
 
@@ -159,10 +160,19 @@ class AuthController extends Controller
 
     public function getId(Request $request)
     {
-        $user = $request->user();
+        $token = $request->bearerToken();
+        if ($token) {
+            $tokenData = PersonalAccessToken::findToken($token);
+            if ($tokenData) {
+                $user = $tokenData->tokenable;
+                return response()->json([
+                    'id' => $user->id,
+                ]);
+            }
+        }
         return response()->json([
-            'id' => $user->id,
-        ]);
+            'message' => 'Invalid token or user not authenticated',
+        ], 401);
     }
 
 
