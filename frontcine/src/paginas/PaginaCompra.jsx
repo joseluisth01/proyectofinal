@@ -3,15 +3,16 @@ import { useParams } from 'react-router-dom';
 import '../style/paginaComprastyle.css';
 
 export const PaginaCompra = () => {
-    const { idPelicula } = useParams();
+    const { id } = useParams();  // Este id es el id único de la película de la base de datos.
     const [asientos, setAsientos] = useState([]);
     const [seleccionados, setSeleccionados] = useState([]);
-    const usuarioId = 1; // ID del usuario actual (esto debería ser dinámico)
+    const usuarioId = 8; // ID del usuario actual (esto debería ser dinámico)
 
     useEffect(() => {
         const fetchAsientos = async () => {
             try {
-                const response = await fetch(`http://localhost/proyectofinal/back/public/api/asientos/${idPelicula}`);
+                console.log(id); // Verifica que el id se está recibiendo correctamente
+                const response = await fetch(`http://localhost/proyectofinal/back/public/api/asientos/${id}`);
                 const data = await response.json();
                 setAsientos(data.asientos);
             } catch (error) {
@@ -19,7 +20,7 @@ export const PaginaCompra = () => {
             }
         };
         fetchAsientos();
-    }, [idPelicula]);
+    }, [id]);
 
     const handleSelectAsiento = (numero) => {
         setSeleccionados((prev) => {
@@ -38,7 +39,7 @@ export const PaginaCompra = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ idPelicula, asientosSeleccionados: seleccionados, usuarioId }),
+                body: JSON.stringify({ idPelicula: id, asientosSeleccionados: seleccionados, usuarioId }),
             });
             const data = await response.json();
             alert(data.mensaje);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsientosController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PeliculasControllador;
 use Illuminate\Http\Request;
@@ -37,3 +38,6 @@ Route::get('/peliculas/detalles', [PeliculasControllador::class, 'obtenerPelicul
 /*BORRAR PELICULAS*/
 Route::delete('/borrarPeliculas', [PeliculasControllador::class, 'borrarPeliculas']);
 Route::delete('/borrarEstrenos', [PeliculasControllador::class, 'borrarEstrenos']);
+
+
+Route::get('/asientos/{idPelicula}', [AsientosController::class, 'getAsientos']);
