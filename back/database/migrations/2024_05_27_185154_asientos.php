@@ -15,9 +15,9 @@ return new class extends Migration
         Schema::create('asientos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idPelicula');
-            $table->string('nombrePelicula');
-            $table->enum('estado', ['libre', 'ocupado'])->default('libre');
             $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->integer('asiento_numero');
+            $table->enum('estado', ['libre', 'ocupado'])->default('libre');
             $table->timestamps();
 
             $table->foreign('idPelicula')->references('id')->on('peliculas')->onDelete('cascade');

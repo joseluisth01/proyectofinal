@@ -1,4 +1,54 @@
-.divpaginacompra{
-    width: 100%;
+.fondo {
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.divpaginacompra {
+    width: 80%;
+    margin: 0 auto;
     padding-top: 7%;
+    text-align: center;
+}
+
+.asientos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.asiento {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: white;
+}
+
+.asiento.ocupado {
+    background-color: red;
+    cursor: not-allowed;
+}
+
+.asiento.seleccionado {
+    background-color: yellow;
+}
+
+.reservar-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.reservar-btn:hover {
+    background-color: darkblue;
 }
