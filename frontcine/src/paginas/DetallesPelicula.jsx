@@ -4,7 +4,7 @@ import YouTube from 'react-youtube';
 import Modal from 'react-modal';
 import '../style/detallesPelicula.css';
 
-Modal.setAppElement('#root'); // Asegúrate de que esto apunte al elemento correcto en tu HTML
+Modal.setAppElement('#root');
 
 export const DetallesPelicula = () => {
     const { idPelicula } = useParams();
