@@ -14,24 +14,25 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    /* gap: 10px; */
     margin-top: 20px;
 }
 
 .asiento {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: green;
+    background-image: url('../public/img/plaza-aparcamiento2.png');;
+
     border: 1px solid #ccc;
     cursor: pointer;
     color: white;
 }
 
 .asiento.ocupado {
-    background-color: red;
+    background-image: url('../public/img/plaza-aparcamiento-OCUPADO2.png');;
     cursor: not-allowed;
 }
 
