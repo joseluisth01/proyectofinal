@@ -17,7 +17,30 @@
     margin-top: 20px;
 }
 
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.asiento.seleccionado::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url('../public/img/ESCOGIDO.png'); /* Cambia el path a la imagen de tu coche */
+    background-size: cover;
+    animation: slideUp 0.5s forwards;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
 .asiento {
+    position: relative;
     width: 100px;
     height: 100px;
     display: flex;
@@ -36,9 +59,26 @@
 }
 
 .asiento.seleccionado {
-    background-image: url('../public/img/plaza-aparcamiento-ESCOGIDO.png');
-    background-image: none;
+    background-image: url('../public/img/plaza-aparcamiento2.png');
 }
+
+.asiento .car {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../public/img/coche.png'); /* Cambia el path a la imagen de tu coche */
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.asiento.seleccionado .car {
+    opacity: 1;
+}
+
+
 
 .spacer {
     flex-basis: 100%;
@@ -56,7 +96,7 @@
 }
 
 .reservar-btn:hover {
-    background-color: #2ed674;
+    background-color: #34e77f;
 }
 
 .pantallacine {
