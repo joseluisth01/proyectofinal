@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsientosController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PeliculasControllador;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
+Route::post('/getId', [AuthController::class, 'getId']);
 
 Route::post('/insertarPelicula', [PeliculasControllador::class, 'insertarPelicula']);
 Route::post('/insertarEstreno', [PeliculasControllador::class, 'insertarEstreno']);
@@ -37,3 +39,7 @@ Route::get('/peliculas/detalles', [PeliculasControllador::class, 'obtenerPelicul
 /*BORRAR PELICULAS*/
 Route::delete('/borrarPeliculas', [PeliculasControllador::class, 'borrarPeliculas']);
 Route::delete('/borrarEstrenos', [PeliculasControllador::class, 'borrarEstrenos']);
+
+
+Route::get('/asientos/{idPelicula}', [AsientosController::class, 'getAsientos']);
+Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']);

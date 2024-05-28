@@ -96,7 +96,6 @@ const PeliculasList = () => {
         try {
             const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarPeliculas', datosPelicula);
             if (!response.ok) {
-                throw new Error('Error')              
                 throw new Error('Error al borrar película');
             }
             const data = await response.json();
@@ -188,7 +187,7 @@ const PeliculasList = () => {
                                 <p><b>Género:</b> {pelicula.genero}</p>
                                 <p><b>Valoración:</b> {calcularEstrellas(pelicula.valoracion)}</p>
                                 <div className="botonesdetalles">
-                                    <Link to={`/PaginaCompra/${pelicula.idPelicula}`}>
+                                    <Link to={`/PaginaCompra/${pelicula.id}`}>
                                         <div className="hora">
                                             {formatHora(pelicula.hora)}
                                         </div>
