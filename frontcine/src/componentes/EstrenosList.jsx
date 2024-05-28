@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../style/estrenosstyle.css';
 
 export const EstrenosList = () => {
@@ -71,7 +72,7 @@ export const EstrenosList = () => {
             },
             body: JSON.stringify({ id: idPelicula }),
         };
-    
+
         try {
             const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarEstrenos', datosPelicula);
             if (!response.ok) {
@@ -95,11 +96,13 @@ export const EstrenosList = () => {
                 peliculas.map(pelicula => (
                     <div className="estreno-card" key={pelicula.id}>
                         <div className='estreno-container'>
-                            <img
-                                className="estreno-poster"
-                                src={pelicula.posterUrl}
-                                alt={`Poster de ${pelicula.nombrePelicula}`}
-                            />
+                            <Link to={`/DetallesPelicula/${pelicula.idPelicula}`}>
+                                <img
+                                    className="estreno-poster"
+                                    src={pelicula.posterUrl}
+                                    alt={`Poster de ${pelicula.nombrePelicula}`}
+                                />
+                            </Link>
                         </div>
                         {isAdmin && <button className="borrarEstreno" onClick={() => borrarEstreno(pelicula.id)}>BORRAR</button>}
                     </div>
