@@ -75,3 +75,13 @@
     font-family: "Bebas Neue", sans-serif;
     letter-spacing: 15px;
 }
+
+.datos-pelicula {
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 18px;
+    color: #333;
+}
+.datos-pelicula p {
+    margin: 5px 0;
+}

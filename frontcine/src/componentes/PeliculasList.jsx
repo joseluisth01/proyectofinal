@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // import useNavigate
 import '../style/peliculasList.css';
 
 const PeliculasList = () => {
@@ -11,6 +11,7 @@ const PeliculasList = () => {
     today.setHours(0, 0, 0, 0);
     const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    const navigate = useNavigate(); // useNavigate hook
 
     useEffect(() => {
         const fetchPeliculas = async () => {
@@ -187,7 +188,7 @@ const PeliculasList = () => {
                                 <p><b>Género:</b> {pelicula.genero}</p>
                                 <p><b>Valoración:</b> {calcularEstrellas(pelicula.valoracion)}</p>
                                 <div className="botonesdetalles">
-                                    <Link to={`/PaginaCompra/${pelicula.id}`}>
+                                    <Link to={`/PaginaCompra/${pelicula.id}`} state={{ selectedDate: selectedDate.toDateString() }}>
                                         <div className="hora">
                                             {formatHora(pelicula.hora)}
                                         </div>
