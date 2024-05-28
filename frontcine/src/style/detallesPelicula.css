@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.posterdetalles{
+.posterdetalles {
     width: 50%;
 }
 
@@ -47,37 +47,40 @@
 
 /* Estilos del modal */
 .trailer-modal {
-    position: absolute;
+    position: fixed; /* Cambiado a fixed */
     top: 50%;
     left: 50%;
-    right: auto;
-    bottom: auto;
-    margin-right: -50%;
     transform: translate(-50%, -50%);
     background: #333333e3; /* Fondo oscuro */
     color: white; /* Texto blanco */
-    padding: 20px;
+    padding: 30px;
+    padding-top: 0px;
     border-radius: 10px;
     outline: none;
-    max-width: 700px;
-    width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    z-index: 1000; /* Asegúrate de que esté por encima del resto del contenido */
 }
 
 .trailer-overlay {
+    position: fixed; /* Cambiado a fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.8); /* Fondo translúcido negro */
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 999; /* Asegúrate de que esté por debajo del modal pero por encima del contenido */
 }
 
 .close-modal-button {
     background: none;
     border: 2px solid #38ff8b; /* Borde verde */
     font-size: 20px;
-    position: absolute;
-    top: 10px;
-    right: 20px;
+    position: fixed; /* Cambiado a fixed */
+    top: 10px; /* Ajustado para estar en la parte superior de la pantalla */
+    right: 10px; /* Ajustado para estar en la parte derecha de la pantalla */
     cursor: pointer;
     color: white;
     border-radius: 50%;
@@ -86,6 +89,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2000; /* Asegúrate de que esté por encima del modal */
 }
 
 /* Hover effects */
@@ -94,11 +98,11 @@
     color: black;
 }
 
-.ytdetalles{
+.ytdetalles {
     text-align: center;
 }
 
-.sipnosisdetalles{
+.sipnosisdetalles {
     width: 80%;
     margin: 0 auto;
 }

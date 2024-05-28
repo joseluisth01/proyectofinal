@@ -131,7 +131,8 @@ export const DetallesPelicula = () => {
                 >
                     <button onClick={closeModal} className="close-modal-button">×</button>
                     {trailer ? (
-                        <YouTube videoId={trailer.key} />
+                        <div><h1 class="titulopelicartelera">{pelicula.title}</h1>
+                        <YouTube videoId={trailer.key} /></div>
                     ) : (
                         <p>No hay tráiler disponible</p>
                     )}
