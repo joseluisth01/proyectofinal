@@ -33,13 +33,16 @@
 
 .detalles-pelicula-boton {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 28px;
     cursor: pointer;
     border: none;
-    background-color: #38ff8b;
-    color: white;
+    background-color: black;
+    color: #38ff8b;
     border-radius: 5px;
     margin-top: 10px;
+    width: 100%;
+    font-family: "Bebas Neue", sans-serif;
+    transition: background-color .5s, color .5s;
 }
 
 /* Estilos del modal */
@@ -87,8 +90,8 @@
 
 /* Hover effects */
 .detalles-pelicula-boton:hover, .close-modal-button:hover {
-    background-color: #29b864; /* Fondo más oscuro en hover */
-    border-color: #38ff8b; /* Borde verde en hover */
+    background-color: #38ff8b;
+    color: black;
 }
 
 .ytdetalles{
