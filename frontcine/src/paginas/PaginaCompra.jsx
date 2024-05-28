@@ -6,6 +6,7 @@ export const PaginaCompra = () => {
     const { id } = useParams();
     const [asientos, setAsientos] = useState([]);
     const [seleccionados, setSeleccionados] = useState([]);
+    const [deseleccionados, setDeseleccionados] = useState([]);
     const navigate = useNavigate();
     
     const token = localStorage.getItem('token');
@@ -28,8 +29,13 @@ export const PaginaCompra = () => {
     const handleSelectAsiento = (numero) => {
         setSeleccionados((prev) => {
             if (prev.includes(numero)) {
+                setDeseleccionados([...deseleccionados, numero]);
+                setTimeout(() => {
+                    setDeseleccionados((prev) => prev.filter((n) => n !== numero));
+                }, 500); // Duración de la animación
                 return prev.filter((n) => n !== numero);
             } else {
+                setDeseleccionados(deseleccionados.filter((n) => n !== numero));
                 return [...prev, numero];
             }
         });
@@ -105,9 +111,10 @@ export const PaginaCompra = () => {
                             <div
                                 className={`asiento ${asiento.estado === 'ocupado' ? 'ocupado' : ''} ${
                                     seleccionados.includes(asiento.asiento_numero) ? 'seleccionado' : ''
-                                }`}
+                                } ${deseleccionados.includes(asiento.asiento_numero) ? 'deseleccionado' : ''}`}
                                 onClick={() => asiento.estado === 'libre' && handleSelectAsiento(asiento.asiento_numero)}
                             >
+                                <div className="car"></div>
                                 {asiento.asiento_numero}
                             </div>
                             {(index + 1) % 5 === 0 && <div className="spacer" />}

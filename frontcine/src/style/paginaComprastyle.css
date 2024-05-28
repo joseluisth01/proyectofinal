@@ -26,6 +26,7 @@
     }
 }
 
+
 .asiento.seleccionado::after {
     content: '';
     position: absolute;
