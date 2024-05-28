@@ -49,57 +49,84 @@ export const Main = () => {
           </div>
         </section>
 
-        <div
-          class="max-w-md mx-auto relative overflow-hidden z-10 bg-gray-800 p-8 rounded-lg shadow-md before:w-24 before:h-24 before:absolute before:bg-purple-600 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-sky-400 after:rounded-full after:-z-10 after:blur-xl after:top-24 after:-right-12"
-        >
-          <h2 class="text-2xl font-bold text-white mb-6">Update Your Profile</h2>
+        <div className="fondoContacto">
+          <div
+            class="max-w-md mx-auto relative overflow-hidden z-10 bg-gray-800 p-8 rounded-lg shadow-md
+            before:w-24 before:h-24 before:absolute before:bg-green-600 before:rounded-full before:-z-10 
+            before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-green-400 after:rounded-full 
+            after:-z-10 after:blur-xl after:top-24 after:-right-12
+            bg-black m-5 w-1/2">
+            <h2 class="text-2xl font-bold text-white mb-6">¿Qué te parece TAPACOS?</h2>
 
-          <form method="post" action="#">
-            <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-300" for="name"
-              >Full Name</label
-              >
-              <input
-                class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white"
-                type="text"
-              />
-            </div>
+            <form>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-300" for="name">Nombre</label>
+                <input
+                  class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white"
+                  type="text"
+                />
+              </div>
 
-            <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-300" for="email"
-              >Email Address</label
-              >
-              <input
-                class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white"
-                name="email"
-                id="email"
-                type="email"
-              />
-            </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-300" for="email">Dirección de correo electrónico</label>
+                <input
+                  class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white"
+                  name="email"
+                  id="email"
+                  type="email"
+                />
+              </div>
 
-            <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-300" for="bio"
-              >Bio</label
-              >
-              <textarea
-                class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white"
-                rows="3"
-                name="bio"
-                id="bio"
-              ></textarea>
-            </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-300" for="bio">Mensaje</label>
+                <textarea
+                  class="mt-1 p-2 w-full bg-gray-700 border border-gray-600 rounded-md text-white"
+                  rows="3"
+                  name="bio"
+                  id="bio"
+                ></textarea>
+              </div>
 
-            <div class="flex justify-end">
-              <button
-                class="bg-gradient-to-r from-purple-600 via-purple-400 to-blue-500 text-white px-4 py-2 font-bold rounded-md hover:opacity-80"
-                type="submit"
-              >
-                Update Profile
-              </button>
-            </div>
-          </form>
+              <div class="flex justify-end">
+                <button
+                  class="bg-gradient-to-r from-gray-900 via-green-400 to-green-600 text-white px-4 py-2 font-bold rounded-md hover:opacity-80"
+                  type="submit"
+                >
+                  Enviar mensaje
+                </button>
+              </div>
+            </form>
+          </div>
+
         </div>
 
+
+        <div class="container">
+          <div class="info-section">
+            <h1 class="title">TAPACOS Autocinemas</h1>
+            <p class="address">C. del Guadalquivir. 14010, Córdoba</p>
+            <p class="office-hours">Oficina (horario de oficina, fuera de horario, contestador con la prgramación)</p>
+            <p class="contact">Tel : 963248910</p>
+            <p class="email">mail : tapacosautocinemas@hotmail.com</p>
+            <p class="summer-hours">Verano: Abierto todos los días</p>
+            <p class="winter-closed">Invierno:L,M: Cerrado</p>
+            <p class="winter-open">Invierno:J,V,S,D: Abierto</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">f</a>
+              <a href="#" class="social-icon">G+</a>
+              <a href="#" class="social-icon">♠</a>
+            </div>
+          </div>
+          <div class="map-section">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5295046748156!2d-4.7708828246453345!3d37.87129790659489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d207d83074089%3A0xc8ca16fc101afb4a!2sC.%20del%20Guadalquivir%2C%2014010%20C%C3%B3rdoba!5e0!3m2!1ses!2ses!4v1715812890043!5m2!1ses!2ses"
+              style={{ border: 0, width: '300px', height: '300px' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
 
 
         <hr />

@@ -237,3 +237,61 @@
   .contact-btn:hover {
     background-color: #cc0000;
   }
+
+/* CONTACTO */
+
+.fondoContacto{
+  background-color: black;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  box-shadow: 0 0 10px rgba(87, 87, 87, 0.938);
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 10PX;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  color: white;
+}
+
+.info-section {
+  padding: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.address,
+.office-hours,
+.contact,
+.email,
+.summer-hours,
+.winter-closed,
+.winter-open {
+  margin: 5px 0;
+}
+
+.social-media {
+  margin-top: 10px;
+}
+
+.social-icon {
+  margin-right: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+}
+
+.map-section img {
+  max-width: 400px;
+  height: auto;
+}
