@@ -112,16 +112,15 @@ export const DetallesPelicula = () => {
                 <div className="sipnosisdetalles">
                     <b class="sinopdetalles2">Sinopsis:</b>
                     <hr />
-                    <p class="sinopdetalles">{pelicula.overview}</p><br />
-                    <div class="ytdetalles">
+                    <p class="sinopdetalles">{pelicula.overview}</p>
+                    {/* <div class="ytdetalles">
                         <YouTube videoId={trailer.key} />
-                    </div>
+                    </div> */}
+                    {trailer && (
+                        <button className="detalles-pelicula-boton" onClick={openModal}>VER TRAILER</button>
+                    )}
                 </div><br /><br /><br />
 
-
- {/*                {trailer && (
-                    <button className="detalles-pelicula-boton" onClick={openModal}>Ver Tráiler</button>
-                )} */}
 
                 <Modal
                     isOpen={modalIsOpen}
