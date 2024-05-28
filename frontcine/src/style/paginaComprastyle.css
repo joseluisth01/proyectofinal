@@ -36,7 +36,7 @@
 }
 
 .asiento.seleccionado {
-    background-color: yellow;
+    background-image: url('../public/img/plaza-aparcamiento-ESCOGIDO.png');
     background-image: none;
 }
 
@@ -48,7 +48,7 @@
 .reservar-btn {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: blue;
+    background-color: #37FF8B;
     color: white;
     border: none;
     cursor: pointer;
@@ -56,7 +56,7 @@
 }
 
 .reservar-btn:hover {
-    background-color: darkblue;
+    background-color: #2ed674;
 }
 
 .pantallacine {
