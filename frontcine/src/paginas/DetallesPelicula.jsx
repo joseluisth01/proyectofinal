@@ -90,27 +90,33 @@ export const DetallesPelicula = () => {
     const directorNames = directors.map(director => director.name).join(', ');
 
     return (
-        <div className="detalles-pelicula-container">
+        <div className="fondo">
+<div className="detalles-pelicula-container">
             <div className="detalles-pelicula">
-                <img
-                    className="detalles-pelicula-poster"
-                    src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
-                    alt={`Poster de ${pelicula.title}`}
-                />
+                <div className="posterdetalles">
+                    <img
+                        className="detalles-pelicula-poster"
+                        src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
+                        alt={`Poster de ${pelicula.title}`}
+                    />
+                </div>
                 <div className="detalles-pelicula-info">
                     <h1 class="titulopelicartelera">{pelicula.title}</h1>
+                    <p><b>Director:</b> {directorNames}</p>
                     <p><b>Duración:</b> {pelicula.runtime} minutos</p>
                     <p><b>Género:</b> {genresInSpanish}</p>
+                    <p><b>Estreno:</b> {pelicula.release_date}</p>
                     <p><b>Valoración:</b> {calcularEstrellas(pelicula.vote_average)}</p>
-                    <p><b>Descripción:</b> {pelicula.overview}</p>
-                    <p><b>Fecha de lanzamiento:</b> {pelicula.release_date}</p>
-                    <p><b>Director:</b> {directorNames}</p>
-                    <p><b>Apta para adultos:</b> {pelicula.adult ? 'Sí' : 'No'}</p>
-                    {trailer && (
-                        <button className="detalles-pelicula-boton" onClick={openModal}>Ver Tráiler</button>
-                    )}
                 </div>
             </div>
+            <b>Sinopsis:</b>
+            <hr />
+            <p>{pelicula.overview}</p>
+
+
+            {trailer && (
+                <button className="detalles-pelicula-boton" onClick={openModal}>Ver Tráiler</button>
+            )}
 
             <Modal
                 isOpen={modalIsOpen}
@@ -128,5 +134,7 @@ export const DetallesPelicula = () => {
             </Modal>
 
         </div>
+        </div>
+        
     );
 };
