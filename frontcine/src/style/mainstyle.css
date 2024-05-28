@@ -240,16 +240,112 @@
 
 /* CONTACTO */
 
-.fondoContacto{
-  background-color: black;
+.fondoContacto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: black;
+    box-shadow: 0 0 10px rgba(87, 87, 87, 0.938);
+
 }
 
+.form-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #2d2d2d;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  max-width: 500px;
+  margin: 1.25rem;
+}
+
+.form-container::before,
+.form-container::after {
+  content: '';
+  position: absolute;
+  border-radius: 9999px;
+  z-index: -10;
+}
+
+.form-container::before {
+  width: 6rem;
+  height: 6rem;
+  background-color: #16a34a;
+  filter: blur(2rem);
+}
+
+.form-container::after {
+  width: 8rem;
+  height: 8rem;
+  background-color: #4ade80;
+  filter: blur(1rem);
+  top: 6rem;
+  right: -3rem;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: medium;
+  color: #d1d5db;
+}
+
+.form-input {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #374151;
+  border: 1px solid #4b5563;
+  border-radius: 0.375rem;
+  color: #ffffff;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-button {
+  background-image: linear-gradient(to right, #111827, #4ade80, #16a34a);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 0.375rem;
+  transition: opacity 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  opacity: 0.8;
+}
+
+
+/* datos */
 .container {
   display: flex;
   flex-direction: row;
   background-color: black;
   box-shadow: 0 0 10px rgba(87, 87, 87, 0.938);
-  border-radius: 10px;
   overflow: hidden;
   font-family: Arial, sans-serif;
   margin: 0;
