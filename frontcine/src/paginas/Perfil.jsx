@@ -21,7 +21,7 @@ export const Perfil = () => {
     return (
         <div className="perfil-container">
             <Header/>
-            <br /><br /><br /><br /><br /><br />
+            br
             <h1>Perfil de Usuario</h1>
             <table>
                 <thead>
