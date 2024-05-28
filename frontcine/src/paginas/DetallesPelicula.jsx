@@ -91,50 +91,55 @@ export const DetallesPelicula = () => {
 
     return (
         <div className="fondo">
-<div className="detalles-pelicula-container">
-            <div className="detalles-pelicula">
-                <div className="posterdetalles">
-                    <img
-                        className="detalles-pelicula-poster"
-                        src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
-                        alt={`Poster de ${pelicula.title}`}
-                    />
-                </div>
-                <div className="detalles-pelicula-info">
-                    <h1 class="titulopelicartelera">{pelicula.title}</h1>
-                    <p><b>Director:</b> {directorNames}</p>
-                    <p><b>Duración:</b> {pelicula.runtime} minutos</p>
-                    <p><b>Género:</b> {genresInSpanish}</p>
-                    <p><b>Estreno:</b> {pelicula.release_date}</p>
-                    <p><b>Valoración:</b> {calcularEstrellas(pelicula.vote_average)}</p>
-                </div>
+            <div className="detalles-pelicula-container">
+                <div className="detalles-pelicula">
+                    <div className="posterdetalles">
+                        <img
+                            className="detalles-pelicula-poster"
+                            src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
+                            alt={`Poster de ${pelicula.title}`}
+                        />
+                    </div>
+                    <div className="detalles-pelicula-info">
+                        <h1 class="titulopelicartelera">{pelicula.title}</h1>
+                        <p><b>Director:</b> {directorNames}</p>
+                        <p><b>Duración:</b> {pelicula.runtime} minutos</p>
+                        <p><b>Género:</b> {genresInSpanish}</p>
+                        <p><b>Estreno:</b> {pelicula.release_date}</p>
+                        <p><b>Valoración:</b> {calcularEstrellas(pelicula.vote_average)}</p>
+                    </div>
+                </div><br /><br />
+                <div className="sipnosisdetalles">
+                    <b class="sinopdetalles2">Sinopsis:</b>
+                    <hr />
+                    <p class="sinopdetalles">{pelicula.overview}</p><br />
+                    <div class="ytdetalles">
+                        <YouTube videoId={trailer.key} />
+                    </div>
+                </div><br /><br /><br />
+
+
+ {/*                {trailer && (
+                    <button className="detalles-pelicula-boton" onClick={openModal}>Ver Tráiler</button>
+                )} */}
+
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    contentLabel="Tráiler"
+                    className="trailer-modal"
+                    overlayClassName="trailer-overlay"
+                >
+                    <button onClick={closeModal} className="close-modal-button">×</button>
+                    {trailer ? (
+                        <YouTube videoId={trailer.key} />
+                    ) : (
+                        <p>No hay tráiler disponible</p>
+                    )}
+                </Modal>
+
             </div>
-            <b>Sinopsis:</b>
-            <hr />
-            <p>{pelicula.overview}</p>
-
-
-            {trailer && (
-                <button className="detalles-pelicula-boton" onClick={openModal}>Ver Tráiler</button>
-            )}
-
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                contentLabel="Tráiler"
-                className="trailer-modal"
-                overlayClassName="trailer-overlay"
-            >
-                <button onClick={closeModal} className="close-modal-button">×</button>
-                {trailer ? (
-                    <YouTube videoId={trailer.key} />
-                ) : (
-                    <p>No hay tráiler disponible</p>
-                )}
-            </Modal>
-
         </div>
-        </div>
-        
+
     );
 };
