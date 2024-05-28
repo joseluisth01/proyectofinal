@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../style/paginaComprastyle.css';
 
 export const PaginaCompra = () => {
     const { id } = useParams();
-    const location = useLocation();
-    const selectedDate = location.state?.selectedDate || ''; // Get selected date from location state
     const [asientos, setAsientos] = useState([]);
     const [seleccionados, setSeleccionados] = useState([]);
-    const [pelicula, setPelicula] = useState(null); // State to store movie details
     const navigate = useNavigate();
     
     const token = localStorage.getItem('token');
@@ -17,6 +14,7 @@ export const PaginaCompra = () => {
     useEffect(() => {
         const fetchAsientos = async () => {
             try {
+                console.log("ID de la película:", id);
                 const response = await fetch(`http://localhost/proyectofinal/back/public/api/asientos/${id}`);
                 const data = await response.json();
                 setAsientos(data.asientos);
@@ -24,17 +22,7 @@ export const PaginaCompra = () => {
                 console.error('Error fetching asientos:', error);
             }
         };
-        const fetchPelicula = async () => {
-            try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=9b6ecd3e72ca170064c048d4ea07a095&language=es-ES`);
-                const data = await response.json();
-                setPelicula(data);
-            } catch (error) {
-                console.error('Error fetching pelicula:', error);
-            }
-        };
         fetchAsientos();
-        fetchPelicula(); // Fetch movie details
     }, [id]);
 
     const handleSelectAsiento = (numero) => {
@@ -107,32 +95,24 @@ export const PaginaCompra = () => {
     return (
         <div className="fondo">
             <div className="divpaginacompra">
-                {pelicula && (
-                    <div className="datos-pelicula">
-                        <p><b>Cine:</b> TAPACOS AUTOCINEMAS CÓRDOBA</p>
-                        <p><b>Película:</b> {pelicula.title}</p>
-                        <p><b>Fecha:</b> {selectedDate}</p>
-                        <p><b>Asientos seleccionados:</b> {seleccionados.join(', ')}</p>
-                    </div>
-                )}
                 <div>
-                    <div className="pantallacine">
+                    <div class="pantallacine">
                         PANTALLA
                     </div><br />
                     <div className="asientos-container">
-                        {asientos.map((asiento, index) => (
-                            <React.Fragment key={asiento.asiento_numero}>
-                                <div
-                                    className={`asiento ${asiento.estado === 'ocupado' ? 'ocupado' : ''} ${
-                                        seleccionados.includes(asiento.asiento_numero) ? 'seleccionado' : ''
-                                    }`}
-                                    onClick={() => asiento.estado === 'libre' && handleSelectAsiento(asiento.asiento_numero)}
-                                >
-                                    {asiento.asiento_numero}
-                                </div>
-                                {(index + 1) % 5 === 0 && <div className="spacer" />}
-                            </React.Fragment>
-                        ))}
+                    {asientos.map((asiento, index) => (
+                        <React.Fragment key={asiento.asiento_numero}>
+                            <div
+                                className={`asiento ${asiento.estado === 'ocupado' ? 'ocupado' : ''} ${
+                                    seleccionados.includes(asiento.asiento_numero) ? 'seleccionado' : ''
+                                }`}
+                                onClick={() => asiento.estado === 'libre' && handleSelectAsiento(asiento.asiento_numero)}
+                            >
+                                {asiento.asiento_numero}
+                            </div>
+                            {(index + 1) % 5 === 0 && <div className="spacer" />}
+                        </React.Fragment>
+                    ))}
                     </div>
                 </div>
                 <button className="reservar-btn" onClick={handleReservar}>
