@@ -95,19 +95,25 @@ export const PaginaCompra = () => {
     return (
         <div className="fondo">
             <div className="divpaginacompra">
-                <h1>Selecciona tus asientos</h1>
-                <div className="asientos-container">
-                    {asientos.map((asiento) => (
-                        <div
-                            key={asiento.asiento_numero}
-                            className={`asiento ${asiento.estado === 'ocupado' ? 'ocupado' : ''} ${
-                                seleccionados.includes(asiento.asiento_numero) ? 'seleccionado' : ''
-                            }`}
-                            onClick={() => asiento.estado === 'libre' && handleSelectAsiento(asiento.asiento_numero)}
-                        >
-                            {asiento.asiento_numero}
-                        </div>
+                <div>
+                    <div class="pantallacine">
+                        PANTALLA
+                    </div><br />
+                    <div className="asientos-container">
+                    {asientos.map((asiento, index) => (
+                        <React.Fragment key={asiento.asiento_numero}>
+                            <div
+                                className={`asiento ${asiento.estado === 'ocupado' ? 'ocupado' : ''} ${
+                                    seleccionados.includes(asiento.asiento_numero) ? 'seleccionado' : ''
+                                }`}
+                                onClick={() => asiento.estado === 'libre' && handleSelectAsiento(asiento.asiento_numero)}
+                            >
+                                {asiento.asiento_numero}
+                            </div>
+                            {(index + 1) % 5 === 0 && <div className="spacer" />}
+                        </React.Fragment>
                     ))}
+                    </div>
                 </div>
                 <button className="reservar-btn" onClick={handleReservar}>
                     Reservar
