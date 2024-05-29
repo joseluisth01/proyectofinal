@@ -9,7 +9,7 @@ class Asientos extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['idPelicula', 'usuario_id', 'asiento_numero', 'estado', 'fecha', 'nombre_pelicula'];
+    protected $fillable = ['idPelicula', 'usuario_id', 'asiento_numero', 'estado', 'fecha'];
 
     // Definir la relación con el modelo Pelicula
     public function pelicula()

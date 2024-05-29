@@ -10,7 +10,7 @@ class Pelicula extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombrePelicula', 'fecha', 'hora'];
+    protected $fillable = ['idPelicula', 'nombrePelicula', 'fecha', 'hora'];
 
     protected static function booted()
     {
