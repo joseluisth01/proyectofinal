@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,6 +25,8 @@ class Pelicula extends Model
                     'idPelicula' => $pelicula->id,
                     'asiento_numero' => $i,
                     'estado' => 'libre',
+                    'fecha' => $pelicula->fecha, // Asignamos la fecha de la película
+                    'nombre_pelicula' => $pelicula->nombrePelicula, // Asignamos el nombre de la película
                 ]);
                 $asiento->save();
             }
