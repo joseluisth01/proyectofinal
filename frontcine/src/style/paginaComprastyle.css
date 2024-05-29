@@ -6,7 +6,7 @@
 .divpaginacompra {
     width: 80%;
     margin: 0 auto;
-    padding-top: 7%;
+    padding-top: 10%;
     text-align: center;
 }
 
@@ -14,7 +14,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
 }
 
 @keyframes slideUp {
@@ -93,11 +92,16 @@
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 30px;
+    font-family: "Bebas Neue", sans-serif;
+    margin-bottom: 3%;
+    transition: color .5s, background-color .5s, border .5s;
 }
 
 .reservar-btn:hover {
-    background-color: #34e77f;
+    background-color: WHITE;
+    color: #37FF8B;
+    border: 1px solid #37FF8B;
 }
 
 .pantallacine {
@@ -125,4 +129,17 @@
 }
 .datos-pelicula p {
     margin: 5px 0;
+}
+
+.datoscompra{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 4%;
+}
+
+.datoizq{
+    width: 27%;
+    text-align: left;
+    margin-left: 8px;
+    font-weight: bold;
 }

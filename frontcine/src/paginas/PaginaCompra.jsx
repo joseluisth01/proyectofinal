@@ -101,7 +101,25 @@ export const PaginaCompra = () => {
     return (
         <div className="fondo">
             <div className="divpaginacompra">
-                <div>
+                <div class="datoscompra">
+                    <div className='flex'>
+                        <p className='datoizq'>Cine:</p>
+                        <p>Tapacos Autocinemas Córdoba</p>
+                    </div>
+                    <hr className='hrdetalles'/>
+                    <div className='flex mt-5'>
+                        <p className='datoizq'>Voy a ver:</p>
+                        <p></p>
+                    </div>
+                    <hr className='hrdetalles'/>
+                    <div className='flex mt-5'>
+                        <p className='datoizq'>Parcelas seleccionadas:</p>
+                        <p></p>
+                    </div>
+                    <hr className='hrdetalles'/>
+                </div>
+
+                <div className=''>
                     <div class="pantallacine">
                         PANTALLA
                     </div><br />
@@ -123,7 +141,7 @@ export const PaginaCompra = () => {
                     </div>
                 </div>
                 <button className="reservar-btn" onClick={handleReservar}>
-                    Reservar
+                    COMPRAR
                 </button>
             </div>
         </div>
