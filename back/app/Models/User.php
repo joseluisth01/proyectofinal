@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Define the relationship with the Asientos model.
+     */
+    public function asientos()
+    {
+        return $this->hasMany(Asientos::class, 'usuario_id');
+    }
 }

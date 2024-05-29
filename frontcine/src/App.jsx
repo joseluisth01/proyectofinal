@@ -12,6 +12,7 @@ import { Estrenos } from './paginas/Estrenos';
 import { DetallesPelicula } from './paginas/DetallesPelicula';
 import { PaginaCompra } from './paginas/PaginaCompra';
 import { Perfil } from './paginas/Perfil';
+import Entradas from './paginas/Entradas';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/Cartelera' element={<Cartelera />} />
         <Route path='/Estrenos' element={<Estrenos />} />
         <Route path='/Perfil' element={<Perfil />} />
+        <Route path='/Entradas' element={<Entradas />} />
         <Route path='/DetallesPelicula/:idPelicula' element={<DetallesPelicula />} />
         <Route path='/PaginaCompra/:id' element={<PaginaCompra />} />
       </Routes>
