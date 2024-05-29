@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom'; // useLocation added
 import '../style/paginaComprastyle.css';
 
 export const PaginaCompra = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const location = useLocation(); // useLocation hook
+    const { selectedDate, nombrePelicula, hora } = location.state || {}; // extract the state
+
     const [asientos, setAsientos] = useState([]);
     const [seleccionados, setSeleccionados] = useState([]);
     const [deseleccionados, setDeseleccionados] = useState([]);
-    const navigate = useNavigate();
-    
     const token = localStorage.getItem('token');
     const [usuarioId, setUsuarioId] = useState(null);
 
@@ -80,7 +82,6 @@ export const PaginaCompra = () => {
             const responseData = await response.json();
             if (response.ok) {
                 alert(responseData.mensaje);
-                // Actualizar el estado de los asientos
                 setAsientos((prev) =>
                     prev.map((asiento) =>
                         seleccionados.includes(asiento.asiento_numero)
@@ -109,12 +110,12 @@ export const PaginaCompra = () => {
                     <hr className='hrdetalles'/>
                     <div className='flex mt-5'>
                         <p className='datoizq'>Voy a ver:</p>
-                        <p></p>
+                        <p>{nombrePelicula}, {selectedDate}, {hora}</p>
                     </div>
                     <hr className='hrdetalles'/>
                     <div className='flex mt-5'>
                         <p className='datoizq'>Parcelas seleccionadas:</p>
-                        <p></p>
+                        <p>{seleccionados.join(', ')}</p>
                     </div>
                     <hr className='hrdetalles'/>
                 </div>

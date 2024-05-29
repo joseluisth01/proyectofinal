@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // import useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import '../style/peliculasList.css';
 
 const PeliculasList = () => {
@@ -188,7 +188,7 @@ const PeliculasList = () => {
                                 <p><b>Género:</b> {pelicula.genero}</p>
                                 <p><b>Valoración:</b> {calcularEstrellas(pelicula.valoracion)}</p>
                                 <div className="botonesdetalles">
-                                    <Link to={`/PaginaCompra/${pelicula.id}`} state={{ selectedDate: selectedDate.toDateString() }}>
+                                    <Link to={`/PaginaCompra/${pelicula.id}`} state={{ selectedDate: selectedDate.toDateString(), nombrePelicula: pelicula.nombrePelicula, hora: pelicula.hora }}>
                                         <div className="hora">
                                             {formatHora(pelicula.hora)}
                                         </div>
