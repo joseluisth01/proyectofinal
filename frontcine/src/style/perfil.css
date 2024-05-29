@@ -131,3 +131,38 @@ body {
 .botonCerrar:hover {
     background-color: #d73833; /* Rojo más oscuro */
 }
+
+
+.user-head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.usuariolog {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(68, 68, 68);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 3px solid #37FF8B;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 20px;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.usuariolog:hover {
+    transform: scale(1.35);
+}
+
+.user-greeti {
+    font-size: 40px;
+    font-weight: bold;
+    color: #000000;
+}

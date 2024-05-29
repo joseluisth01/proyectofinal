@@ -5,12 +5,14 @@ import '../style/perfil.css';
 export const Perfil = () => {
     const [user, setUser] = useState(null);
     const [activeTab, setActiveTab] = useState('Perfil');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
                 const token = localStorage.getItem('token');
+                setIsLoggedIn(!!token);
                 if (!token) {
                     navigate('/login'); // Redirect to login if no token
                     return;
@@ -30,6 +32,10 @@ export const Perfil = () => {
 
                 const data = await response.json();
                 setUser(data);
+                const nombreGuardado = localStorage.getItem('nombre');
+                if (nombreGuardado) {
+                    setUser({ ...data, nombre: nombreGuardado });
+                }
             } catch (error) {
                 console.error('Error fetching user profile:', error);
             }
@@ -44,6 +50,7 @@ export const Perfil = () => {
 
     const logout = () => {
         localStorage.clear();
+        setIsLoggedIn(false);
         navigate('/');
     };
 
@@ -54,24 +61,28 @@ export const Perfil = () => {
     return (
         <div className="fondo">
             <div className="perfil-container">
+                <div className="user-head">
+                    <div className="usuariolog">
+                        <button>{user.nombre.charAt(0).toUpperCase()}</button>
+                    </div>
+                    <span className="user-greeti">Hola, {user.nombre}</span>
+                </div>
 
-
-                {/* <h1>Perfil</h1> */}
                 <div className="tab">
-                    <button className={`tablinks ${activeTab === 'Perfil' ? 'active' : ''}`} onClick={() => handleTabClick('Perfil')} id="defaultOpen">👤Mi Perfil</button>
-                    <button className={`tablinks ${activeTab === 'Settings' ? 'active' : ''}`} onClick={() => handleTabClick('Settings')}>💳Mis Tarjetas</button>
-                    <button className={`tablinks ${activeTab === 'Other' ? 'active' : ''}`} onClick={() => handleTabClick('Other')}>⚙️Otros</button>
-                    <button className={`tablinks ${activeTab === 'CerrarSesion' ? 'active' : ''}`} onClick={() => handleTabClick('CerrarSesion')}>🔒Cerrar Sesión</button>
+                    <button className={`tablinks ${activeTab === 'Perfil' ? 'active' : ''}`} onClick={() => handleTabClick('Perfil')} id="defaultOpen">👤 Mi Perfil</button>
+                    <button className={`tablinks ${activeTab === 'Settings' ? 'active' : ''}`} onClick={() => handleTabClick('Settings')}>💳 Mis Tarjetas</button>
+                    <button className={`tablinks ${activeTab === 'Other' ? 'active' : ''}`} onClick={() => handleTabClick('Other')}>⚙️ Otros</button>
+                    <button className={`tablinks ${activeTab === 'CerrarSesion' ? 'active' : ''}`} onClick={() => handleTabClick('CerrarSesion')}>🔒 Cerrar Sesión</button>
                 </div>
 
                 <div id="Perfil" className={`tabcontent ${activeTab === 'Perfil' ? 'active' : ''}`}>
                     <h3>Perfil</h3>
                     <br />
                     <div className="perfil-info">
-                        <div className="field">
+                        {/* <div className="field">
                             <label><strong>Nombre:</strong></label>
                             <span className="value">{user.nombre}</span>
-                        </div>
+                        </div> */}
                         <div className="field">
                             <label><strong>Email:</strong></label>
                             <span className="value">{user.email}</span>
@@ -91,7 +102,6 @@ export const Perfil = () => {
 
                 <div id="Other" className={`tabcontent ${activeTab === 'Other' ? 'active' : ''}`}>
                     <h3>Otros</h3>
-                    {/* <p>Other content goes here.</p> */}
                 </div>
 
                 <div id="CerrarSesion" className={`tabcontent ${activeTab === 'CerrarSesion' ? 'active' : ''}`}>
@@ -100,10 +110,7 @@ export const Perfil = () => {
                     <p>¿Estás seguro que quieres cerrar sesión?</p>
                     <br /><br />
                     <button className='botonCerrar'><a onClick={logout}>Cerrar sesión</a></button>
-                    
-
                 </div>
-
             </div>
         </div>
     );
