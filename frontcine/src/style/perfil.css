@@ -9,9 +9,9 @@
     margin-top: 8rem;
     margin-bottom: 35rem;
     padding: 20px;
-    background-color: #d6d5d5bd;
+    /* background-color: #d6d5d5bd; */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .perfil-container h1 {
@@ -114,4 +114,20 @@ body {
 /* Show tab content */
 .tabcontent.active {
     display: block;
+}
+
+
+.botonCerrar {
+    background-color: #f28b82; /* Rojo clarito */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botonCerrar:hover {
+    background-color: #d73833; /* Rojo más oscuro */
 }

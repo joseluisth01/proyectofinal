@@ -42,6 +42,11 @@ export const Perfil = () => {
         setActiveTab(tabName);
     };
 
+    const logout = () => {
+        localStorage.clear();
+        navigate('/');
+    };
+
     if (!user) {
         return <div>Loading...</div>;
     }
@@ -56,10 +61,12 @@ export const Perfil = () => {
                     <button className={`tablinks ${activeTab === 'Perfil' ? 'active' : ''}`} onClick={() => handleTabClick('Perfil')} id="defaultOpen">👤Mi Perfil</button>
                     <button className={`tablinks ${activeTab === 'Settings' ? 'active' : ''}`} onClick={() => handleTabClick('Settings')}>💳Mis Tarjetas</button>
                     <button className={`tablinks ${activeTab === 'Other' ? 'active' : ''}`} onClick={() => handleTabClick('Other')}>⚙️Otros</button>
+                    <button className={`tablinks ${activeTab === 'CerrarSesion' ? 'active' : ''}`} onClick={() => handleTabClick('CerrarSesion')}>🔒Cerrar Sesión</button>
                 </div>
 
                 <div id="Perfil" className={`tabcontent ${activeTab === 'Perfil' ? 'active' : ''}`}>
                     <h3>Perfil</h3>
+                    <br />
                     <div className="perfil-info">
                         <div className="field">
                             <label><strong>Nombre:</strong></label>
@@ -77,13 +84,24 @@ export const Perfil = () => {
                 </div>
 
                 <div id="Settings" className={`tabcontent ${activeTab === 'Settings' ? 'active' : ''}`}>
-                    <h3>Settings</h3>
-                    <p>Settings content goes here.</p>
+                    <h3>Mis Tarjetas</h3>
+                    <br />
+                    <p>Estas son tus tarjetas:</p>
                 </div>
 
                 <div id="Other" className={`tabcontent ${activeTab === 'Other' ? 'active' : ''}`}>
-                    <h3>Other</h3>
-                    <p>Other content goes here.</p>
+                    <h3>Otros</h3>
+                    {/* <p>Other content goes here.</p> */}
+                </div>
+
+                <div id="CerrarSesion" className={`tabcontent ${activeTab === 'CerrarSesion' ? 'active' : ''}`}>
+                    <h3>Cerrar Sesión</h3>
+                    <br />
+                    <p>¿Estás seguro que quieres cerrar sesión?</p>
+                    <br /><br />
+                    <button className='botonCerrar'><a onClick={logout}>Cerrar sesión</a></button>
+                    
+
                 </div>
 
             </div>
