@@ -44,3 +44,8 @@ Route::delete('/borrarEstrenos', [PeliculasControllador::class, 'borrarEstrenos'
 
 Route::get('/asientos/{idPelicula}', [AsientosController::class, 'getAsientos']);
 Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']);
+
+
+
+
+Route::get('/reservas/{usuarioId}', [ReservaController::class, 'getReservasPorUsuario']);
