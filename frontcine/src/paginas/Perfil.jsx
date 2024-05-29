@@ -1,50 +1,58 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Header } from '../componentes/Header';
+import { useNavigate } from 'react-router-dom';
+import '../style/perfil.css';
 
 export const Perfil = () => {
-    const [users, setUsers] = useState([]);
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchUserProfile = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/users');
-                setUsers(response.data);
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    navigate('/login');
+                    return;
+                }
+
+                const response = await fetch('http://localhost/proyectofinal/back/public/api/profile', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user profile');
+                }
+
+                const data = await response.json();
+                setUser(data);
             } catch (error) {
-                console.error('Error fetching users:', error);
+                console.error('Error fetching user profile:', error);
             }
         };
 
-        fetchUsers();
-    }, []);
+        fetchUserProfile();
+    }, [navigate]);
+
+    if (!user) {
+        return <div>Loading...</div>;
+    }
 
     return (
-        <div className="perfil-container">
-            <Header/>
-            br
-            <h1>Perfil de Usuario</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Fecha de Creación</th>
-                        <th>Fecha de Actualización</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(user => (
-                        <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.nombre}</td>
-                            <td>{user.email}</td>
-                            <td>{user.created_at}</td>
-                            <td>{user.updated_at}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        /* imagen - Cambiar correo/contraseña - tarjetas - cerrar sesion*/
+        <div className="fondo">
+            <div className="perfil-container">
+                <h1>Perfil</h1>
+                <div className="perfil-info">
+                    <p><strong>Nombre:</strong> {user.nombre}</p>
+                    <p><strong>Email:</strong> {user.email}</p>
+                </div>
+            </div>
+
+            
         </div>
     );
 };

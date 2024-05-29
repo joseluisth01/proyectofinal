@@ -43,3 +43,7 @@ Route::delete('/borrarEstrenos', [PeliculasControllador::class, 'borrarEstrenos'
 
 Route::get('/asientos/{idPelicula}', [AsientosController::class, 'getAsientos']);
 Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']);
+
+/* DATOS */
+Route::middleware('auth:sanctum')->get('/profile', [AuthController::class, 'getUserProfile']);
+

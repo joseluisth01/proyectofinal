@@ -176,4 +176,17 @@ class AuthController extends Controller
     }
 
 
+
+    public function getUserProfile(Request $request)
+    {
+        $user = $request->user();
+        return response()->json([
+            'nombre' => $user->nombre,
+            'email' => $user->email,
+            'password' => $user->password,
+        ]);
+    }
+
+
+
 }
