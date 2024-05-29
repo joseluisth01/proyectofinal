@@ -47,6 +47,33 @@ export const Entradas = () => {
         fetchReservas();
     }, [token]);
 
+    const handleDeleteReserva = async (reservaId) => {
+        if (!window.confirm("¿Estás seguro de que quieres borrar esta reserva?")) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost/proyectofinal/back/public/api/reservas/${reservaId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (response.ok) {
+                alert("La reserva ha sido eliminada correctamente");
+                // Actualizar la lista de reservas después de eliminar
+                const updatedReservas = reservas.filter(reserva => reserva.id !== reservaId);
+                setReservas(updatedReservas);
+            } else {
+                console.error('Error deleting reserva:', response.statusText);
+                alert('Ocurrió un error al borrar la reserva');
+            }
+        } catch (error) {
+            console.error('Error deleting reserva:', error);
+            alert('Ocurrió un error al borrar la reserva');
+        }
+    };
+
     return (
         <div>
             <Header />
@@ -56,7 +83,8 @@ export const Entradas = () => {
                     <ul>
                         {reservas.map((reserva) => (
                             <li key={reserva.id}>
-                                Película: {reserva.pelicula_nombre}, Asiento: {reserva.asiento_numero}, Fecha: {new Date(reserva.fecha).toLocaleDateString()}
+                                Película: {reserva.pelicula.nombrePelicula}, Hora: {reserva.pelicula.hora}, Asiento: {reserva.asiento_numero}, Fecha: {reserva.fecha}
+                                <button onClick={() => handleDeleteReserva(reserva.id)}>Borrar Reserva</button>
                             </li>
                         ))}
                     </ul>
@@ -68,4 +96,5 @@ export const Entradas = () => {
     );
 };
 export default Entradas;
+
 

@@ -49,6 +49,6 @@ Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']
 
 
 Route::get('/reservas/{usuarioId}', [ReservaController::class, 'getReservasPorUsuario']);
-
+Route::delete('reservas/{id}', [ReservaController::class, 'cancelarReserva']);
 
 Route::middleware('auth:sanctum')->get('/profile', [AuthController::class, 'getUserProfile']);
