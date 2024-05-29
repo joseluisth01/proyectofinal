@@ -111,11 +111,8 @@ export const DetallesPelicula = () => {
                 </div><br /><br />
                 <div className="sipnosisdetalles">
                     <b class="sinopdetalles2">Sinopsis:</b>
-                    <hr />
+                    <hr className="hrdetalles" />
                     <p class="sinopdetalles">{pelicula.overview}</p>
-                    {/* <div class="ytdetalles">
-                        <YouTube videoId={trailer.key} />
-                    </div> */}
                     {trailer && (
                         <button className="detalles-pelicula-boton" onClick={openModal}>VER TRAILER</button>
                     )}
@@ -129,9 +126,10 @@ export const DetallesPelicula = () => {
                     className="trailer-modal"
                     overlayClassName="trailer-overlay"
                 >
-                    <button onClick={closeModal} className="close-modal-button">×</button>
+                    <button onClick={closeModal} className="close-modal-button">X</button>
                     {trailer ? (
-                        <YouTube videoId={trailer.key} />
+                        <div><h1 class="titulopelicartelera">{pelicula.title}</h1>
+                        <YouTube videoId={trailer.key} /></div>
                     ) : (
                         <p>No hay tráiler disponible</p>
                     )}
