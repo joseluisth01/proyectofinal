@@ -4,6 +4,7 @@ import '../style/perfil.css';
 
 export const Perfil = () => {
     const [user, setUser] = useState(null);
+    const [activeTab, setActiveTab] = useState('Perfil');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -11,7 +12,7 @@ export const Perfil = () => {
             try {
                 const token = localStorage.getItem('token');
                 if (!token) {
-                    navigate('/login');
+                    navigate('/login'); // Redirect to login if no token
                     return;
                 }
 
@@ -37,22 +38,55 @@ export const Perfil = () => {
         fetchUserProfile();
     }, [navigate]);
 
+    const handleTabClick = (tabName) => {
+        setActiveTab(tabName);
+    };
+
     if (!user) {
         return <div>Loading...</div>;
     }
 
     return (
-        /* imagen - Cambiar correo/contraseña - tarjetas - cerrar sesion*/
         <div className="fondo">
             <div className="perfil-container">
-                <h1>Perfil</h1>
-                <div className="perfil-info">
-                    <p><strong>Nombre:</strong> {user.nombre}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                </div>
-            </div>
 
-            
+
+                {/* <h1>Perfil</h1> */}
+                <div className="tab">
+                    <button className={`tablinks ${activeTab === 'Perfil' ? 'active' : ''}`} onClick={() => handleTabClick('Perfil')} id="defaultOpen">Mi Perfil</button>
+                    <button className={`tablinks ${activeTab === 'Settings' ? 'active' : ''}`} onClick={() => handleTabClick('Settings')}>Mis Tarjetas</button>
+                    <button className={`tablinks ${activeTab === 'Other' ? 'active' : ''}`} onClick={() => handleTabClick('Other')}>Otros</button>
+                </div>
+
+                <div id="Perfil" className={`tabcontent ${activeTab === 'Perfil' ? 'active' : ''}`}>
+                    <h3>Perfil</h3>
+                    <div className="perfil-info">
+                        <div className="field">
+                            <label><strong>Nombre:</strong></label>
+                            <span className="value">{user.nombre}</span>
+                        </div>
+                        <div className="field">
+                            <label><strong>Email:</strong></label>
+                            <span className="value">{user.email}</span>
+                        </div>
+                        <div className="field">
+                            <label><strong>Contraseña:</strong></label>
+                            <span className="value">********</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Settings" className={`tabcontent ${activeTab === 'Settings' ? 'active' : ''}`}>
+                    <h3>Settings</h3>
+                    <p>Settings content goes here.</p>
+                </div>
+
+                <div id="Other" className={`tabcontent ${activeTab === 'Other' ? 'active' : ''}`}>
+                    <h3>Other</h3>
+                    <p>Other content goes here.</p>
+                </div>
+
+            </div>
         </div>
     );
 };
