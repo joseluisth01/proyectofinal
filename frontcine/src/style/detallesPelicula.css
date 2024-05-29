@@ -56,11 +56,15 @@
     background: #333333e3; /* Fondo oscuro */
     color: white; /* Texto blanco */
     padding: 30px;
-    padding-top: 0px;
+    padding-top: 20px;
     border-radius: 10px;
     outline: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
     z-index: 1000; /* Asegúrate de que esté por encima del resto del contenido */
+}
+
+.sinopdetalles{
+    margin-top: 20px;
 }
 
 .trailer-overlay {
@@ -107,4 +111,9 @@
 .sipnosisdetalles {
     width: 80%;
     margin: 0 auto;
+}
+
+.hrdetalles{
+    border: 1px solid black;
+    margin-top: 5px;
 }
