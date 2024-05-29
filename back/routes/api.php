@@ -49,3 +49,6 @@ Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']
 
 
 Route::get('/reservas/{usuarioId}', [ReservaController::class, 'getReservasPorUsuario']);
+
+
+Route::middleware('auth:sanctum')->get('/profile', [AuthController::class, 'getUserProfile']);
