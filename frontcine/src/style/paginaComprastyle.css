@@ -4,7 +4,6 @@
 }
 
 .divpaginacompra {
-    width: 80%;
     margin: 0 auto;
     padding-top: 10%;
     text-align: center;
@@ -24,7 +23,6 @@
         transform: translateY(0);
     }
 }
-
 
 .asiento.seleccionado::after {
     content: '';
@@ -68,7 +66,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../public/img/coche.png'); /* Cambia el path a la imagen de tu coche */
+    background-image: url('../public/img/coche.png');
     background-size: cover;
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -77,8 +75,6 @@
 .asiento.seleccionado .car {
     opacity: 1;
 }
-
-
 
 .spacer {
     flex-basis: 100%;
@@ -131,15 +127,44 @@
     margin: 5px 0;
 }
 
-.datoscompra{
-    width: 80%;
+.datoscompra {
+    width: 60%;
     margin: 0 auto;
     margin-bottom: 4%;
 }
 
-.datoizq{
+.datoizq {
     width: 27%;
     text-align: left;
     margin-left: 8px;
     font-weight: bold;
+}
+
+.imgleyenda {
+    width: 50px;
+}
+
+.datosleyenda {
+    width: 30%;
+}
+
+.datosPantalla {
+    width: 70%;
+}
+
+.parteabajo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.datosleyenda {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 5%;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 22px;
 }

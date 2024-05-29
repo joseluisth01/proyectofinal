@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom'; // useLocation added
 import '../style/paginaComprastyle.css';
 
+const parcelalibre = '/img/plaza-aparcamiento2.png';
+const parcelaseleccionada = '/img/plaza-aparcamiento-ESCOGIDO.png';
+const parcelaocupada = '/img/plaza-aparcamiento-OCUPADO2.png';
+
+
 export const PaginaCompra = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const location = useLocation(); // useLocation hook
-    const { selectedDate, nombrePelicula, hora } = location.state || {}; // extract the state
+    const { selectedDate, nombrePelicula, hora } = location.state || {};
 
     const [asientos, setAsientos] = useState([]);
     const [seleccionados, setSeleccionados] = useState([]);
@@ -99,54 +104,80 @@ export const PaginaCompra = () => {
         }
     };
 
+    const formatDateToSpanish = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    };
+
     return (
         <div className="fondo">
             <div className="divpaginacompra">
-                <div class="datoscompra">
+                <div className="datoscompra">
                     <div className='flex'>
                         <p className='datoizq'>Cine:</p>
                         <p>Tapacos Autocinemas Córdoba</p>
                     </div>
-                    <hr className='hrdetalles'/>
+                    <hr className='hrdetalles' />
                     <div className='flex mt-5'>
                         <p className='datoizq'>Voy a ver:</p>
-                        <p>{nombrePelicula}, {selectedDate}, {hora}</p>
+                        <p>{nombrePelicula} 🍿 {selectedDate && formatDateToSpanish(selectedDate)} 🍿 {hora}</p>
                     </div>
-                    <hr className='hrdetalles'/>
+                    <hr className='hrdetalles' />
                     <div className='flex mt-5'>
                         <p className='datoizq'>Parcelas seleccionadas:</p>
                         <p>{seleccionados.join(', ')}</p>
                     </div>
-                    <hr className='hrdetalles'/>
+                    <hr className='hrdetalles' />
                 </div>
-
-                <div className=''>
-                    <div class="pantallacine">
-                        PANTALLA
-                    </div><br />
-                    <div className="asientos-container">
-                    {asientos.map((asiento, index) => (
-                        <React.Fragment key={asiento.asiento_numero}>
-                            <div
-                                className={`asiento ${asiento.estado === 'ocupado' ? 'ocupado' : ''} ${
-                                    seleccionados.includes(asiento.asiento_numero) ? 'seleccionado' : ''
-                                } ${deseleccionados.includes(asiento.asiento_numero) ? 'deseleccionado' : ''}`}
-                                onClick={() => asiento.estado === 'libre' && handleSelectAsiento(asiento.asiento_numero)}
-                            >
-                                <div className="car"></div>
-                                {asiento.asiento_numero}
-                            </div>
-                            {(index + 1) % 5 === 0 && <div className="spacer" />}
-                        </React.Fragment>
-                    ))}
+    
+                <div className="parteabajo">
+                    <div className="datosleyenda">
+                        <div className='flex items-center'>
+                            <img className='imgleyenda' src={parcelalibre} alt='Garfield Promoción' />
+                            <p className="ml-3">PARCELA DISPONIBLE</p>
+                        </div>
+                        <div className='flex mt-5 items-center'>
+                            <img className='imgleyenda' src={parcelaseleccionada} alt='Garfield Promoción' />
+                            <p className="ml-3">PARCELA SELECCIONADA</p>
+                        </div>
+                        <div className='flex mt-5 items-center'>
+                            <img className='imgleyenda' src={parcelaocupada} alt='Garfield Promoción' />
+                            <p className="ml-3">PARCELA OCUPADA</p>
+                        </div>
+                    </div>
+    
+                    <div className='datosPantalla'>
+                        <div className="pantallacine">
+                            PANTALLA
+                        </div><br />
+                        <div className="asientos-container">
+                            {asientos.map((asiento, index) => (
+                                <React.Fragment key={asiento.asiento_numero}>
+                                    <div
+                                        className={`asiento ${asiento.estado === 'ocupado' ? 'ocupado' : ''} ${seleccionados.includes(asiento.asiento_numero) ? 'seleccionado' : ''
+                                            } ${deseleccionados.includes(asiento.asiento_numero) ? 'deseleccionado' : ''}`}
+                                        onClick={() => asiento.estado === 'libre' && handleSelectAsiento(asiento.asiento_numero)}
+                                    >
+                                        <div className="car"></div>
+                                        {asiento.asiento_numero}
+                                    </div>
+                                    {(index + 1) % 5 === 0 && <div className="spacer" />}
+                                </React.Fragment>
+                            ))}
+                        </div>
+                        <button className="reservar-btn" onClick={handleReservar}>
+                            COMPRAR
+                        </button>
                     </div>
                 </div>
-                <button className="reservar-btn" onClick={handleReservar}>
-                    COMPRAR
-                </button>
             </div>
         </div>
     );
+    
 };
 
 export default PaginaCompra;
