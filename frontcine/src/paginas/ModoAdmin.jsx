@@ -120,8 +120,8 @@ export const ModoAdmin = () => {
                         <div key={movie.id} className="movie-item anim-upp">
                             <img className='poster' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                             <h2 className='titulopeli'>{movie.title}</h2>
-                            <button onClick={() => insertarPelicula(movie.id, movie.title)}>Añadir</button>
-                            <button onClick={() => insertarEstreno(movie.id, movie.title)}>Añadir Estreno</button>
+                            <button className="botonAniadirAdmin" onClick={() => insertarPelicula(movie.id, movie.title)}>Añadir</button>
+                            <button className="botonEstrenoAdmin" onClick={() => insertarEstreno(movie.id, movie.title)}>Añadir Estreno</button>
                         </div>
                     ))}
                 </div>
