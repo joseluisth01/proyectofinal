@@ -3,8 +3,8 @@
 use App\Http\Controllers\AsientosController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PeliculasControllador;
-use Illuminate\Http\Request;
 use App\Http\Controllers\ReservaController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,33 +22,31 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Authentication routes
 Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::post('/getId', [AuthController::class, 'getId']);
 
+// Pelicula routes
 Route::post('/insertarPelicula', [PeliculasControllador::class, 'insertarPelicula']);
 Route::post('/insertarEstreno', [PeliculasControllador::class, 'insertarEstreno']);
-
-/* INSERTAR PELICULA EN FRONT */
 Route::get('/peliculas', [PeliculasControllador::class, 'obtenerPeliculas']);
 Route::get('/estrenos', [PeliculasControllador::class, 'obtenerEstrenos']);
-
-
-/* DATOS PELICULAS */
 Route::get('/peliculas/detalles', [PeliculasControllador::class, 'obtenerPeliculasConDetalles']);
-
-/*BORRAR PELICULAS*/
 Route::delete('/borrarPeliculas', [PeliculasControllador::class, 'borrarPeliculas']);
 Route::delete('/borrarEstrenos', [PeliculasControllador::class, 'borrarEstrenos']);
 
-
+// Asientos routes
 Route::get('/asientos/{idPelicula}', [AsientosController::class, 'getAsientos']);
 Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']);
 
-
-
-
-Route::get('/reservas/{usuarioId}', [ReservaController::class, 'getReservasPorUsuario']);
-Route::delete('reservas/{id}', [ReservaController::class, 'cancelarReserva']);
+// Reservas routes
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/reservas', [ReservaController::class, 'getReservasPorUsuario']);
+    Route::delete('/reservas/{id}', [ReservaController::class, 'cancelarReserva']);
+});
+Route::middleware('auth:api')->group(function () {
+    Route::get('/reservas/{usuarioId}', [ReservaController::class, 'obtenerReservas']);
+});
 
 Route::middleware('auth:sanctum')->get('/profile', [AuthController::class, 'getUserProfile']);
