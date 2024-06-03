@@ -170,7 +170,7 @@ export const PaginaCompra = () => {
                             ))}
                         </div>
                         <button className="reservar-btn" onClick={handleReservar}>
-                            COMPRAR
+                            COMPRAR A
                         </button>
                     </div>
                 </div>
