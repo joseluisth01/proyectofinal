@@ -169,14 +169,9 @@ export const PaginaCompra = () => {
                                 </React.Fragment>
                             ))}
                         </div>
-                        {/* <button className="reservar-btn" onClick={handleReservar}>
+                        <button className="reservar-btn" onClick={handleReservar}>
                             COMPRAR
-                        </button> */}
-                        <Link to={`/PaginaPago`}>
-                            <button className="reservar-btn">
-                                COMPRAR
-                            </button>
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
