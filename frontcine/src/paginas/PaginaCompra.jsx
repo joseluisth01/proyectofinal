@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom'; // useLocation added
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import '../style/paginaComprastyle.css';
 
 const parcelalibre = '/img/plaza-aparcamiento2.png';
@@ -133,7 +133,7 @@ export const PaginaCompra = () => {
                     </div>
                     <hr className='hrdetalles' />
                 </div>
-    
+
                 <div className="parteabajo">
                     <div className="datosleyenda">
                         <div className='flex items-center'>
@@ -149,7 +149,7 @@ export const PaginaCompra = () => {
                             <p className="ml-3">PARCELA OCUPADA</p>
                         </div>
                     </div>
-    
+
                     <div className='datosPantalla'>
                         <div className="pantallacine">
                             PANTALLA
@@ -169,15 +169,20 @@ export const PaginaCompra = () => {
                                 </React.Fragment>
                             ))}
                         </div>
-                        <button className="reservar-btn" onClick={handleReservar}>
+                        {/* <button className="reservar-btn" onClick={handleReservar}>
                             COMPRAR
-                        </button>
+                        </button> */}
+                        <Link to={`/PaginaPago`}>
+                            <button className="reservar-btn">
+                                COMPRAR
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
         </div>
     );
-    
+
 };
 
 export default PaginaCompra;

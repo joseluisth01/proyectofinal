@@ -11,6 +11,7 @@ import { DetallesPelicula } from './paginas/DetallesPelicula';
 import { PaginaCompra } from './paginas/PaginaCompra';
 import { Perfil } from './paginas/Perfil';
 import MisEntradas from './paginas/MisEntradas';
+import { PaginaPago } from './paginas/PaginaPago';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/Entradas' element={<MisEntradas />} />
         <Route path='/DetallesPelicula/:idPelicula' element={<DetallesPelicula />} />
         <Route path='/PaginaCompra/:id' element={<PaginaCompra />} />
+        <Route path='/PaginaPago' element={<PaginaPago/>} />
       </Routes>
       <Footer />
     </>
