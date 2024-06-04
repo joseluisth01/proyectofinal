@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import '../style/paginaComprastyle.css';
 
 const parcelalibre = '/img/plaza-aparcamiento2.png';
 const parcelaseleccionada = '/img/plaza-aparcamiento-ESCOGIDO.png';
 const parcelaocupada = '/img/plaza-aparcamiento-OCUPADO2.png';
 
-
-export const PaginaCompra = () => {
+const PaginaCompra = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
-    const location = useLocation(); // useLocation hook
+    const location = useLocation();
     const { selectedDate, nombrePelicula, hora } = location.state || {};
 
     const [asientos, setAsientos] = useState([]);
     const [seleccionados, setSeleccionados] = useState([]);
     const [deseleccionados, setDeseleccionados] = useState([]);
     const token = localStorage.getItem('token');
-    const [usuarioId, setUsuarioId] = useState(null);
 
     useEffect(() => {
         const fetchAsientos = async () => {
             try {
-                console.log("ID de la película:", id);
-                const response = await fetch(`http://localhost/proyectofinal/back/public/api/asientos/${id}`);
+                const response = await fetch(`http://localhost/proyectofinal/back/public/api/asientos/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 const data = await response.json();
                 setAsientos(data.asientos);
             } catch (error) {
@@ -31,7 +31,7 @@ export const PaginaCompra = () => {
             }
         };
         fetchAsientos();
-    }, [id]);
+    }, [id, token]);
 
     const handleSelectAsiento = (numero) => {
         setSeleccionados((prev) => {
@@ -39,7 +39,7 @@ export const PaginaCompra = () => {
                 setDeseleccionados([...deseleccionados, numero]);
                 setTimeout(() => {
                     setDeseleccionados((prev) => prev.filter((n) => n !== numero));
-                }, 500); // Duración de la animación
+                }, 500);
                 return prev.filter((n) => n !== numero);
             } else {
                 setDeseleccionados(deseleccionados.filter((n) => n !== numero));
@@ -54,28 +54,16 @@ export const PaginaCompra = () => {
             return;
         }
 
-        let fetchedUserId;
         try {
-            const response = await fetch('http://localhost/proyectofinal/back/public/api/getId', {
+            const userIdResponse = await fetch('http://localhost/proyectofinal/back/public/api/getId', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            const data = await response.json();
-            if (response.ok) {
-                fetchedUserId = data.id;
-            } else {
-                alert("Debe iniciar sesión para reservar asientos");
-                return;
-            }
-        } catch (error) {
-            console.error('Error fetching user ID:', error);
-            alert("Debe iniciar sesión para reservar asientos");
-            return;
-        }
+            const userIdData = await userIdResponse.json();
+            const fetchedUserId = userIdData.id;
 
-        try {
             const response = await fetch('http://localhost/proyectofinal/back/public/api/reservarAsientos', {
                 method: 'POST',
                 headers: {
@@ -137,15 +125,15 @@ export const PaginaCompra = () => {
                 <div className="parteabajo">
                     <div className="datosleyenda">
                         <div className='flex items-center'>
-                            <img className='imgleyenda' src={parcelalibre} alt='Garfield Promoción' />
+                            <img className='imgleyenda' src={parcelalibre} alt='Parcela Libre' />
                             <p className="ml-3">PARCELA DISPONIBLE</p>
                         </div>
                         <div className='flex mt-5 items-center'>
-                            <img className='imgleyenda' src={parcelaseleccionada} alt='Garfield Promoción' />
+                            <img className='imgleyenda' src={parcelaseleccionada} alt='Parcela Seleccionada' />
                             <p className="ml-3">PARCELA SELECCIONADA</p>
                         </div>
                         <div className='flex mt-5 items-center'>
-                            <img className='imgleyenda' src={parcelaocupada} alt='Garfield Promoción' />
+                            <img className='imgleyenda' src={parcelaocupada} alt='Parcela Ocupada' />
                             <p className="ml-3">PARCELA OCUPADA</p>
                         </div>
                     </div>
@@ -169,20 +157,15 @@ export const PaginaCompra = () => {
                                 </React.Fragment>
                             ))}
                         </div>
-                        {/* <button className="reservar-btn" onClick={handleReservar}>
+                        <button className="reservar-btn" onClick={handleReservar}>
                             COMPRAR
-                        </button> */}
-                        <Link to={'/PaginaPago'}>
-                            <button className="reservar-btn">
-                                COMPRAR
-                            </button>
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     );
-
+    
 };
 
 export default PaginaCompra;

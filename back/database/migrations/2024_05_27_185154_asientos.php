@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
         Schema::create('asientos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('idPelicula');
             $table->unsignedBigInteger('usuario_id')->nullable();
             $table->integer('asiento_numero');
             $table->enum('estado', ['libre', 'ocupado'])->default('libre');
+            $table->string('nombre_pelicula'); // Agregar el campo 'nombre_pelicula'
             $table->timestamps();
 
             $table->foreign('idPelicula')->references('id')->on('peliculas')->onDelete('cascade');
@@ -30,7 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
         Schema::dropIfExists('asientos');
     }
 };

@@ -14,21 +14,7 @@ const MisEntradas = () => {
             }
 
             try {
-                const response = await fetch('http://localhost/proyectofinal/back/public/api/getId', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('No se pudo obtener el ID del usuario');
-                }
-
-                const data = await response.json();
-                const usuarioId = data.id;
-
-                const entradasResponse = await fetch(`http://localhost/proyectofinal/back/public/api/reservas/${usuarioId}`, {
+                const entradasResponse = await fetch(`http://localhost/proyectofinal/back/public/api/reservasPorUsuario`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -48,6 +34,29 @@ const MisEntradas = () => {
 
         fetchEntradas();
     }, [token]);
+
+    const handleCancelarReserva = async (idReserva) => {
+        try {
+            const response = await fetch(`http://localhost/proyectofinal/back/public/api/cancelarReserva/${idReserva}`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al cancelar la reserva');
+            }
+
+            const result = await response.json();
+            alert(result.mensaje);
+            setEntradas(entradas.filter(entrada => entrada.id !== idReserva)); // Actualizar la lista de entradas
+        } catch (error) {
+            console.error('Error cancelando la reserva:', error);
+            alert('Ocurrió un error al cancelar la reserva');
+        }
+    };
 
     if (!token) {
         return <p>Debe iniciar sesión para ver sus entradas.</p>;
@@ -73,6 +82,7 @@ const MisEntradas = () => {
                             <p>Hora: {entrada.pelicula.hora}</p>
                             <p>Asiento: {entrada.asiento_numero}</p>
                             <p>Fecha: {entrada.fecha}</p>
+                            <button onClick={() => handleCancelarReserva(entrada.id)}>Cancelar Reserva</button>
                         </li>
                     ))}
                 </ul>
@@ -82,3 +92,5 @@ const MisEntradas = () => {
 };
 
 export default MisEntradas;
+
+
