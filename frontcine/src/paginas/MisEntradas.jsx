@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from '../componentes/Header';
+import '../style/misentradasstyle.css';
 
 const MisEntradas = () => {
     const [entradas, setEntradas] = useState([]);
@@ -59,30 +60,29 @@ const MisEntradas = () => {
     };
 
     if (!token) {
-        return <p>Debe iniciar sesión para ver sus entradas.</p>;
+        return <p className="mis-entradas-error">Debe iniciar sesión para ver sus entradas.</p>;
     }
 
     if (error) {
-        return <p>{error}</p>;
+        return <p className="mis-entradas-error">{error}</p>;
     }
 
     if (entradas.length === 0) {
-        return <p>No tiene entradas reservadas.</p>;
+        return <p className="mis-entradas-no-entradas">No tiene entradas reservadas.</p>;
     }
 
     return (
-        <div>
-            <Header />
-            <div>
-                <h1>Mis Entradas</h1>
-                <ul>
+        <div className="mis-entradas-container">
+            <div className="mis-entradas-content">
+                <h1 className="mis-entradas-title">Mis Entradas</h1>
+                <ul className="mis-entradas-list">
                     {entradas.map((entrada) => (
-                        <li key={entrada.id}>
-                            <p>Película: {entrada.pelicula.nombrePelicula}</p>
-                            <p>Hora: {entrada.pelicula.hora}</p>
-                            <p>Asiento: {entrada.asiento_numero}</p>
-                            <p>Fecha: {entrada.fecha}</p>
-                            <button onClick={() => handleCancelarReserva(entrada.id)}>Cancelar Reserva</button>
+                        <li key={entrada.id} className="mis-entradas-item">
+                            <p className="mis-entradas-pelicula">Película: {entrada.pelicula.nombrePelicula}</p>
+                            <p className="mis-entradas-hora">Hora: {entrada.pelicula.hora}</p>
+                            <p className="mis-entradas-asiento">Asiento: {entrada.asiento_numero}</p>
+                            <p className="mis-entradas-fecha">Fecha: {entrada.fecha}</p>
+                            <button className="mis-entradas-cancel-button" onClick={() => handleCancelarReserva(entrada.id)}>Cancelar Reserva</button>
                         </li>
                     ))}
                 </ul>
@@ -92,5 +92,3 @@ const MisEntradas = () => {
 };
 
 export default MisEntradas;
-
-
