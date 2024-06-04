@@ -60,22 +60,24 @@ export const Perfil = () => {
 
     return (
         <div className="fondo">
-            <div className="perfil-container">
+            <div className="perfill-container">
                 <div className="user-head">
                     <div className="usuariolog">
                         <button>{user.nombre.charAt(0).toUpperCase()}</button>
                     </div>
                     <span className="user-greeti">Hola, {user.nombre}</span>
                 </div>
+                <div className="alineadoflex">
+                    <div className="tab">
+                        <button className={`tablinks ${activeTab === 'Perfil' ? 'active' : ''}`} onClick={() => handleTabClick('Perfil')} id="defaultOpen">👤 Mi Perfil</button>
+                        <button className={`tablinks ${activeTab === 'Settings' ? 'active' : ''}`} onClick={() => handleTabClick('Settings')}>💳 Mis Tarjetas</button>
+                        <button className={`tablinks ${activeTab === 'Other' ? 'active' : ''}`} onClick={() => handleTabClick('Other')}>⚙️ Otros</button>
+                        <button className={`tablinks ${activeTab === 'CerrarSesion' ? 'active' : ''}`} onClick={() => handleTabClick('CerrarSesion')}>🔒 Cerrar Sesión</button>
+                    </div>
 
-                <div className="tab">
-                    <button className={`tablinks ${activeTab === 'Perfil' ? 'active' : ''}`} onClick={() => handleTabClick('Perfil')} id="defaultOpen">👤 Mi Perfil</button>
-                    <button className={`tablinks ${activeTab === 'Settings' ? 'active' : ''}`} onClick={() => handleTabClick('Settings')}>💳 Mis Tarjetas</button>
-                    <button className={`tablinks ${activeTab === 'Other' ? 'active' : ''}`} onClick={() => handleTabClick('Other')}>⚙️ Otros</button>
-                    <button className={`tablinks ${activeTab === 'CerrarSesion' ? 'active' : ''}`} onClick={() => handleTabClick('CerrarSesion')}>🔒 Cerrar Sesión</button>
-                </div>
 
-                <div id="Perfil" className={`tabcontent ${activeTab === 'Perfil' ? 'active' : ''}`}>
+
+                    <div id="Perfil" className={`tabcontent ${activeTab === 'Perfil' ? 'active' : ''}`}>
                     <h3>Perfil</h3>
                     <br />
                     <div className="perfil-info">
@@ -111,6 +113,11 @@ export const Perfil = () => {
                     <br /><br />
                     <button className='botonCerrar'><a onClick={logout}>Cerrar sesión</a></button>
                 </div>
+                </div>
+
+
+
+                
             </div>
         </div>
     );

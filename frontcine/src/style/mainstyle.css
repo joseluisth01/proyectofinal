@@ -92,7 +92,7 @@
 .boton2_slider_inicio {
     display: inline-block;
     background-color: #37FF8B;
-    color: white;
+    color: black !important;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;

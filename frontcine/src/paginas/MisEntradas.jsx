@@ -72,20 +72,25 @@ const MisEntradas = () => {
     }
 
     return (
-        <div className="mis-entradas-container">
-            <div className="mis-entradas-content">
+        <div className="fondo">
+            <div className="mis-entradas-container">
                 <h1 className="mis-entradas-title">Mis Entradas</h1>
-                <ul className="mis-entradas-list">
-                    {entradas.map((entrada) => (
-                        <li key={entrada.id} className="mis-entradas-item">
-                            <p className="mis-entradas-pelicula">Película: {entrada.pelicula.nombrePelicula}</p>
-                            <p className="mis-entradas-hora">Hora: {entrada.pelicula.hora}</p>
-                            <p className="mis-entradas-asiento">Asiento: {entrada.asiento_numero}</p>
-                            <p className="mis-entradas-fecha">Fecha: {entrada.fecha}</p>
-                            <button className="mis-entradas-cancel-button" onClick={() => handleCancelarReserva(entrada.id)}>Cancelar Reserva</button>
-                        </li>
-                    ))}
-                </ul>
+
+                <div className="mis-entradas-content">
+                    <ul className="mis-entradas-list">
+                        {entradas.map((entrada) => (
+                            <li key={entrada.id} className="mis-entradas-item">
+                                <div className="mis-entradas-item-container">
+                                    <p className="mis-entradas-pelicula">Película: {entrada.pelicula.nombrePelicula}</p>
+                                    <p className="mis-entradas-asiento">Nº de parcela: {entrada.asiento_numero}</p>
+                                    <p className="mis-entradas-hora">Hora: {entrada.pelicula.hora}</p>
+                                    <p className="mis-entradas-fecha">Fecha: {entrada.fecha}</p>
+                                    <button className="mis-entradas-cancel-button" onClick={() => handleCancelarReserva(entrada.id)}>Cancelar Reserva</button>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     );
