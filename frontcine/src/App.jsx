@@ -12,6 +12,9 @@ import PaginaCompra from './paginas/PaginaCompra'; // Asegúrate de que esta rut
 import { Perfil } from './paginas/Perfil';
 import MisEntradas from './paginas/MisEntradas';
 import { PaginaPago } from './paginas/PaginaPago';
+import AvisoLegal from './paginas/AvisoLegal';
+import PoliticaCookies from './paginas/PoliticaCookies';
+import PoliticaPrivacidad from './paginas/PoliticaPrivacidad';
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
         <Route path='/DetallesPelicula/:idPelicula' element={<DetallesPelicula />} />
         <Route path='/PaginaCompra/:id' element={<PaginaCompra />} />
         <Route path='/PaginaPago' element={<PaginaPago />} />
+        <Route path='/AvisoLegal' element={<AvisoLegal />} />
+        <Route path='/PoliticaCookies' element={<PoliticaCookies />} />
+        <Route path='/PoliticaPrivacidad' element={<PoliticaPrivacidad />} />
       </Routes>
       <Footer />
     </>

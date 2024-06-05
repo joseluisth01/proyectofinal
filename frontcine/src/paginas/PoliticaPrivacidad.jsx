@@ -1,12 +1,12 @@
 import React from 'react';
-import './LegalPages.css';
+import '../style/LegalPages.css';
 
 const PoliticaPrivacidad = () => (
   <div className="legal-page">
     <h1>Política de Privacidad</h1>
     <section>
       <h2>Responsable del Tratamiento</h2>
-      <p>TapacosAutocinemas S.L., con domicilio en Calle Ficticia 123, Córdoba, Andalucía.</p>
+      <p>TapacosAutocinemas S.L., con domicilio en Arenal num 123, Córdoba, Andalucía.</p>
     </section>
     <section>
       <h2>Datos Recogidos</h2>

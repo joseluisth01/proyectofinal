@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import '../style/paginaComprastyle.css';
+import { Link } from 'react-router-dom';
 
 const parcelalibre = '/img/plaza-aparcamiento2.png';
 const parcelaseleccionada = '/img/plaza-aparcamiento-ESCOGIDO.png';
@@ -160,12 +161,18 @@ const PaginaCompra = () => {
                         <button className="reservar-btn" onClick={handleReservar}>
                             COMPRAR
                         </button>
+
+                        <Link className="enlaceestrenos" to='/PaginaPago'>
+                            <button className="reservar-btn">
+                                COMPRAR PRUEBA
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
         </div>
     );
-    
+
 };
 
 export default PaginaCompra;

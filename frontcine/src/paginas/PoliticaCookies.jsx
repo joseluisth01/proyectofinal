@@ -1,5 +1,5 @@
 import React from 'react';
-import './LegalPages.css';
+import '../style/LegalPages.css';
 
 const PoliticaCookies = () => (
   <div className="legal-page">
