@@ -129,8 +129,7 @@ const MisEntradas = () => {
                                         <button className="mis-entradas-cancel-button" onClick={() => openModal(entrada)}>
                                             <i className="fas fa-trash"></i>
                                         </button>
-                                        <p className="mis-entradas-pelicula">{entrada.pelicula.nombrePelicula}</p>
-                                        <div className="flex2 mt-6">
+                                        <div className="flex2">
                                             <div className="ladoizq">
                                                 {posterUrls[entrada.idPelicula] && (
                                                     <img
@@ -141,6 +140,7 @@ const MisEntradas = () => {
                                                 )}
                                             </div>
                                             <div className="ladodrech">
+                                                <p className="mis-entradas-pelicula">{entrada.pelicula.nombrePelicula}</p>
                                                 <div className="flex2 espacio">
                                                     <div className="datoizq2">
                                                         <p className="mis-entradas-asiento">Nº de parcela:</p>
