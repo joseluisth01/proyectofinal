@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Reserva;
 use App\Models\Asientos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +10,7 @@ class ReservaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:sanctum'); // Usar Sanctum para autenticación
     }
 
     public function getReservasPorUsuario()
@@ -42,22 +41,4 @@ class ReservaController extends Controller
             return response()->json(['error' => 'No se pudo cancelar la reserva'], 500);
         }
     }
-   
-public function obtenerReservas($usuarioId)
-    {
-        try {
-            $reservas = Reserva::where('usuario_id', $usuarioId)->get();
-
-            return response()->json([
-                'success' => true,
-                'reservas' => $reservas
-            ], 200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Error al recuperar las reservas'
-            ], 500);
-        }
-    }
-
 }
