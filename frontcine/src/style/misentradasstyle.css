@@ -14,7 +14,7 @@
 }
 
 .mis-entradas-title {
-    font-size: 35px;
+    font-size: 40px;
     text-align: center;
     color: #333;
     font-family: "Bebas Neue", sans-serif;
@@ -31,6 +31,7 @@
 }
 
 .mis-entradas-item-container {
+    position: relative;
     background-color: #fff;
     padding: 40px;
     border-radius: 10px;
@@ -46,18 +47,19 @@
 }
 
 .mis-entradas-cancel-button {
-    display: inline-block;
-    padding: 8px 12px;
-    color: #fff;
-    background-color: #e74c3c;
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    background: none;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 27px;
+    color: #e74c3c;
 }
 
 .mis-entradas-cancel-button:hover {
-    background-color: #c0392b;
+    /* background-color: #c0392b; */
+    color: #c0392b;
 }
 
 .mis-entradas-error {
@@ -68,4 +70,35 @@
 .mis-entradas-no-entradas {
     text-align: center;
     color: #333;
+}
+
+.mis-entradas-pelicula{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.flex2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+
+.datodrcha2{
+    width: 30%;
+    font-size: 18px;
+}
+
+.datoizq2 {
+    width: 35%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.espacio{
+    margin-top: 20px;
 }

@@ -13,28 +13,49 @@ const MisEntradas = () => {
                 setError("Debe iniciar sesión para ver sus entradas");
                 return;
             }
-
+    
             try {
                 const entradasResponse = await fetch(`http://localhost/proyectofinal/back/public/api/reservasPorUsuario`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-
+    
                 if (!entradasResponse.ok) {
                     throw new Error('Error al recuperar las entradas');
                 }
-
+    
                 const entradasData = await entradasResponse.json();
                 setEntradas(entradasData.reservas);
+    
+                // Obtener el idPelicula del primer elemento
+                if (entradasData.reservas.length > 0) {
+                    const idPelicula = entradasData.reservas[0].idPelicula;
+    
+                    // Hacer una solicitud adicional para obtener los detalles de la película
+                    const peliculaResponse = await fetch(`http://localhost/proyectofinal/back/public/api/pelicula/${idPelicula}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+    
+                    if (!peliculaResponse.ok) {
+                        throw new Error('Error al recuperar la película');
+                    }
+    
+                    const peliculaData = await peliculaResponse.json();
+                    alert(`idPelicula: ${peliculaData.pelicula.idPelicula}`);
+                }
             } catch (error) {
-                console.error('Error fetching entradas:', error);
+                console.error('Error fetching data:', error);
                 setError('Ocurrió un error al recuperar sus entradas. Por favor, inténtelo de nuevo más tarde.');
             }
         };
-
+    
         fetchEntradas();
     }, [token]);
+    
+
 
     const handleCancelarReserva = async (idReserva) => {
         try {
@@ -52,7 +73,7 @@ const MisEntradas = () => {
 
             const result = await response.json();
             alert(result.mensaje);
-            setEntradas(entradas.filter(entrada => entrada.id !== idReserva)); // Actualizar la lista de entradas
+            setEntradas(entradas.filter(entrada => entrada.id !== idReserva));
         } catch (error) {
             console.error('Error cancelando la reserva:', error);
             alert('Ocurrió un error al cancelar la reserva');
@@ -81,11 +102,29 @@ const MisEntradas = () => {
                         {entradas.map((entrada) => (
                             <li key={entrada.id} className="mis-entradas-item">
                                 <div className="mis-entradas-item-container">
-                                    <p className="mis-entradas-pelicula">Películaa: {entrada.pelicula.nombrePelicula}</p>
-                                    <p className="mis-entradas-asiento">Nº de parcela: {entrada.asiento_numero}</p>
-                                    <p className="mis-entradas-hora">Hora: {entrada.pelicula.hora}</p>
-                                    <p className="mis-entradas-fecha">Fecha: {entrada.fecha}</p>
-                                    <button className="mis-entradas-cancel-button" onClick={() => handleCancelarReserva(entrada.id)}>Cancelar Reserva</button>
+                                    <button className="mis-entradas-cancel-button" onClick={() => handleCancelarReserva(entrada.id)}>
+                                        <i className="fas fa-trash"></i>
+                                    </button>
+                                    <p className="mis-entradas-pelicula">{entrada.pelicula.nombrePelicula}</p>
+                                    <div className="flex2 espacio">
+                                        <div className="datoizq2">
+                                            <p className="mis-entradas-asiento">Nº de parcela:</p>
+                                        </div>
+                                        <p className="datodrcha2">{entrada.asiento_numero}</p>
+
+                                    </div>
+                                    <div className="flex2">
+                                        <div className="datoizq2">
+                                            <p className="mis-entradas-hora">Hora:</p>
+                                        </div>
+                                        <p className="datodrcha2">{entrada.pelicula.hora}</p>
+                                    </div>
+                                    <div className="flex2">
+                                        <div className="datoizq2">
+                                            <p className="mis-entradas-fecha">Fecha:</p>
+                                        </div>
+                                        <p className="datodrcha2"> {entrada.fecha}</p>
+                                    </div>
                                 </div>
                             </li>
                         ))}

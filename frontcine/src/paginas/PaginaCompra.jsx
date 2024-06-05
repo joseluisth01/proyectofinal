@@ -164,7 +164,7 @@ const PaginaCompra = () => {
 
                         <Link to='/PaginaPago'>
                             <button className="reservar-btn">
-                                COMPRAR PRUEBA
+                                COMPRAR
                             </button>
                         </Link>
                     </div>

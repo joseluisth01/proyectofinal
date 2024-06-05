@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Pelicula;
 use Carbon\Carbon;
 use App\Models\Asientos;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class ReservaController extends Controller
         return response()->json(['reservas' => $reservas], 200);
     }
 
+
     public function cancelarReserva($id)
     {
         try {
@@ -41,4 +43,17 @@ class ReservaController extends Controller
             return response()->json(['error' => 'No se pudo cancelar la reserva'], 500);
         }
     }
+
+    public function getPeliculaPorId($idPelicula)
+    {
+        $pelicula = Pelicula::where('id', $idPelicula)->first();
+    
+        if (!$pelicula) {
+            return response()->json(['error' => 'Película no encontrada'], 404);
+        }
+    
+        return response()->json(['pelicula' => $pelicula], 200);
+    }
+    
+
 }

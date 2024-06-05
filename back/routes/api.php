@@ -44,6 +44,8 @@ Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']
 // Reservas routes
 // Ruta para obtener las reservas de un usuario
 Route::middleware('auth:sanctum')->get('/reservasPorUsuario', [ReservaController::class, 'getReservasPorUsuario']);
+Route::get('pelicula/{idPelicula}', [ReservaController::class, 'getPeliculaPorId']);
+
 
 // Ruta para cancelar una reserva
 Route::middleware('auth:sanctum')->post('/cancelarReserva/{id}', [ReservaController::class, 'cancelarReserva']);
