@@ -5,7 +5,10 @@ import '../style/misentradasstyle.css';
 const MisEntradas = () => {
     const [entradas, setEntradas] = useState([]);
     const [error, setError] = useState(null);
-    const [posterUrls, setPosterUrls] = useState({}); // Nuevo estado para almacenar los pósters
+    const [posterUrls, setPosterUrls] = useState({});
+    const [showModal, setShowModal] = useState(false);
+    const [reservaToCancel, setReservaToCancel] = useState(null);
+
     const token = localStorage.getItem('token');
 
     useEffect(() => {
@@ -29,12 +32,10 @@ const MisEntradas = () => {
                 const entradasData = await entradasResponse.json();
                 setEntradas(entradasData.reservas);
 
-                // Obtener los pósters de las películas
                 const posters = {};
                 for (const entrada of entradasData.reservas) {
                     const idPelicula = entrada.idPelicula;
 
-                    // Obtener la idPelicula correcta desde la API local
                     const peliculaResponse = await fetch(`http://localhost/proyectofinal/back/public/api/pelicula/${idPelicula}`, {
                         headers: {
                             'Authorization': `Bearer ${token}`
@@ -48,7 +49,6 @@ const MisEntradas = () => {
                     const peliculaData = await peliculaResponse.json();
                     const tmdbId = peliculaData.pelicula.idPelicula;
 
-                    // Hacer una solicitud adicional para obtener los detalles de la película desde TMDb
                     const tmdbResponse = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=9b6ecd3e72ca170064c048d4ea07a095`);
                     if (tmdbResponse.ok) {
                         const tmdbData = await tmdbResponse.json();
@@ -88,6 +88,23 @@ const MisEntradas = () => {
         }
     };
 
+    const openModal = (entrada) => {
+        setReservaToCancel(entrada);
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setReservaToCancel(null);
+        setShowModal(false);
+    };
+
+    const confirmCancel = () => {
+        if (reservaToCancel) {
+            handleCancelarReserva(reservaToCancel.id);
+        }
+        closeModal();
+    };
+
     if (!token) {
         return <p className="mis-entradas-error">Debe iniciar sesión para ver sus entradas.</p>;
     }
@@ -110,15 +127,15 @@ const MisEntradas = () => {
                         {entradas.map((entrada) => (
                             <li key={entrada.id} className="mis-entradas-item">
                                 <div className="mis-entradas-item-container">
-                                    <button className="mis-entradas-cancel-button" onClick={() => handleCancelarReserva(entrada.id)}>
+                                    <button className="mis-entradas-cancel-button" onClick={() => openModal(entrada)}>
                                         <i className="fas fa-trash"></i>
                                     </button>
                                     <p className="mis-entradas-pelicula">{entrada.pelicula.nombrePelicula}</p>
-                                    <div className="flex">
+                                    <div className="flex2 mt-6">
                                         <div className="ladoizq">
                                             {posterUrls[entrada.idPelicula] && (
                                                 <img
-                                                    className="movie-poster"
+                                                    className="movie-poster2"
                                                     src={posterUrls[entrada.idPelicula]}
                                                     alt={`Poster de ${entrada.pelicula.nombrePelicula}`}
                                                 />
@@ -152,6 +169,17 @@ const MisEntradas = () => {
                     </ul>
                 </div>
             </div>
+
+            {showModal && reservaToCancel && (
+                <div className="mis-entradas-modal">
+                    <div className="mis-entradas-modal-content">
+                        <h2 className='mis-entradas-pelicula'>Confirmar Cancelación</h2>
+                        <p>¿Seguro que quiere cancelar su reserva para la película {reservaToCancel.pelicula.nombrePelicula} del día {reservaToCancel.fecha} a las {reservaToCancel.pelicula.hora}?</p>
+                        <button onClick={confirmCancel}>Sí</button>
+                        <button onClick={closeModal}>No</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -8,7 +8,7 @@
 }
 
 .mis-entradas-content {
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
     padding: 20px;
 }
@@ -33,9 +33,10 @@
 .mis-entradas-item-container {
     position: relative;
     background-color: #fff;
-    padding: 40px;
+    padding: 50px;
+    padding-top: 40px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 9px rgb(0 0 0 / 49%);
 }
 
 .mis-entradas-pelicula,
@@ -88,17 +89,81 @@
 
 
 .datodrcha2{
-    width: 30%;
+    width: 40%;
     font-size: 18px;
 }
 
 .datoizq2 {
-    width: 35%;
-    text-align: center;
+    width: 60%;
+    text-align: left;
     font-weight: bold;
     font-size: 18px;
+    text-transform: uppercase;
 }
 
 .espacio{
     margin-top: 20px;
+}
+
+.ladoizq{
+    width: 50%;
+}
+
+.ladodrech{
+    width: 50%;
+}
+
+.movie-poster2 {
+    width: 85%;
+    border-radius: 10px;
+}
+
+/* Estilos del modal de MisEntradas */
+.mis-entradas-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+}
+
+.mis-entradas-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+.mis-entradas-modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.mis-entradas-modal-content p {
+    margin-bottom: 30px;
+}
+
+.mis-entradas-modal-content button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.mis-entradas-modal-content button:first-of-type {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.mis-entradas-modal-content button:last-of-type {
+    background-color: #ccc;
+    color: #333;
 }
