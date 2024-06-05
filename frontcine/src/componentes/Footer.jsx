@@ -30,11 +30,11 @@ export const Footer = () => {
         </div>
       </div>
       <div class="avisoslegales_footer">
-            <Link to='/Cartelera' className='linkavisoslegales'>Aviso Legal</Link>
+            <Link to='/AvisoLegal' className='linkavisoslegales'>Aviso Legal</Link>
             <p>|</p>
-            <Link to='/Cartelera' className='linkavisoslegales'>Política de Privacidad</Link>
+            <Link to='/PoliticaPrivacidad' className='linkavisoslegales'>Política de Privacidad</Link>
             <p>|</p>
-            <Link to='/Cartelera' className='linkavisoslegales'>Política de Cookies</Link>
+            <Link to='/PoliticaCookies' className='linkavisoslegales'>Política de Cookies</Link>
         </div>
       <div className="partners">
         <Link to='/Cartelera'>Copyright © 2024 TAPACO CINEMAS. Todos los derechos reservados.</Link>
