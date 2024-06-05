@@ -10,4 +10,9 @@ class Tarjeta extends Model
     use HasFactory;
 
     protected $fillable = ['id_usuario', 'numero', 'fecha_caducidad', 'cvv'];
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'id_usuario');
+    }
 }

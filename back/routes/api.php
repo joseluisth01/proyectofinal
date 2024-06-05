@@ -4,6 +4,7 @@ use App\Http\Controllers\AsientosController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PeliculasControllador;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\TarjetaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,16 @@ Route::middleware('auth:api')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->get('/profile', [AuthController::class, 'getUserProfile']);
+
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    // Rutas para las tarjetas
+    Route::post('/tarjetas', [TarjetaController::class, 'store']);
+    Route::get('/tarjetas/{userId}', [TarjetaController::class, 'getTarjetasPorUsuario']);
+    Route::delete('/tarjetas/{tarjetaId}', [TarjetaController::class, 'deleteTarjeta']);
+});
+
+
+
+
