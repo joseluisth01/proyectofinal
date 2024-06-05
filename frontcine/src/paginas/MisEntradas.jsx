@@ -109,64 +109,64 @@ const MisEntradas = () => {
         return <p className="mis-entradas-error">Debe iniciar sesión para ver sus entradas.</p>;
     }
 
-    if (error) {
-        return <p className="mis-entradas-error">{error}</p>;
-    }
-
-    if (entradas.length === 0) {
-        return <p className="mis-entradas-no-entradas">No tiene entradas reservadas.</p>;
-    }
-
     return (
         <div className="fondo">
             <div className="mis-entradas-container">
                 <h1 className="mis-entradas-title">Mis Entradas</h1>
 
-                <div className="mis-entradas-content">
-                    <ul className="mis-entradas-list">
-                        {entradas.map((entrada) => (
-                            <li key={entrada.id} className="mis-entradas-item">
-                                <div className="mis-entradas-item-container">
-                                    <button className="mis-entradas-cancel-button" onClick={() => openModal(entrada)}>
-                                        <i className="fas fa-trash"></i>
-                                    </button>
-                                    <p className="mis-entradas-pelicula">{entrada.pelicula.nombrePelicula}</p>
-                                    <div className="flex2 mt-6">
-                                        <div className="ladoizq">
-                                            {posterUrls[entrada.idPelicula] && (
-                                                <img
-                                                    className="movie-poster2"
-                                                    src={posterUrls[entrada.idPelicula]}
-                                                    alt={`Poster de ${entrada.pelicula.nombrePelicula}`}
-                                                />
-                                            )}
-                                        </div>
-                                        <div className="ladodrech">
-                                            <div className="flex2 espacio">
-                                                <div className="datoizq2">
-                                                    <p className="mis-entradas-asiento">Nº de parcela:</p>
-                                                </div>
-                                                <p className="datodrcha2">{entrada.asiento_numero}</p>
-                                            </div>
-                                            <div className="flex2">
-                                                <div className="datoizq2">
-                                                    <p className="mis-entradas-hora">Hora:</p>
-                                                </div>
-                                                <p className="datodrcha2">{entrada.pelicula.hora}</p>
-                                            </div>
-                                            <div className="flex2">
-                                                <div className="datoizq2">
-                                                    <p className="mis-entradas-fecha">Fecha:</p>
-                                                </div>
-                                                <p className="datodrcha2"> {entrada.fecha}</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                {error && <p className="mis-entradas-error">{error}</p>}
 
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
+                <div className="mis-entradas-content">
+                    {entradas.length === 0 ? (
+                        <div className="mis-entradas-no-entradas-container">
+                            <p className="mis-entradas-no-entradas">No tienes ninguna reserva realizada</p>
+                        </div>
+                    ) : (
+                        <ul className="mis-entradas-list">
+                            {entradas.map((entrada) => (
+                                <li key={entrada.id} className="mis-entradas-item">
+                                    <div className="mis-entradas-item-container">
+                                        <button className="mis-entradas-cancel-button" onClick={() => openModal(entrada)}>
+                                            <i className="fas fa-trash"></i>
+                                        </button>
+                                        <p className="mis-entradas-pelicula">{entrada.pelicula.nombrePelicula}</p>
+                                        <div className="flex2 mt-6">
+                                            <div className="ladoizq">
+                                                {posterUrls[entrada.idPelicula] && (
+                                                    <img
+                                                        className="movie-poster2"
+                                                        src={posterUrls[entrada.idPelicula]}
+                                                        alt={`Poster de ${entrada.pelicula.nombrePelicula}`}
+                                                    />
+                                                )}
+                                            </div>
+                                            <div className="ladodrech">
+                                                <div className="flex2 espacio">
+                                                    <div className="datoizq2">
+                                                        <p className="mis-entradas-asiento">Nº de parcela:</p>
+                                                    </div>
+                                                    <p className="datodrcha2">{entrada.asiento_numero}</p>
+                                                </div>
+                                                <div className="flex2">
+                                                    <div className="datoizq2">
+                                                        <p className="mis-entradas-hora">Hora:</p>
+                                                    </div>
+                                                    <p className="datodrcha2">{entrada.pelicula.hora}</p>
+                                                </div>
+                                                <div className="flex2">
+                                                    <div className="datoizq2">
+                                                        <p className="mis-entradas-fecha">Fecha:</p>
+                                                    </div>
+                                                    <p className="datodrcha2"> {entrada.fecha}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
             </div>
 
