@@ -81,7 +81,7 @@ const MisEntradas = () => {
                         {entradas.map((entrada) => (
                             <li key={entrada.id} className="mis-entradas-item">
                                 <div className="mis-entradas-item-container">
-                                    <p className="mis-entradas-pelicula">Película: {entrada.pelicula.nombrePelicula}</p>
+                                    <p className="mis-entradas-pelicula">Películaa: {entrada.pelicula.nombrePelicula}</p>
                                     <p className="mis-entradas-asiento">Nº de parcela: {entrada.asiento_numero}</p>
                                     <p className="mis-entradas-hora">Hora: {entrada.pelicula.hora}</p>
                                     <p className="mis-entradas-fecha">Fecha: {entrada.fecha}</p>
