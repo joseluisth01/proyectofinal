@@ -162,11 +162,7 @@ const PaginaCompra = () => {
                             COMPRAR
                         </button>
 
-                        <Link className="enlaceestrenos" to='/PaginaPago'>
-                            <button className="reservar-btn">
-                                COMPRAR PRUEBA
-                            </button>
-                        </Link>
+
                     </div>
                 </div>
             </div>
