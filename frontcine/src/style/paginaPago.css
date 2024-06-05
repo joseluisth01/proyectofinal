@@ -1,4 +1,4 @@
-.divpaginapago{
+.divpaginapago {
     padding: 5%;
 }
 
@@ -23,8 +23,7 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="checkbox"]
-{
+input[type="checkbox"] {
     width: 100%;
     padding: 10px;
     border-radius: 3px;
@@ -48,4 +47,89 @@ input[type="checkbox"] {
     width: auto;
     display: inline-block;
     margin-right: 5px;
+}
+
+.bloqueizq_comida {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    width: 60%;
+    margin-left: 10%;
+}
+
+.preguntacomida {
+    padding: 20px;
+    border: 1px solid black;
+    background-color: black;
+    color: #37FF8B;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.comidas {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.detallescomida{
+    width: 60%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.flex3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    font-size: 19px;
+    text-align: justify;
+    height: 400px;
+}
+
+.nombrecomida{
+    font-size: 45px;
+}
+
+.precioactualcomida{
+    font-size: 23px;
+    margin-top: 15px;
+}
+
+.precioanteriorcomida{
+    text-decoration: line-through;
+}
+
+.descripcioncomida{
+    margin-top: 15px;
+
+}
+
+.comida1{
+    padding-top: 30px;
+}
+
+
+.detalles-pelicula-boton {
+    padding: 10px 20px;
+    font-size: 28px;
+    cursor: pointer;
+    border: none;
+    background-color: black;
+    color: #38ff8b;
+    border-radius: 5px;
+    margin-top: 30px;
+    width: 100%;
+    font-family: "Bebas Neue", sans-serif;
+    transition: background-color .5s, color .5s;
+}
+
+.comida-img{
+    width: 100%;
+    height: 100%;
+}
+
+.imgcomida{
+    width: 40%;
+    height: 100%;
+    object-fit: contain;
 }
