@@ -3,18 +3,17 @@
 /* perfil.css */
 
 /* Existing styles */
-.perfil-container {
+.perfill-container {
     max-width: 800px;
     margin: 0 auto;
-    margin-top: 8rem;
-    margin-bottom: 35rem;
-    padding: 20px;
+    padding-top: 10%;
     /* background-color: #d6d5d5bd; */
     border-radius: 8px;
     /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    padding-bottom: 8%;
 }
 
-.perfil-container h1 {
+.perfill-container h1 {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333333;
@@ -68,7 +67,7 @@ body {
 
 /* Style the tab */
 .tab {
-    float: left;
+    /* float: left; */
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     width: 30%;
@@ -102,13 +101,14 @@ body {
 
 /* Style the tab content */
 .tabcontent {
-    float: left;
+    /* float: left; */
     padding: 0px 12px;
     border: 1px solid #ccc;
     width: 70%;
     border-left: none;
     height: 300px;
     display: none; /* Hidden by default */
+    background-color: white;
 }
 
 /* Show tab content */
@@ -165,4 +165,8 @@ body {
     font-size: 40px;
     font-weight: bold;
     color: #000000;
+}
+
+.alineadoflex{
+    display: flex;
 }

@@ -1,0 +1,71 @@
+.mis-entradas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.mis-entradas-content {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+}
+
+.mis-entradas-title {
+    font-size: 35px;
+    text-align: center;
+    color: #333;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.mis-entradas-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mis-entradas-item {
+    margin-bottom: 30px;
+}
+
+.mis-entradas-item-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mis-entradas-pelicula,
+.mis-entradas-hora,
+.mis-entradas-asiento,
+.mis-entradas-fecha {
+    margin: 5px 0;
+    color: #555;
+}
+
+.mis-entradas-cancel-button {
+    display: inline-block;
+    padding: 8px 12px;
+    color: #fff;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.mis-entradas-cancel-button:hover {
+    background-color: #c0392b;
+}
+
+.mis-entradas-error {
+    color: red;
+    text-align: center;
+}
+
+.mis-entradas-no-entradas {
+    text-align: center;
+    color: #333;
+}

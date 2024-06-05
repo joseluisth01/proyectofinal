@@ -32,4 +32,9 @@ class Pelicula extends Model
             }
         });
     }
+
+    public function asientos()
+    {
+        return $this->hasMany(Asientos::class, 'idPelicula');
+    }
 }

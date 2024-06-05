@@ -8,7 +8,7 @@ import { ModoAdmin } from './paginas/ModoAdmin';
 import { Cartelera } from './paginas/Cartelera';
 import { Estrenos } from './paginas/Estrenos';
 import { DetallesPelicula } from './paginas/DetallesPelicula';
-import { PaginaCompra } from './paginas/PaginaCompra';
+import PaginaCompra from './paginas/PaginaCompra'; // Asegúrate de que esta ruta es correcta
 import { Perfil } from './paginas/Perfil';
 import MisEntradas from './paginas/MisEntradas';
 import { PaginaPago } from './paginas/PaginaPago';
@@ -26,7 +26,7 @@ function App() {
         <Route path='/Entradas' element={<MisEntradas />} />
         <Route path='/DetallesPelicula/:idPelicula' element={<DetallesPelicula />} />
         <Route path='/PaginaCompra/:id' element={<PaginaCompra />} />
-        <Route path='/PaginaPago' element={<PaginaPago/>} />
+        <Route path='/PaginaPago' element={<PaginaPago />} />
       </Routes>
       <Footer />
     </>
@@ -34,3 +34,4 @@ function App() {
 }
 
 export default App;
+

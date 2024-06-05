@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 // Authentication routes
 Route::post('/register', [AuthController::class, 'createUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
@@ -41,10 +42,12 @@ Route::get('/asientos/{idPelicula}', [AsientosController::class, 'getAsientos'])
 Route::post('/reservarAsientos', [AsientosController::class, 'reservarAsientos']);
 
 // Reservas routes
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/reservas', [ReservaController::class, 'getReservasPorUsuario']);
-    Route::delete('/reservas/{id}', [ReservaController::class, 'cancelarReserva']);
-});
+// Ruta para obtener las reservas de un usuario
+Route::middleware('auth:sanctum')->get('/reservasPorUsuario', [ReservaController::class, 'getReservasPorUsuario']);
+
+// Ruta para cancelar una reserva
+Route::middleware('auth:sanctum')->post('/cancelarReserva/{id}', [ReservaController::class, 'cancelarReserva']);
+
 Route::middleware('auth:api')->group(function () {
     Route::get('/reservas/{usuarioId}', [ReservaController::class, 'obtenerReservas']);
 });
