@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 
 const hamburguesa = '/img/hamburguesa.png';
+const hotdog = '/img/hotdog.png';
+const cubo1 = '/img/cubo1.png';
+const tapaquitos = '/img/tapaquitos.png';
+
 
 import '../style/paginaPago.css';
 
@@ -59,73 +63,101 @@ export const PaginaPago = () => {
 
     return (
         <div className='fondo'>
-            {/*             <div className='divpaginapago'>
-                <div className="pago-container">
-                    <h1>Información de Pago</h1>
-                    <div className="form-group">
-                        <label>Email:</label>
-                        <input type="email" placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <div className="flex4">
+                <div className='bloqueizq_comida'>
+                    <div className='preguntacomida'>
+                        <h1>¿Quieres añadir alguno de estos productos a tu compra?</h1>
                     </div>
-                    <div className="form-group">
-                        <label>Número de Tarjeta de Crédito:</label>
-                        <input type="text" placeholder="#### #### #### ####" value={tarjeta} onChange={(e) => setTarjeta(e.target.value)} />
+                    <div className='comidas'>
+                        <div className="comida1">
+                            <div className="flex3">
+                                <div className='imgcomida'>
+                                    <img src={hamburguesa} alt='Garfield Promoción' className='comida-img' />
+                                </div>
+                                <div className='detallescomida'>
+                                    <h2 className='nombrecomida'>Menú Burger</h2>
+                                    <p className="precioactualcomida">PRECIO ACTUAL 10,00€</p>
+                                    <p className="precioanteriorcomida">Precio anterior 13,00€</p>
+                                    <p className='descripcioncomida'>
+                                        ¡Precio exclusivo WEB! A elegir entre nuestras hamburguesas (Rita burger, Classic burger, Crispy chicken o Veggie burger) con patatas y bebidas incluida.
+                                    </p>
+                                    <button className="detalles-pelicula-boton2 mb-6">AÑADIR</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="comida1">
+                            <div className="flex3">
+                                <div className='imgcomida'>
+                                    <img src={hotdog} alt='Garfield Promoción' className='comida-img' />
+                                </div>
+                                <div className='detallescomida'>
+                                    <h2 className='nombrecomida'>Hot Dog</h2>
+                                    <p className="precioactualcomida">PRECIO ACTUAL 8,00€</p>
+                                    <p className="precioanteriorcomida">Precio anterior 10,00€</p>
+                                    <p className='descripcioncomida'>
+                                        ¡Precio exclusivo WEB! A elegir entre uno de nuestros hot dogs, bebidas incluida. Opción sin gluten disponible
+                                    </p>
+                                    <button className="detalles-pelicula-boton2 mb-6">AÑADIR</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="comida1">
+                            <div className="flex3">
+                                <div className='imgcomida'>
+                                    <img src={cubo1} alt='Garfield Promoción' className='comida-img' />
+                                </div>
+                                <div className='detallescomida'>
+                                    <h2 className='nombrecomida'>Combo Tapacos</h2>
+                                    <p className="precioactualcomida">PRECIO ACTUAL 8,00€</p>
+                                    <p className="precioanteriorcomida">Precio anterior 10,00€</p>
+                                    <p className='descripcioncomida'>
+                                        Palomitero de edición limitada de Tapacos Autocinemas + palomitas medianas + 2 refrescos.                                </p>
+                                    <button className="detalles-pelicula-boton2 mb-6">AÑADIR</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="comida1">
+                            <div className="flex3">
+                                <div className='imgcomida'>
+                                    <img src={tapaquitos} alt='Garfield Promoción' className='comida-img' />
+                                </div>
+                                <div className='detallescomida'>
+                                    <h2 className='nombrecomida'>Combo Tapaquitos</h2>
+                                    <p className="precioactualcomida">PRECIO ACTUAL 5,00€</p>
+                                    <p className="precioanteriorcomida">Precio anterior 7,00€</p>
+                                    <p className='descripcioncomida'>
+                                        Palomitas pequeañs + Refrescos de 0,5 l. Con tu pre-compra no tendrás un coste adicional por servicio de entrega a coche.
+                                    </p>
+                                    <button className="detalles-pelicula-boton2 mb-6">AÑADIR</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div className="form-group">
-                        <label>Fecha de Caducidad:</label>
-                        <input type="text" placeholder="MM/AA" />
-                    </div>
-                    <div className="form-group">
-                        <label>CVV:</label>
-                        <input type="text" placeholder="CVV" />
-                    </div>
-                    <div className="form-group">
-                        <input type="checkbox" checked={aceptar} onChange={(e) => setAceptar(e.target.checked)} />
-                        <label>Acepto los términos y condiciones</label>
-                    </div>
-                    <button onClick={handlePago}>Pagar</button>
                 </div>
 
-            </div> */}
-            <div className='bloqueizq_comida'>
-                <div className='preguntacomida'>
-                    <h1>¿Quieres añadir alguno de estos productos a tu compra?</h1>
-                </div>
-                <div className='comidas'>
-                    <div className="comida1">
-                        <div className="flex3">
-                            <div className='imgcomida'>
-                                <img src={hamburguesa} alt='Garfield Promoción' className='comida-img' />
-                            </div>
-                            <div className='detallescomida'>
-                                <h2 className='nombrecomida'>Menú Burger</h2>
-                                <p class="precioactualcomida">PRECIO ACTUAL 10,00€</p>
-                                <p class="precioanteriorcomida">Precio anterior 13,00€</p>
-                                <p className='descripcioncomida'>
+
+                <div className="bloquedrchacomida">
+                    <div className='preguntacomida'>
+                        <h1>Productos</h1>
+                    </div>
+                    <div className="flex5">
+                        <div className='detallescomida'>
+                            <p className="precioactualcomida">PRECIO ACTUAL 10,00€</p>
+                            <p className='descripcioncomida'>
                                 ¡Precio exclusivo WEB! A elegir entre nuestras hamburguesas (Rita burger, Classic burger, Crispy chicken o Veggie burger) con patatas y bebidas incluida.
-                                </p>
-                                <button className="detalles-pelicula-boton mb-6">AÑADIR</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="comida1">
-                        <div className="flex3">
-                            <div className='imgcomida'>
-                                <img src={hamburguesa} alt='Garfield Promoción' className='comida-img' />
-                            </div>
-                            <div className='detallescomida'>
-                                <h2 className='nombrecomida'>Menú Burger</h2>
-                                <p class="precioactualcomida">PRECIO ACTUAL 10,00€</p>
-                                <p class="precioanteriorcomida">Precio anterior 13,00€</p>
-                                <p className='descripcioncomida'>
-                                ¡Precio exclusivo WEB! A elegir entre nuestras hamburguesas (Rita burger, Classic burger, Crispy chicken o Veggie burger) con patatas y bebidas incluida. Opción sin gluten disponible.
-                                </p>
-                            </div>
+                            </p>
+                            <button className="detalles-pelicula-boton2 mb-6">AÑADIR</button>
                         </div>
                     </div>
 
                 </div>
+
             </div>
+
         </div>
 
     )

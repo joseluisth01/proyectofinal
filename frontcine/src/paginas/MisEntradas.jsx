@@ -143,7 +143,7 @@ const MisEntradas = () => {
                                                 <p className="mis-entradas-pelicula">{entrada.pelicula.nombrePelicula}</p>
                                                 <div className="flex2 espacio">
                                                     <div className="datoizq2">
-                                                        <p className="mis-entradas-asiento">Nº de parcela:</p>
+                                                        <p className="mis-entradas-asiento">Parcela:</p>
                                                     </div>
                                                     <p className="datodrcha2">{entrada.asiento_numero}</p>
                                                 </div>
