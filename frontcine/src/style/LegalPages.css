@@ -1,0 +1,28 @@
+.legal-page {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .legal-page h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .legal-page h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #555;
+  }
+  
+  .legal-page p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  .legal-page strong {
+    color: #333;
+  }
+  

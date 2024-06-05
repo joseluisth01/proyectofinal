@@ -1,5 +1,7 @@
-import React from 'react'
 import '../style/footerstyle.css';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Footer = () => {
   return (
@@ -14,7 +16,7 @@ export const Footer = () => {
         </div>
         <div className='infotapacos'>
           <h3>TAPACOS CINEMAS</h3>
-          <p className='linkfooter'>Cartelera</p>
+          <Link to='/Cartelera' className='linkfooter'>Cartelera</Link>
           <p className='linkfooter'>Ofertas</p>
           <p className='linkfooter'>VOSE</p>
           <p className='linkfooter'>Tarjeta Socio Tapacos</p>
@@ -28,14 +30,14 @@ export const Footer = () => {
         </div>
       </div>
       <div class="avisoslegales_footer">
-            <p className='linkavisoslegales'>Aviso Legal</p>
+            <Link to='/Cartelera' className='linkavisoslegales'>Aviso Legal</Link>
             <p>|</p>
-            <p className='linkavisoslegales'>Política de Privacidad</p>
+            <Link to='/Cartelera' className='linkavisoslegales'>Política de Privacidad</Link>
             <p>|</p>
-            <p className='linkavisoslegales'>Política de Cookies</p>
+            <Link to='/Cartelera' className='linkavisoslegales'>Política de Cookies</Link>
         </div>
       <div className="partners">
-        <p>Copyright © 2024 TAPACO CINEMAS. Todos los derechos reservados.</p>
+        <Link to='/Cartelera'>Copyright © 2024 TAPACO CINEMAS. Todos los derechos reservados.</Link>
       </div>
     </div>
   )
