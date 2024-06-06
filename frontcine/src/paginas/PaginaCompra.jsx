@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import {useNavigate ,useParams, useLocation } from 'react-router-dom';
 import '../style/paginaComprastyle.css';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +16,7 @@ const PaginaCompra = () => {
     const [seleccionados, setSeleccionados] = useState([]);
     const [deseleccionados, setDeseleccionados] = useState([]);
     const token = localStorage.getItem('token');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchAsientos = async () => {
@@ -93,6 +94,15 @@ const PaginaCompra = () => {
         }
     };
 
+    const handleComprar = () => {
+        navigate('/PaginaPago', {
+            state: { 
+                id, 
+                seleccionados 
+            }
+        });
+    };
+
     const formatDateToSpanish = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('es-ES', {
@@ -158,15 +168,10 @@ const PaginaCompra = () => {
                                 </React.Fragment>
                             ))}
                         </div>
-                        {/* <button className="reservar-btn" onClick={handleReservar}>
+                 
+                        <button className="reservar-btn" onClick={handleComprar}>
                             COMPRAR
-                        </button> */}
-
-                        <Link to='/PaginaPago'>
-                            <button className="reservar-btn">
-                                COMPRAR
-                            </button>
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
