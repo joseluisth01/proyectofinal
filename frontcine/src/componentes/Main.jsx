@@ -28,10 +28,7 @@ export const Main = () => {
               <li>📌 2. Menciona a la persona que te llevarías a verla.</li>
               <li>📌 3. Haber visto la película en Tapacos Autocinemas y estar en posesión de la entrada.</li>
             </ul>
-            <p>Tienes hasta el 15 de mayo a las 23:55 horas para participar (huso horario peninsular).</p>
-            Bases legales: <a href='https://BasesLegalesDeGarfield.com' target='_blank' rel='noopener noreferrer'>
-              https://BasesLegalesDeGarfield.com
-            </a>
+            <p>Tienes hasta el 15 de Junio a las 23:55 horas para participar (huso horario peninsular).</p>
           </div>
           <img src={garfieldImg} alt='Garfield Promoción' className='garfield-img' />
         </section>
@@ -81,17 +78,12 @@ export const Main = () => {
           <div class="info-section">
             <h1 class="title">TAPACOS Autocinemas</h1>
             <p class="address">C. del Guadalquivir. 14010, Córdoba</p>
-            <p class="office-hours">Oficina (horario de oficina, fuera de horario, contestador con la prgramación)</p>
             <p class="contact">Tel : 963248910</p>
-            <p class="email">mail : tapacosautocinemas@hotmail.com</p>
+            <p class="email">Mail : info@tapacosautocinemas.com</p>
             <p class="summer-hours">Verano: Abierto todos los días</p>
             <p class="winter-closed">Invierno:L,M: Cerrado</p>
             <p class="winter-open">Invierno:J,V,S,D: Abierto</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">f</a>
-              <a href="#" class="social-icon">G+</a>
-              <a href="#" class="social-icon">♠</a>
-            </div>
+
           </div>
           <div class="map-section">
             <iframe

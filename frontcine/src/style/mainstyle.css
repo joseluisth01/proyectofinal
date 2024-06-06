@@ -356,10 +356,12 @@
   align-items: center;
   /* height: 100vh; */
   color: white;
+  width: 100%;
 }
 
 .info-section {
   padding: 20px;
+  width: 50%;
 }
 
 .title {
@@ -391,4 +393,5 @@
 .map-section img {
   max-width: 400px;
   height: auto;
+  width: 50%;
 }
