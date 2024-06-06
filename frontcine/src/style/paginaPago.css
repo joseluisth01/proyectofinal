@@ -420,3 +420,9 @@ input[type="checkbox"] {
     transition: none;
     opacity: 1;
 }
+
+/* Añadir clase para enlace deshabilitado */
+.disabled-link {
+    pointer-events: none;
+    color: gray;
+}

@@ -18,11 +18,15 @@ export const PaginaPago = () => {
     const [totalEntradas, setTotalEntradas] = useState(0); // Estado para el total de las entradas
     const [productos, setProductos] = useState([]); // Estado para los productos añadidos
     const [showModal, setShowModal] = useState(false); // Estado para mostrar el modal
+    const [nombre, setNombre] = useState('');
+    const [apellidos, setApellidos] = useState('');
+    const [matricula, setMatricula] = useState('');
+    const [fechaCaducidad, setFechaCaducidad] = useState('');
+    const [cvv, setCvv] = useState('');
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
 
     useEffect(() => {
-
         // Calcula el total de las entradas basado en las parcelas seleccionadas
         const total = seleccionados.length * 10;
         setTotalEntradas(total);
@@ -49,11 +53,6 @@ export const PaginaPago = () => {
     };
 
     const handleReservar = async () => {
-        if (!token) {
-            alert("Debe iniciar sesión para reservar asientos");
-            return;
-        }
-
         try {
             const userIdResponse = await fetch('http://localhost/proyectofinal/back/public/api/getId', {
                 method: 'POST',
@@ -83,13 +82,25 @@ export const PaginaPago = () => {
                     )
                 );
                 setSeleccionados([]);
+                cerrarModal(); // Close the modal after successful reservation
             } else {
                 alert(responseData.error || 'Ocurrió un error al reservar los asientos');
             }
         } catch (error) {
-            console.error('Error reservando asientos:', error);
-            alert('Ocurrió un error al reservar los asientos');
+
         }
+    };
+
+    const isFormValid = () => {
+        return (
+            nombre.trim() !== '' &&
+            apellidos.trim() !== '' &&
+            email.trim() !== '' &&
+            matricula.trim() !== '' &&
+            tarjeta.trim() !== '' &&
+            fechaCaducidad.trim() !== '' &&
+            cvv.trim() !== ''
+        );
     };
 
     const totalProductos = productos.reduce((acc, producto) => acc + producto.precio, 0);
@@ -210,32 +221,32 @@ export const PaginaPago = () => {
                         <button class="close-btn" onClick={cerrarModal}>X</button>
                         <form>
                             <div className="user-box">
-                                <input className='input2' type="text" required />
+                                <input className='input2' type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
                                 <label>Nombre</label>
                             </div>
                             <div className="user-box">
-                                <input className='input2' type="text" required />
+                                <input className='input2' type="text" required value={apellidos} onChange={(e) => setApellidos(e.target.value)} />
                                 <label>Apellidos</label>
                             </div>
                             <div className="user-box">
-                                <input className='input2' type="email" required />
+                                <input className='input2' type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                                 <label>Correo</label>
                             </div>
                             <div className="user-box">
-                                <input className='input2' type="text" required />
+                                <input className='input2' type="text" required value={matricula} onChange={(e) => setMatricula(e.target.value)} />
                                 <label>Matrícula</label>
                             </div>
                             <div className="user-box">
-                                <input className='input2' type="text" required />
+                                <input className='input2' type="text" required value={tarjeta} onChange={(e) => setTarjeta(e.target.value)} />
                                 <label>Num de Tarjeta</label>
                             </div>
                             <div className="flex">
                                 <div className="user-box mr-3">
-                                    <input className='input2' type="text" required />
+                                    <input className='input2' type="text" required value={fechaCaducidad} onChange={(e) => setFechaCaducidad(e.target.value)} />
                                     <label>Fecha de Caducidad</label>
                                 </div>
                                 <div className="user-box">
-                                    <input className='input2' type="text" required />
+                                    <input className='input2' type="text" required value={cvv} onChange={(e) => setCvv(e.target.value)} />
                                     <label>CVV</label>
                                 </div>
                             </div>
@@ -244,11 +255,9 @@ export const PaginaPago = () => {
                                     <input type="checkbox" class="ui-checkbox" />
                                     <p class="sisi">Recordar tarjeta</p>
                                 </div>
-
                             </div>
-
                             <center>
-                                <a href="#" onClick={handleReservar}>
+                                <a href="#" onClick={handleReservar} className={`comprar-link ${isFormValid() ? '' : 'disabled-link'}`}>
                                     COMPRAR
                                     <span></span>
                                 </a>
