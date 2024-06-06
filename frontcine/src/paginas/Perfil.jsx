@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/perfil.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Perfil = () => {
     const [user, setUser] = useState(null);
@@ -97,7 +99,7 @@ export const Perfil = () => {
         e.preventDefault();
         const token = localStorage.getItem('token');
         if (!token) {
-            alert("Debe iniciar sesión para añadir una tarjeta");
+            toast.warn("Debe iniciar sesión para añadir una tarjeta");
             return;
         }
 
@@ -116,21 +118,21 @@ export const Perfil = () => {
             }
 
             const data = await response.json();
-            alert('Tarjeta añadida exitosamente');
+            toast.success('Tarjeta añadida exitosamente');
             setShowAddCardModal(false);
             setNewCard({ numero: '', fecha_caducidad: '', cvv: '' });
 
             setTarjetas(prevTarjetas => [...prevTarjetas, data]);
         } catch (error) {
             console.error('Error adding card:', error);
-            alert('Ocurrió un error al añadir la tarjeta. Por favor, inténtalo de nuevo más tarde.');
+            toast.error('Ocurrió un error al añadir la tarjeta. Por favor, inténtalo de nuevo más tarde.');
         }
     };
 
     const handleDeleteCard = async (tarjetaId) => {
         const token = localStorage.getItem('token');
         if (!token) {
-            alert("Debe iniciar sesión para eliminar la tarjeta");
+            toast.error("Debe iniciar sesión para eliminar la tarjeta");
             return;
         }
 
@@ -148,10 +150,10 @@ export const Perfil = () => {
             }
 
             setTarjetas(prevTarjetas => prevTarjetas.filter(tarjeta => tarjeta.id !== tarjetaId));
-            alert('Tarjeta eliminada exitosamente');
+            toast.success('Tarjeta eliminada exitosamente');
         } catch (error) {
             console.error('Error deleting card:', error);
-            alert('Ocurrió un error al eliminar la tarjeta. Por favor, inténtalo de nuevo más tarde.');
+            toast.error('Ocurrió un error al eliminar la tarjeta. Por favor, inténtalo de nuevo más tarde.');
         }
     };
 

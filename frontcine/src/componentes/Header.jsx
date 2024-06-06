@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import '../style/headerestilo.css';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../style/headerestilo.css';
 
 export const Header = () => {
     const [usuarioImg, setUsuarioImg] = useState('/img/usuario.png');
@@ -80,7 +82,7 @@ export const Header = () => {
             })
             .catch((err) => {
                 console.log(err.message);
-                alert(err.message);
+                toast.error(err.message);
             });
     };
 
@@ -104,8 +106,12 @@ export const Header = () => {
                 setIsLoggedIn(true);
                 console.log('Token guardado en el localStorage:', respuesta.token);
                 console.log('Nombre del usuario:', respuesta.nombre);
+                toast.success('Usuario registrado correctamente');
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err);
+                toast.error('Error al registrar usuario');
+            });
     };
 
     const datosregistro = {
@@ -118,6 +124,7 @@ export const Header = () => {
 
     return (
         <header className={`divheader ${headerSolid ? 'header-solid' : ''}`}>
+            <ToastContainer />
             <a href='/' className="logoheader" data-text="Awesome">
                 <span className="actual-text">&nbsp;TAPACOS</span>
                 <span aria-hidden="true" className="hover-text">&nbsp;TAPACOS&nbsp;</span>
@@ -183,4 +190,3 @@ export const Header = () => {
         </header>
     );
 };
-

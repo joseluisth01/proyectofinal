@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../style/modoAdmin.css';
 import { Header } from '../componentes/Header'
 
@@ -29,6 +31,7 @@ export const ModoAdmin = () => {
                 setMovies(prevMovies => (page === 1 ? data.results : [...prevMovies, ...data.results]));
             } catch (error) {
                 console.error('Error fetching data:', error);
+                toast.error('Error fetching data');
             } finally {
                 setLoading(false);
             }
@@ -48,7 +51,7 @@ export const ModoAdmin = () => {
 
     const insertarPelicula = (idPelicula, nombrePelicula) => {
         if (!fecha || !hora) {
-            alert("Debes rellenar todos los campos de fecha y hora antes de añadir una película.");
+            toast.warn("Debes rellenar todos los campos de fecha y hora antes de añadir una película.");
             return;
         }
 
@@ -65,9 +68,12 @@ export const ModoAdmin = () => {
             .then((resultado) => resultado.json())
             .then((respuesta) => {
                 console.log('Película insertada correctamente');
-                alert("Película añadida correctamente");
+                toast.success("Película añadida correctamente");
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.error('Error:', err);
+                toast.error('Ocurrió un error al añadir la película');
+            });
     };
 
     const insertarEstreno = (idPelicula, nombrePelicula) => {
@@ -84,17 +90,20 @@ export const ModoAdmin = () => {
         fetch(url2, datosPeliculaEstrenos)
             .then((resultado) => resultado.json())
             .then((respuesta) => {
-                console.log('Proximo estreno insertado correctamente');
-                alert("Próximo estreno añadido correctamente");
+                console.log('Próximo estreno insertado correctamente');
+                toast.success("Próximo estreno añadido correctamente");
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.error('Error:', err);
+                toast.error('Ocurrió un error al añadir el próximo estreno');
+            });
     };
 
     const today = new Date().toISOString().split('T')[0];
 
     return (
         <div className="fondo">
-            
+            <ToastContainer />
             <div className="movie-list-container">
                 <div className='buscadores'>
                     <div className="input-container">

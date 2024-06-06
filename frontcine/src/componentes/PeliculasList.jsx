@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../style/peliculasList.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PeliculasList = () => {
     const [peliculas, setPeliculas] = useState([]);
@@ -105,7 +107,7 @@ const PeliculasList = () => {
             setPeliculas(prevPeliculas => prevPeliculas.filter(pelicula => pelicula.id !== idPelicula));
         } catch (error) {
             console.error('Error:', error);
-            alert('Ocurrió un error al borrar la película');
+            toast.error('Ocurrió un error al borrar la película');
         }
     };
 

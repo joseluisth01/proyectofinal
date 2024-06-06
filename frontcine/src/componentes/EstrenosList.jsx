@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../style/estrenosstyle.css';
 
 export const EstrenosList = () => {
     const [peliculas, setPeliculas] = useState([]);
     const [loading, setLoading] = useState(false);
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
-
 
     useEffect(() => {
         const fetchPeliculas = async () => {
@@ -56,6 +57,7 @@ export const EstrenosList = () => {
                 setPeliculas(moviesWithDetails);
             } catch (error) {
                 console.error('Error fetching peliculas:', error);
+                toast.error('Error fetching peliculas');
             } finally {
                 setLoading(false);
             }
@@ -79,16 +81,17 @@ export const EstrenosList = () => {
                 throw new Error('Error al borrar estreno');
             }
             const data = await response.json();
-            alert(data.message);
+            toast.success(data.message);
             setPeliculas(prevPeliculas => prevPeliculas.filter(pelicula => pelicula.id !== idPelicula));
         } catch (error) {
             console.error('Error:', error);
-            alert('Ocurrió un error al borrar el estreno');
+            toast.error('Ocurrió un error al borrar el estreno');
         }
     };
 
     return (
         <div className="estrenos-container">
+            <ToastContainer />
             <h2 className='tituloEstreno'>Próximos estrenos</h2>
             {loading ? (
                 <p>Loading...</p>
@@ -116,9 +119,6 @@ export const EstrenosList = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-
-
-
         </div>
     );
 };

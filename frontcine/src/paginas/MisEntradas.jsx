@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from '../componentes/Header';
 import '../style/misentradasstyle.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MisEntradas = () => {
     const [entradas, setEntradas] = useState([]);
@@ -80,11 +82,11 @@ const MisEntradas = () => {
             }
 
             const result = await response.json();
-            alert(result.mensaje);
+            toast.error(result.mensaje);
             setEntradas(entradas.filter(entrada => entrada.id !== idReserva));
         } catch (error) {
             console.error('Error cancelando la reserva:', error);
-            alert('Ocurrió un error al cancelar la reserva');
+            toast.error('Ocurrió un error al cancelar la reserva');
         }
     };
 
