@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "react-modal": "^3.16.1",
-    "react-toastify": "^10.0.5"
-  }
-}
