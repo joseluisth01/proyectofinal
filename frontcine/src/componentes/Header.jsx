@@ -56,6 +56,7 @@ export const Header = () => {
     const logout = () => {
         localStorage.clear();
         setIsLoggedIn(false);
+        toast.info("Has cerrado sesión correctamente");
         navigate('/');
     };
 
@@ -75,7 +76,8 @@ export const Header = () => {
                 localStorage.setItem('token', respuesta.token);
                 localStorage.setItem('isAdmin', respuesta.isAdmin);
                 localStorage.setItem('nombre', respuesta.nombre);
-                setIsLoggedIn(true); // Usuario ha iniciado sesión
+                setIsLoggedIn(true);
+                toast.info("Has iniciado sesión correctamente");
                 console.log('Token guardado en el localStorage:', respuesta.token);
                 console.log('Nombre del usuario:', respuesta.nombre);
                 navigate('/');
