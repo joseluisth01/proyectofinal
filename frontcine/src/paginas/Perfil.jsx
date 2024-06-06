@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import '../style/perfil.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Modal from 'react-modal';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
+
+Modal.setAppElement('#root');
 
 export const Perfil = () => {
     const [user, setUser] = useState(null);
@@ -12,10 +15,11 @@ export const Perfil = () => {
     const [showAddCardModal, setShowAddCardModal] = useState(false);
     const [newCard, setNewCard] = useState({
         numero: '',
-        fecha_caducidad: '',
+        fecha_caducidad: '', // Campo de fecha unificado
         cvv: ''
     });
     const [tarjetas, setTarjetas] = useState([]);
+    const [selectedCard, setSelectedCard] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -75,7 +79,7 @@ export const Perfil = () => {
 
                 const data = await response.json();
                 setTarjetas(data.tarjetas);
-                console.log(data)
+                console.log(data);
             } catch (error) {
                 console.error('Error fetching user cards:', error);
             }
@@ -122,9 +126,8 @@ export const Perfil = () => {
             const data = await response.json();
             toast.success('Tarjeta añadida exitosamente');
             setShowAddCardModal(false);
-            setNewCard({ numero: '', fecha_caducidad: '', cvv: '' });
-
-            setTarjetas(prevTarjetas => [...prevTarjetas, data]);
+            setNewCard({ numero: '', fecha_caducidad: '', cvv: '' }); // Reinicia el estado
+            setTarjetas(prevTarjetas => [...prevTarjetas, data]); // Actualiza la lista de tarjetas
         } catch (error) {
             console.error('Error adding card:', error);
             toast.error('Ocurrió un error al añadir la tarjeta. Por favor, inténtalo de nuevo más tarde.');
@@ -159,6 +162,12 @@ export const Perfil = () => {
         }
     };
 
+    const handleCardSelection = (e) => {
+        const selectedCardId = e.target.value;
+        const card = tarjetas.find(tarjeta => tarjeta.id === parseInt(selectedCardId));
+        setSelectedCard(card);
+    };
+
     if (!user) {
         return <div>Loading...</div>;
     }
@@ -181,7 +190,6 @@ export const Perfil = () => {
                     </div>
 
                     <div id="Perfil" className={`tabcontent ${activeTab === 'Perfil' ? 'active' : ''}`}>
-                        <h3>Perfil</h3>
                         <br />
                         <div className="perfil-info">
                             <div className="field">
@@ -196,24 +204,45 @@ export const Perfil = () => {
                     </div>
 
                     <div id="Settings" className={`tabcontent ${activeTab === 'Settings' ? 'active' : ''}`}>
-                        <h3>Mis Tarjetas</h3>
                         <br />
                         <p>Estas son tus tarjetas:</p>
-                        <div className="cards-container">
+                        <select onChange={handleCardSelection}>
+                            <option value="">Selecciona una tarjeta</option>
                             {tarjetas.map((tarjeta) => (
-                                <div key={tarjeta.id} className="card-item">
-                                    <Cards
-                                        number={tarjeta.numero}
-                                        name={user.nombre}
-                                        expiry={tarjeta.fecha_caducidad.replace(/-/g, '').slice(2)}
-                                        cvc="***"
-                                        focused="number"
-                                    />
-                                    <button onClick={() => handleDeleteCard(tarjeta.id)}>Eliminar</button>
-                                </div>
+                                <option key={tarjeta.id} value={tarjeta.id}>
+                                    {tarjeta.numero} - {new Date(tarjeta.fecha_caducidad).toLocaleDateString()}
+                                </option>
                             ))}
-                        </div>
-                        <button className="botonAniadirAdmin" onClick={handleAddCardClick}>Añadir Tarjeta</button>
+                        </select>
+                        {selectedCard && (
+                            <div className="card-item">
+                                <Cards
+                                    number={selectedCard.numero}
+                                    name={user.nombre}
+                                    expiry={`${selectedCard.fecha_caducidad_mes}${selectedCard.fecha_caducidad_anio}`}
+                                    cvc="***"
+                                    focused="number"
+                                />
+                                <button onClick={() => handleDeleteCard(selectedCard.id)}>Eliminar</button>
+                            </div>
+                        )}
+                        <br />
+                        <button onClick={handleAddCardClick} class="animated-button">
+                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                ></path>
+                            </svg>
+                            <span class="text">Añadir tarjeta</span>
+                            <span class="circle"></span>
+                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                ></path>
+                            </svg>
+                        </button>
+
+                        {/* <button className="botonAniadirAdmin" onClick={handleAddCardClick}>Añadir Tarjeta</button> */}
                     </div>
 
                     <div id="Other" className={`tabcontent ${activeTab === 'Other' ? 'active' : ''}`}>
@@ -230,29 +259,32 @@ export const Perfil = () => {
                 </div>
             </div>
 
-            {showAddCardModal && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={() => setShowAddCardModal(false)}>&times;</span>
-                        <h2>Añadir Tarjeta</h2>
-                        <form onSubmit={handleAddCardSubmit}>
-                            <div className="form-group">
-                                <label>Número de Tarjeta</label>
-                                <input type="text" value={newCard.numero} onChange={(e) => setNewCard({ ...newCard, numero: e.target.value })} required />
-                            </div>
-                            <div className="form-group">
-                                <label>Fecha de Caducidad</label>
-                                <input type="date" value={newCard.fecha_caducidad} onChange={(e) => setNewCard({ ...newCard, fecha_caducidad: e.target.value })} required />
-                            </div>
-                            <div className="form-group">
-                                <label>CVV</label>
-                                <input type="text" value={newCard.cvv} onChange={(e) => setNewCard({ ...newCard, cvv: e.target.value })} required />
-                            </div>
-                            <button type="submit">Añadir</button>
-                        </form>
-                    </div>
+            <Modal
+            isOpen={showAddCardModal}
+            onRequestClose={() => setShowAddCardModal(false)}
+            contentLabel="Añadir Tarjeta"
+            className="card-modal"
+            overlayClassName="card-overlay"
+        >
+            <button onClick={() => setShowAddCardModal(false)} className="close-modal-button">X</button>
+            <form onSubmit={handleAddCardSubmit}>
+                <div className="form-group">
+                    <label>Número de Tarjeta</label>
+                    <input className='campoForm' type="text" value={newCard.numero} onChange={(e) => setNewCard({ ...newCard, numero: e.target.value })} required />
                 </div>
-            )}
+                <div className="form-group">
+                    <label>Fecha de Caducidad</label>
+                    <input className='campoForm' type="date" value={newCard.fecha_caducidad} onChange={(e) => setNewCard({ ...newCard, fecha_caducidad: e.target.value })} required />
+                </div>
+                <div className="form-group">
+                    <label>CVV</label>
+                    <input className='campoForm' type="text" value={newCard.cvv} onChange={(e) => setNewCard({ ...newCard, cvv: e.target.value })} required />
+                </div>
+                <button type="submit">Añadir</button>
+            </form>
+        </Modal>
+
+            <ToastContainer />
         </div>
     );
 };
