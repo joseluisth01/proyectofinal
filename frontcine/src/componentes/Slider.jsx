@@ -34,7 +34,7 @@ export const Slider = () => {
                         <Link to="/cartelera" className="boton1_slider_inicio">
                             <p className="textobotones_slider_inicio">Cartelera</p>
                         </Link>
-                        <Link to="/" className="boton2_slider_inicio">
+                        <Link to="/entradas" className="boton2_slider_inicio">
                             <p className="textobotones_slider_inicio">Mis Entradas</p>
                         </Link>
                     </div>
