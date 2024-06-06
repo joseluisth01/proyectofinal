@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './componentes/Header';
@@ -15,11 +14,13 @@ import { PaginaPago } from './paginas/PaginaPago';
 import AvisoLegal from './paginas/AvisoLegal';
 import PoliticaCookies from './paginas/PoliticaCookies';
 import PoliticaPrivacidad from './paginas/PoliticaPrivacidad';
+import ScrollToTop from './componentes/ScrollToTop';
 
 function App() {
   return (
     <>
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/ModoAdmin' element={<ModoAdmin />} />
@@ -40,4 +41,3 @@ function App() {
 }
 
 export default App;
-

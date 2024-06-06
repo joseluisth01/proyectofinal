@@ -50,8 +50,6 @@ const PaginaCompra = () => {
         });
     };
 
-
-
     const handleComprar = () => {
         navigate('/PaginaPago', {
             state: { 
@@ -127,7 +125,11 @@ const PaginaCompra = () => {
                             ))}
                         </div>
                  
-                        <button className="reservar-btn" onClick={handleComprar}>
+                        <button 
+                            className={`reservar-btn ${seleccionados.length === 0 ? 'disabled' : ''}`} 
+                            onClick={handleComprar} 
+                            disabled={seleccionados.length === 0}
+                        >
                             COMPRAR
                         </button>
                     </div>

@@ -24,6 +24,12 @@
     }
 }
 
+.reservar-btn:disabled,
+.reservar-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.5; /* or any other styling to indicate it's disabled */
+}
+
 .asiento.seleccionado::after {
     content: '';
     position: absolute;
