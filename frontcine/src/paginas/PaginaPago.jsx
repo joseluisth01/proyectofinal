@@ -140,19 +140,19 @@ export const PaginaPago = () => {
                 </div>
 
                 <div className="bloquedrchacomida">
-                    <div className='preguntacomida'>
-                        <h1>Productos</h1>
-                    </div>
-                    <div className="flex5">
-                        <div className='detallescomida'>
-                            <p className="precioactualcomida">PRECIO ACTUAL 10,00€</p>
+                    <div className="interior">
+                        <div className='preguntacomida'>
+                            <h1>Productos</h1>
+                        </div>
+                        <div className="flex5">
+
+                            <hr />
                             <p className='descripcioncomida'>
-                                ¡Precio exclusivo WEB! A elegir entre nuestras hamburguesas (Rita burger, Classic burger, Crispy chicken o Veggie burger) con patatas y bebidas incluida.
+                                TOTAL
                             </p>
-                            <button className="detalles-pelicula-boton2 mb-6">AÑADIR</button>
                         </div>
                     </div>
-
+                    <button className="detalles-pelicula-boton2 mb-6">CONTINUAR</button>
                 </div>
 
             </div>
