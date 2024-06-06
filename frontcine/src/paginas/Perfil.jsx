@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../style/perfil.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css';
 
 export const Perfil = () => {
     const [user, setUser] = useState(null);
@@ -197,15 +199,20 @@ export const Perfil = () => {
                         <h3>Mis Tarjetas</h3>
                         <br />
                         <p>Estas son tus tarjetas:</p>
-                        <ul>
+                        <div className="cards-container">
                             {tarjetas.map((tarjeta) => (
-                                <li key={tarjeta.id}>
-                                    Número: {tarjeta.numero} <br />
-                                    Fecha de Caducidad: {new Date(tarjeta.fecha_caducidad).toLocaleDateString()}
+                                <div key={tarjeta.id} className="card-item">
+                                    <Cards
+                                        number={tarjeta.numero}
+                                        name={user.nombre}
+                                        expiry={tarjeta.fecha_caducidad.replace(/-/g, '').slice(2)}
+                                        cvc="***"
+                                        focused="number"
+                                    />
                                     <button onClick={() => handleDeleteCard(tarjeta.id)}>Eliminar</button>
-                                </li>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                         <button className="botonAniadirAdmin" onClick={handleAddCardClick}>Añadir Tarjeta</button>
                     </div>
 
