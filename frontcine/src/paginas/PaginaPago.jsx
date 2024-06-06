@@ -22,7 +22,6 @@ export const PaginaPago = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("Seleccionados:", seleccionados);  // Agrega este console.log para verificar el contenido de seleccionados
 
         // Calcula el total de las entradas basado en las parcelas seleccionadas
         const total = seleccionados.length * 10;
@@ -47,6 +46,50 @@ export const PaginaPago = () => {
 
     const cerrarModal = () => {
         setShowModal(false);
+    };
+
+    const handleReservar = async () => {
+        if (!token) {
+            alert("Debe iniciar sesión para reservar asientos");
+            return;
+        }
+
+        try {
+            const userIdResponse = await fetch('http://localhost/proyectofinal/back/public/api/getId', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const userIdData = await userIdResponse.json();
+            const fetchedUserId = userIdData.id;
+
+            const response = await fetch('http://localhost/proyectofinal/back/public/api/reservarAsientos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ idPelicula: id, asientosSeleccionados: seleccionados, usuarioId: fetchedUserId }),
+            });
+            const responseData = await response.json();
+            if (response.ok) {
+                alert(responseData.mensaje);
+                setAsientos((prev) =>
+                    prev.map((asiento) =>
+                        seleccionados.includes(asiento.asiento_numero)
+                            ? { ...asiento, estado: 'ocupado', usuario_id: fetchedUserId }
+                            : asiento
+                    )
+                );
+                setSeleccionados([]);
+            } else {
+                alert(responseData.error || 'Ocurrió un error al reservar los asientos');
+            }
+        } catch (error) {
+            console.error('Error reservando asientos:', error);
+            alert('Ocurrió un error al reservar los asientos');
+        }
     };
 
     const totalProductos = productos.reduce((acc, producto) => acc + producto.precio, 0);
@@ -152,7 +195,7 @@ export const PaginaPago = () => {
                             <div className='flex'>
                                 <p>Gastos de gestión: 1€</p>
                             </div>
-                            <hr />
+                            <hr className='hrlistas'/>
                             <p className='descripcioncomida'>
                                 TOTAL: {total}€
                             </p>
@@ -164,7 +207,7 @@ export const PaginaPago = () => {
             {showModal && (
                 <div className="modal">
                     <div className="login-box">
-                    <button class="close-btn" onClick={cerrarModal}>X</button>
+                        <button class="close-btn" onClick={cerrarModal}>X</button>
                         <form>
                             <div className="user-box">
                                 <input className='input2' type="text" required />
@@ -198,14 +241,14 @@ export const PaginaPago = () => {
                             </div>
                             <div className="user-box">
                                 <div className="flex">
-                                <input type="checkbox" class="ui-checkbox"/>
-                                <p class="sisi">Recordar tarjeta</p>
+                                    <input type="checkbox" class="ui-checkbox" />
+                                    <p class="sisi">Recordar tarjeta</p>
                                 </div>
-                            
+
                             </div>
 
                             <center>
-                                <a href="#" >
+                                <a href="#" onClick={handleReservar}>
                                     COMPRAR
                                     <span></span>
                                 </a>

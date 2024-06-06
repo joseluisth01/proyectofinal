@@ -28,7 +28,7 @@ export const Slider = () => {
                         style={{ backgroundImage: `url(${img})` }}
                     ></div>
                 ))}
-                <div className="overlay">
+                <div className="overlay2">
                     <h2 className="titulocentral">TAPACOS<br/>AUTOCINEMAS</h2>
                     <div className="botones_slider_inicio">
                         <Link to="/cartelera" className="boton1_slider_inicio">

@@ -132,12 +132,12 @@ export const Header = () => {
                 <span aria-hidden="true" className="hover-text">&nbsp;TAPACOS&nbsp;</span>
             </a>
 
-            <select className="selectheader" onChange={() => cambiarTexto()}>
+            {/* <select className="selectheader" onChange={() => cambiarTexto()}>
                 <option disabled selected value="">Selecciona la ciudad</option>
                 <option className='opcion' value="opcion1">TAPACOS CÓRDOBA</option>
                 <option className='opcion' value="opcion2">TAPACOS SEVILLA</option>
                 <option className='opcion' value="opcion2">TAPACOS MÁLAGA</option>
-            </select>
+            </select> */}
 
             <Link className="enlaceestrenos" to='/Cartelera'>Cartelera</Link>
 

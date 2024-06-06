@@ -50,49 +50,7 @@ const PaginaCompra = () => {
         });
     };
 
-    const handleReservar = async () => {
-        if (!token) {
-            alert("Debe iniciar sesión para reservar asientos");
-            return;
-        }
 
-        try {
-            const userIdResponse = await fetch('http://localhost/proyectofinal/back/public/api/getId', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            const userIdData = await userIdResponse.json();
-            const fetchedUserId = userIdData.id;
-
-            const response = await fetch('http://localhost/proyectofinal/back/public/api/reservarAsientos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ idPelicula: id, asientosSeleccionados: seleccionados, usuarioId: fetchedUserId }),
-            });
-            const responseData = await response.json();
-            if (response.ok) {
-                alert(responseData.mensaje);
-                setAsientos((prev) =>
-                    prev.map((asiento) =>
-                        seleccionados.includes(asiento.asiento_numero)
-                            ? { ...asiento, estado: 'ocupado', usuario_id: fetchedUserId }
-                            : asiento
-                    )
-                );
-                setSeleccionados([]);
-            } else {
-                alert(responseData.error || 'Ocurrió un error al reservar los asientos');
-            }
-        } catch (error) {
-            console.error('Error reservando asientos:', error);
-            alert('Ocurrió un error al reservar los asientos');
-        }
-    };
 
     const handleComprar = () => {
         navigate('/PaginaPago', {
