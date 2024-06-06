@@ -258,7 +258,7 @@ export const PaginaPago = () => {
                             </div>
                             <center>
                                 <a href="#" onClick={handleReservar} className={`comprar-link ${isFormValid() ? '' : 'disabled-link'}`}>
-                                    COMPRAR
+                                    COMPRARe
                                     <span></span>
                                 </a>
                             </center>
