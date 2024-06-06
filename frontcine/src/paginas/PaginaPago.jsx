@@ -139,7 +139,6 @@ export const PaginaPago = () => {
                     </div>
                 </div>
 
-
                 <div className="bloquedrchacomida">
                     <div className='preguntacomida'>
                         <h1>Productos</h1>
