@@ -1,10 +1,11 @@
 import React from 'react';
 import '../style/mainstyle.css';
 import { Slider } from './Slider';
-import { Header } from '../componentes/Header'
+import { Link } from 'react-router-dom';
 
-const garfieldImg = '/img/GARFIELD.jpg'; // Ruta de la imagen guardada
-const teamImage = '/img/empleados.jpg'; // Ruta de la imagen guardada
+
+const garfieldImg = '/img/GARFIELD.jpg';
+const teamImage = '/img/empleados.jpg';
 
 export const Main = () => {
   return (
@@ -42,7 +43,9 @@ export const Main = () => {
               Los programas de reconocimiento a empleados establecen una cultura positiva, en la que el esfuerzo
               se traduce en recompensas y qué mejor que regalar CINE.
             </p>
+            <Link to="/cartelera">
             <button className='contact-btn'>Comprar Entrada</button>
+            </Link>
           </div>
         </section>
 
