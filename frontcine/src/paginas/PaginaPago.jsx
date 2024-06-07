@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const hamburguesa = '/img/hamburguesa.png';
 const hotdog = '/img/hotdog.png';
@@ -73,7 +75,7 @@ export const PaginaPago = () => {
             });
             const responseData = await response.json();
             if (response.ok) {
-                alert(responseData.mensaje);
+                toast.success(responseData.mensaje);
                 setAsientos((prev) =>
                     prev.map((asiento) =>
                         seleccionados.includes(asiento.asiento_numero)
@@ -84,7 +86,7 @@ export const PaginaPago = () => {
                 setSeleccionados([]);
                 cerrarModal(); // Close the modal after successful reservation
             } else {
-                alert(responseData.error || 'Ocurrió un error al reservar los asientos');
+                toast.warn(responseData.error || 'Ocurrió un error al reservar los asientos');
             }
         } catch (error) {
 
