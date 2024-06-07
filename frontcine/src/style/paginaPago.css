@@ -161,8 +161,8 @@ input[type="checkbox"] {
     font-size: 28px;
     cursor: pointer;
     border: none;
-    background-color: black;
-    color: #38ff8b;
+    background-color: #38ff8b;
+    color: black;
     border-radius: 5px;
     margin-top: 30px;
     width: 100%;
@@ -171,8 +171,8 @@ input[type="checkbox"] {
 }
 
 .detalles-pelicula-boton2:hover {
-    background-color: #38ff8b;
-    color: black;
+    background-color: black;
+    color: #38ff8b;
 }
 
 .flex4 {

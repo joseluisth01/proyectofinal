@@ -214,7 +214,7 @@ export const PaginaPago = () => {
                             </p>
                         </div>
                     </div>
-                    <button className="detalles-pelicula-boton2 mb-6" onClick={handlePago}>CONTINUAR</button>
+                    <button className="detalles-pelicula-boton mb-6" onClick={handlePago}>CONTINUAR</button>
                 </div>
             </div>
             {showModal && (
