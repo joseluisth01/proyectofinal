@@ -260,29 +260,29 @@ export const Perfil = () => {
             </div>
 
             <Modal
-            isOpen={showAddCardModal}
-            onRequestClose={() => setShowAddCardModal(false)}
-            contentLabel="Añadir Tarjeta"
-            className="card-modal"
-            overlayClassName="card-overlay"
-        >
-            <button onClick={() => setShowAddCardModal(false)} className="close-modal-button">X</button>
-            <form onSubmit={handleAddCardSubmit}>
-                <div className="form-group">
-                    <label>Número de Tarjeta</label>
-                    <input className='campoForm' type="text" value={newCard.numero} onChange={(e) => setNewCard({ ...newCard, numero: e.target.value })} required />
-                </div>
-                <div className="form-group">
-                    <label>Fecha de Caducidad</label>
-                    <input className='campoForm' type="date" value={newCard.fecha_caducidad} onChange={(e) => setNewCard({ ...newCard, fecha_caducidad: e.target.value })} required />
-                </div>
-                <div className="form-group">
-                    <label>CVV</label>
-                    <input className='campoForm' type="text" value={newCard.cvv} onChange={(e) => setNewCard({ ...newCard, cvv: e.target.value })} required />
-                </div>
-                <button type="submit">Añadir</button>
-            </form>
-        </Modal>
+                isOpen={showAddCardModal}
+                onRequestClose={() => setShowAddCardModal(false)}
+                contentLabel="Añadir Tarjeta"
+                className="card-modal"
+                overlayClassName="card-overlay"
+            >
+                <button onClick={() => setShowAddCardModal(false)} className="close-modal-button">X</button>
+                <form onSubmit={handleAddCardSubmit}>
+                    <div className="form-group">
+                        <label>Número de Tarjeta</label>
+                        <input className='campoForm' type="text" value={newCard.numero} onChange={(e) => setNewCard({ ...newCard, numero: e.target.value })} required />
+                    </div>
+                    <div className="form-group">
+                        <label>Fecha de Caducidad</label>
+                        <input className='campoForm' type="date" value={newCard.fecha_caducidad} onChange={(e) => setNewCard({ ...newCard, fecha_caducidad: e.target.value })} required />
+                    </div>
+                    <div className="form-group">
+                        <label>CVV</label>
+                        <input className='campoForm' type="text" value={newCard.cvv} onChange={(e) => setNewCard({ ...newCard, cvv: e.target.value })} required />
+                    </div>
+                    <button type="submit">Añadir</button>
+                </form>
+            </Modal>
 
             <ToastContainer />
         </div>
