@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('Prueba');
-});
+}); */
 
 Route::get('/', [MailController::class, 'getMail']);
 

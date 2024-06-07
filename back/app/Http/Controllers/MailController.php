@@ -11,6 +11,6 @@ class MailController extends Controller
     //
     public function getMail(){
         $data = ['name' => 'Ratatuille'];
-        Mail::to('joseluistirado02@gmail.com')->send(new TestMail($data));
+        Mail::to('jjlltthh99@gmail.com')->send(new TestMail($data));
     }
 }
