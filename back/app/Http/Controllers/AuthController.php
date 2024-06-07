@@ -47,6 +47,8 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
+            /* $data = ['name' => 'TAPACOS'];
+            Mail::to($user->email)->send(new TestMail($data)); */
 
             return response()->json([
                 'status' => true,
