@@ -1,20 +1,20 @@
-import React from 'react'
-import PeliculasList from '../componentes/PeliculasList'
-import { Header } from '../componentes/Header'
-import { EstrenosList } from '../componentes/EstrenosList'
+import React from 'react';
+import PeliculasList from '../componentes/PeliculasList';
+import { Header } from '../componentes/Header';
+import { EstrenosList } from '../componentes/EstrenosList';
 
 export const Cartelera = () => {
   return (
     <div className="fondo">
-
-      <div class="cartelerapatida">
+      <Header />
+      <div className="cartelerapatida">
         <div className="carteleraizq">
           <PeliculasList />
         </div>
         <div className="carteleraderch">
-          <EstrenosList/>
+          <EstrenosList />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

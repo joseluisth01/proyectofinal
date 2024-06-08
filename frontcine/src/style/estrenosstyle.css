@@ -1,5 +1,8 @@
 .estrenos-container {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .estreno-card {
@@ -17,7 +20,7 @@
     height: auto;
 }
 
-.tituloEstreno{
+.tituloEstreno {
     padding-top: 5%;
     padding-bottom: 2%;
     font-family: "Bebas Neue", sans-serif;
@@ -25,7 +28,7 @@
     margin: 0;
 }
 
-.borrarEstreno{
+.borrarEstreno {
     width: 100%;
     padding: 10px;
     color: white;
@@ -34,8 +37,37 @@
     transition: background-color .5s;
 }
 
-.borrarEstreno:hover{
+.borrarEstreno:hover {
     cursor: pointer;
     background-color: red;
+}
+
+.mapita{
+    width: 300px !important;
+    height: 300px !important;
+}
+
+@media (max-width: 600px) {
+    .estreno-card {
+        width: 90%;
+    }
+    
+    .estreno-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .estreno-poster {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 1000px) {
+    .mapita{
+        width: 200px !important;
+        height: 200px !important;
+    }
 
 }

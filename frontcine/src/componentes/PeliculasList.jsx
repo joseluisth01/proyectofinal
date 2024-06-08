@@ -13,7 +13,7 @@ const PeliculasList = () => {
     today.setHours(0, 0, 0, 0);
     const fourteenDaysLater = new Date(today.getTime() + 14 * 86400000);
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
-    const navigate = useNavigate(); // useNavigate hook
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPeliculas = async () => {
@@ -80,11 +80,7 @@ const PeliculasList = () => {
 
     const getDayLabel = (date) => {
         const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-        if (date.toDateString() === today.toDateString()) {
-            return `${days[date.getDay()]}\n${date.getDate()}/${date.getMonth() + 1}`;
-        } else {
-            return `${days[date.getDay()]}\n${date.getDate()}/${date.getMonth() + 1}`;
-        }
+        return `${days[date.getDay()]}\n${date.getDate()}/${date.getMonth() + 1}`;
     };
 
     const borrarPelicula = async (idPelicula) => {
@@ -103,7 +99,6 @@ const PeliculasList = () => {
             }
             const data = await response.json();
             alert(data.message);
-            // Filtrar las películas eliminadas
             setPeliculas(prevPeliculas => prevPeliculas.filter(pelicula => pelicula.id !== idPelicula));
         } catch (error) {
             console.error('Error:', error);
