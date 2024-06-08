@@ -6,7 +6,7 @@ import { EstrenosList } from '../componentes/EstrenosList';
 export const Cartelera = () => {
   return (
     <div className="fondo">
-      <Header />
+   
       <div className="cartelerapatida">
         <div className="carteleraizq">
           <PeliculasList />
