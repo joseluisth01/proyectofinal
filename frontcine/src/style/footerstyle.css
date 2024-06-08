@@ -1,9 +1,7 @@
-/* Estilos base del footer */
 .divfooter {
     background-color: black;
     color: white;
     width: 100%;
-    padding: 20px 0;
     box-sizing: border-box;
 }
 
@@ -30,7 +28,7 @@
     background-color: #37FF8B;
     text-align: center;
     color: black;
-    margin: 20px auto;
+    margin: auto;
     border-radius: 10px 10px 0 0;
     padding: 10px 0;
 }
@@ -47,6 +45,10 @@
     margin: 0 30px;
 }
 
+.partners {
+    width: 80%;
+}
+
 /* Media queries para tablets y móviles */
 @media (max-width: 768px) {
     .divfooter{
@@ -59,11 +61,12 @@
     }
 
     .bloque1footer > div {
-        width: 90%; /* Ajusta el ancho para ocupar la mayor parte de la pantalla */
+        width: 90%; 
+        text-align: center;
     }
 
     .titfooter {
-        text-align: center; /* Centra los títulos para un mejor encuadre */
+        text-align: center;
     }
 
     .avisoslegales_footer {
@@ -74,13 +77,10 @@
         margin: 10px 0;
     }
 
-    .partners {
-        width: 90%;
-    }
 }
 
 @media (max-width: 480px) {
     .titfooter {
-        font-size: 18px; /* Reduce el tamaño de fuente para dispositivos muy pequeños */
+        font-size: 18px; 
     }
 }
