@@ -9,6 +9,7 @@ const cubo1 = '/img/cubo1.png';
 const tapaquitos = '/img/tapaquitos.png';
 
 import '../style/paginaPago.css';
+import ScrollToTop from '../componentes/ScrollToTop';
 
 export const PaginaPago = () => {
     const location = useLocation();
@@ -48,6 +49,7 @@ export const PaginaPago = () => {
 
     const handleAddProducto = (nombre, precio) => {
         setProductos((prevProductos) => [...prevProductos, { nombre, precio }]);
+        <ScrollToTop />
     };
 
     const cerrarModal = () => {
@@ -71,11 +73,24 @@ export const PaginaPago = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ idPelicula: id, asientosSeleccionados: seleccionados, usuarioId: fetchedUserId }),
+                body: JSON.stringify({ 
+                    idPelicula: id, 
+                    asientosSeleccionados: seleccionados, 
+                    usuarioId: fetchedUserId,
+                    nombre: nombre,
+                    apellidos: apellidos,
+                    email: email,
+                    matricula: matricula,
+                    tarjeta: tarjeta,
+                    fechaCaducidad: fechaCaducidad,
+                    cvv: cvv,
+                    productos: productos
+                }),
             });
             const responseData = await response.json();
+            cerrarModal();
+            toast.success(responseData.mensaje);
             if (response.ok) {
-                toast.success(responseData.mensaje);
                 setAsientos((prev) =>
                     prev.map((asiento) =>
                         seleccionados.includes(asiento.asiento_numero)
@@ -84,12 +99,13 @@ export const PaginaPago = () => {
                     )
                 );
                 setSeleccionados([]);
-                cerrarModal(); // Close the modal after successful reservation
             } else {
-                toast.warn(responseData.error || 'Ocurrió un error al reservar los asientos');
+                // toast.warn(responseData.error || 'Ocurrió un error al reservar los asientos');
+                cerrarModal();
             }
         } catch (error) {
-
+            // toast.error('Error al realizar la reserva. Inténtelo de nuevo más tarde.');
+            cerrarModal();
         }
     };
 

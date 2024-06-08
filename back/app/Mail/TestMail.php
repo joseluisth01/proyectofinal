@@ -16,11 +16,11 @@ class TestMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $data;
-    public function __construct($data)
+    public $nombre;
+    public function __construct($nombre)
     {
         //
-        $this->data = $data;
+        $this->nombre = $nombre;
     }
 
     /**
@@ -48,7 +48,7 @@ class TestMail extends Mailable
         return $this->from('tapacosautocinemas@gmail.com', env('MAIL_FROM_NAME'))
                     ->view('testmail')
                     ->subject('Titulo del correo')
-                    ->with($this->data);
+                    ->with($this->nombre);
     }
 
     /**
