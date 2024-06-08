@@ -27,10 +27,10 @@ export const PaginaPago = () => {
     const [fechaCaducidad, setFechaCaducidad] = useState('');
     const [cvv, setCvv] = useState('');
     const token = localStorage.getItem('token');
+    const isLoggedIn = !!token;
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Calcula el total de las entradas basado en las parcelas seleccionadas
         const total = seleccionados.length * 10;
         setTotalEntradas(total);
     }, [seleccionados]);
@@ -44,7 +44,8 @@ export const PaginaPago = () => {
     }, [showModal]);
 
     const handlePago = async () => {
-        setShowModal(true); // Mostrar el modal
+        window.scrollTo(0, 0);
+        setShowModal(true);
     };
 
     const handleAddProducto = (nombre, precio) => {
@@ -88,23 +89,21 @@ export const PaginaPago = () => {
                 }),
             });
             const responseData = await response.json();
-            cerrarModal();
-            toast.success(responseData.mensaje);
+            
             if (response.ok) {
-                setAsientos((prev) =>
-                    prev.map((asiento) =>
-                        seleccionados.includes(asiento.asiento_numero)
-                            ? { ...asiento, estado: 'ocupado', usuario_id: fetchedUserId }
-                            : asiento
-                    )
-                );
-                setSeleccionados([]);
+                cerrarModal();
+                toast.success('Reserva realizada correctamente.');
+                if (isLoggedIn) {
+                    navigate('/Entradas', { state: { message: 'Reserva realizada correctamente' } });
+                } else {
+                    navigate('/', { state: { message: 'Reserva realizada correctamente' } });
+                }
             } else {
-                // toast.warn(responseData.error || 'Ocurrió un error al reservar los asientos');
+                toast.warn(responseData.error || 'Ocurrió un error al reservar los asientos');
                 cerrarModal();
             }
         } catch (error) {
-            // toast.error('Error al realizar la reserva. Inténtelo de nuevo más tarde.');
+            toast.error('Error al realizar la reserva. Inténtelo de nuevo más tarde.');
             cerrarModal();
         }
     };

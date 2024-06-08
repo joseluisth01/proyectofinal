@@ -126,7 +126,6 @@ export const Header = () => {
 
     return (
         <header className={`divheader ${headerSolid ? 'header-solid' : ''}`}>
-            <ToastContainer />
             <a href='/' className="logoheader" data-text="Awesome">
                 <span className="actual-text">&nbsp;TAPACOS</span>
                 <span aria-hidden="true" className="hover-text">&nbsp;TAPACOS&nbsp;</span>

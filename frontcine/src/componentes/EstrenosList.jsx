@@ -91,7 +91,6 @@ export const EstrenosList = () => {
 
     return (
         <div className="estrenos-container">
-            <ToastContainer />
             <h2 className='tituloEstreno'>Próximos estrenos</h2>
             {loading ? (
                 <p>Loading...</p>

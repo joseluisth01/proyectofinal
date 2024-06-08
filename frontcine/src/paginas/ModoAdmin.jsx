@@ -103,7 +103,6 @@ export const ModoAdmin = () => {
 
     return (
         <div className="fondo">
-            <ToastContainer />
             <div className="movie-list-container">
                 <div className='buscadores'>
                     <div className="input-container">

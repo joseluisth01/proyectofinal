@@ -49,8 +49,8 @@ class ReservaHecha extends Mailable
         return $this->from('tapacosautocinemas@gmail.com', env('MAIL_FROM_NAME'))
                     ->view('reservaConfirmada')
                     ->subject('Confirmación de Reserva en TAPACOS AUTOCINEMAS')
-                    /* ->attach(public_path('img/qr.png'), [
-                        'as' => 'qr.png',
+                    /* ->attach(public_path('img/logo.png'), [
+                        'as' => 'logo.png',
                         'mime' => 'image/png',
                     ]) */
                     ->with([

@@ -53,19 +53,26 @@
         }
 
         .highlight {
-            color: #e67e22;
+            color: black;
+            font-weight: bold;
         }
+        .centrado{
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
     <div class="email-container">
-        <h1>Confirmación de Reserva en Tapacos Autocinemas</h1>
-        <p>¡Gracias por elegir Tapacos Autocinemas para tu próxima experiencia cinematográfica! Aquí están los detalles de tu reserva:</p>
+        <div class="centrado">
+            <h1>Confirmación de Reserva en Tapacos Autocinemas</h1>
+            <p>¡Gracias por elegir Tapacos Autocinemas para tu próxima experiencia cinematográfica! Aquí están los detalles de tu reserva:</p>
+        </div>
 
         <div class="reservation-details">
             <p><strong>Nombre:</strong> {{$nombre}} {{$apellidos}}</p>
             <p><strong>Matrícula:</strong> {{$matricula}}</p>
-            <p><strong>Productos seleccionados:</strong>
+            <p><strong>Ofertas seleccionadas:</strong>
                 @if(empty($productos))
                     Ninguna
                 @else
@@ -85,8 +92,12 @@
 
         <div class="contact-info">
             <p>Para cualquier consulta, no dudes en ponerte en contacto con nosotros:</p>
-            <p class="highlight">Email: info@tapacosautocinemas.com</p>
+            <p class="highlight">Email: tapacosautocinemas@gmail.com</p>
             <p class="highlight">Teléfono: 957 456 789</p>
+        </div>
+        <br>
+        <div class="centrado">
+            <img src="{{ $message->embed(public_path('img/logo.png')) }}" alt="Logo de Tapacos Autocinemas" class="logo">
         </div>
     </div>
 </body>

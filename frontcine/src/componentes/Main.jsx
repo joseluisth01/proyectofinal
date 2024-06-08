@@ -1,20 +1,32 @@
-import React from 'react';
 import '../style/mainstyle.css';
 import { Slider } from './Slider';
 import { Link } from 'react-router-dom';
+
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const garfieldImg = '/img/GARFIELD.jpg';
 const teamImage = '/img/empleados.jpg';
 
 export const Main = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+      if (location.state?.message) {
+          toast.success(location.state.message);
+      }
+  }, [location.state]);
+
+
   return (
     <div className='divmain'>
       <header>
       </header>
       <main>
         <Slider />
-
         <section className='garfield-promotion'>
           <div className='garfield-content'>
             <h2>Concurso - Garfield: la Película</h2>
