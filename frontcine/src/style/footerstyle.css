@@ -99,3 +99,10 @@
         font-size: 18px; 
     }
 }
+
+@media (max-width: 410px) {
+    .avisoslegales_footer p {
+        margin: 2px;
+        font-size: 10px;
+    }
+}
