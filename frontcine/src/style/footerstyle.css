@@ -62,30 +62,37 @@
     .divfooter{
         text-align: center;
     }
-    .bloque1footer {
-        flex-direction: column;
-        align-items: center;
-        margin: auto;
-    }
 
     .bloque1footer > div {
         width: 90%; 
-        text-align: center;
     }
 
     .titfooter {
         text-align: center;
     }
 
-    .avisoslegales_footer {
+}
+
+@media (max-width: 640px) {
+    .bloque1footer{
         flex-direction: column;
     }
-
-    .avisoslegales_footer p {
-        margin: 10px 0;
+    .nuestroscines{
+        text-align: center;
+        margin: 0 auto;
     }
-
+    .bloque1footer > div {
+        width: 60%;
+    }
+    .infotapacos{
+        margin-top: 2%;
+    }
+    .acercadenosotros{
+        margin-top: 5% !important;
+        margin-bottom: 3% !important;
+    }
 }
+
 
 @media (max-width: 480px) {
     .titfooter {
