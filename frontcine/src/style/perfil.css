@@ -248,7 +248,6 @@ body {
     color: black;
 }
 
-
 .animated-button {
     position: relative;
     display: flex;
@@ -363,24 +362,112 @@ body {
     border: 2px solid #37FF8B;
 }
 
-.selecttarjetas{
+.selecttarjetas {
     padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    display: block;
-    box-sizing: border-box;
-    margin: 0 auto;
-    margin-top: 5px;
-}
-
-.izqtarjetas{
-    width: 60%;
-}
-.dertarjetas{
-    width: 40%;
-}
-
-.flex6{
     display: flex;
     align-items: center;
+}
+
+.selecttarjetas select {
+    margin-right: 10px;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.selecttarjetas button {
+    background-color: #38ff8b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.selecttarjetas button:hover {
+    background-color: #1dc772;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .alineadoflex {
+        flex-direction: column;
+    }
+    .tab, .tabcontent {
+        width: 100%;
+        height: auto;
+        align-items: center;
+    }
+
+    .tab button {
+        margin-bottom: 10px;
+        width: 100%; /* Asegurar que los botones ocupen todo el ancho */
+    }
+
+    .perfill-container {
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .perfil-info .field {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-head {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .usuariolog {
+        margin-bottom: 15px;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-item {
+        width: 100%;
+    }
+
+    .card-modal {
+        width: 90%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .perfill-container h1 {
+        font-size: 20px;
+    }
+
+    .perfil-info p {
+        font-size: 14px;
+    }
+
+    .perfil-info .field {
+        padding: 5px 10px;
+    }
+
+    .animated-button {
+        padding: 10px 20px;
+        font-size: 10px;
+    }
+
+    .tab button {
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+
+    .card-item {
+        margin: 10px 0;
+    }
 }
