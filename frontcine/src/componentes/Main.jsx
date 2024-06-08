@@ -82,7 +82,7 @@ export const Main = () => {
     </div>
 
 
-        <div class="container">
+        <div class="container3">
           <div class="info-section">
             <h1 class="title">TAPACOS Autocinemas</h1>
             <p class="address">C. del Guadalquivir. 14010, Córdoba</p>

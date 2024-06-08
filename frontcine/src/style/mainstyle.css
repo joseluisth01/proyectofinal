@@ -347,7 +347,7 @@ html, body {
 
 
 /* datos */
-.container {
+.container3 {
   display: flex;
   flex-direction: row;
   background-color: black;
@@ -506,7 +506,7 @@ html, body {
       height: auto;
   }
 
-  .container, .fondoContacto {
+  .container3, .fondoContacto {
       flex-direction: column;
   }
 }
@@ -530,7 +530,7 @@ html, body {
       height: auto;
   }
 
-  .container, .fondoContacto {
+  .container3, .fondoContacto {
       flex-direction: column;
   }
 }
