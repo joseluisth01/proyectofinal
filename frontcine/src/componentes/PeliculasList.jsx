@@ -98,7 +98,7 @@ const PeliculasList = () => {
                 throw new Error('Error al borrar película');
             }
             const data = await response.json();
-            alert(data.message);
+            toast.success(data.message);
             setPeliculas(prevPeliculas => prevPeliculas.filter(pelicula => pelicula.id !== idPelicula));
         } catch (error) {
             console.error('Error:', error);
