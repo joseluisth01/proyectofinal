@@ -262,3 +262,10 @@
   }
 }
 
+@media (max-width: 290px) {
+  .movie-info{
+    padding-left: 0px;
+  }
+  
+}
+
