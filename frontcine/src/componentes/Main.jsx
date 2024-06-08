@@ -3,8 +3,8 @@ import { Slider } from './Slider';
 import { Link } from 'react-router-dom';
 
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import { useLocation, useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -12,13 +12,6 @@ const garfieldImg = '/img/GARFIELD.jpg';
 const teamImage = '/img/empleados.jpg';
 
 export const Main = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-      if (location.state?.message) {
-          toast.success(location.state.message);
-      }
-  }, [location.state]);
 
 
   return (

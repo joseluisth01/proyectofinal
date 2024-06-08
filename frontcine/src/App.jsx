@@ -16,11 +16,15 @@ import PoliticaCookies from './paginas/PoliticaCookies';
 import PoliticaPrivacidad from './paginas/PoliticaPrivacidad';
 import ScrollToTop from './componentes/ScrollToTop';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <>
       <Header />
       <ScrollToTop />
+      <ToastContainer />
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/ModoAdmin' element={<ModoAdmin />} />

@@ -70,6 +70,7 @@ const PaginaCompra = () => {
 
     return (
         <div className="fondo">
+            
             <div className="divpaginacompra">
                 <div className="datoscompra">
                     <div className='flex'>

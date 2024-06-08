@@ -185,7 +185,6 @@ export const Perfil = () => {
                     <div className="tab">
                         <button className={`tablinks ${activeTab === 'Perfil' ? 'active' : ''}`} onClick={() => handleTabClick('Perfil')} id="defaultOpen">👤 Mi Perfil</button>
                         <button className={`tablinks ${activeTab === 'Settings' ? 'active' : ''}`} onClick={() => handleTabClick('Settings')}>💳 Mis Tarjetas</button>
-                        <button className={`tablinks ${activeTab === 'Other' ? 'active' : ''}`} onClick={() => handleTabClick('Other')}>⚙️ Otros</button>
                         <button className={`tablinks ${activeTab === 'CerrarSesion' ? 'active' : ''}`} onClick={() => handleTabClick('CerrarSesion')}>🔒 Cerrar Sesión</button>
                     </div>
 
@@ -243,10 +242,6 @@ export const Perfil = () => {
                         </button>
 
                         {/* <button className="botonAniadirAdmin" onClick={handleAddCardClick}>Añadir Tarjeta</button> */}
-                    </div>
-
-                    <div id="Other" className={`tabcontent ${activeTab === 'Other' ? 'active' : ''}`}>
-                        <h3>Otros</h3>
                     </div>
 
                     <div id="CerrarSesion" className={`tabcontent ${activeTab === 'CerrarSesion' ? 'active' : ''}`}>

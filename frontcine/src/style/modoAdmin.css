@@ -125,16 +125,19 @@ input[type="date"]:hover, select:hover {
 
 .botonAniadirAdmin {
     margin-right: 2%;
-    border: 1px solid black;
-    border-radius: 10px;
     padding: 5px;
     text-transform: uppercase;
     background-color: #c0c0c0;
 }
 
+.botonAniadirAdmin:hover{
+    background-color: #9a9a9a;
+}
+.botonEstrenoAdmin:hover{
+    background-color: #9a9a9a;
+}
+
 .botonEstrenoAdmin {
-    border: 1px solid black;
-    border-radius: 10px;
     padding: 5px;
     text-transform: uppercase;
     background-color: #c0c0c0;

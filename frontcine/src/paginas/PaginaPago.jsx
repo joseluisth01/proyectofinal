@@ -92,7 +92,7 @@ export const PaginaPago = () => {
             
             if (response.ok) {
                 cerrarModal();
-                toast.success('Reserva realizada correctamente.');
+                toast.success('Reserva realizada correctamente');
                 if (isLoggedIn) {
                     navigate('/Entradas', { state: { message: 'Reserva realizada correctamente' } });
                 } else {
@@ -235,7 +235,7 @@ export const PaginaPago = () => {
             {showModal && (
                 <div className="modal">
                     <div className="login-box">
-                        <button class="close-btn" onClick={cerrarModal}>X</button>
+                        <button className="close-btn" onClick={cerrarModal}>X</button>
                         <form>
                             <div className="user-box">
                                 <input className='input2' type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
@@ -269,8 +269,8 @@ export const PaginaPago = () => {
                             </div>
                             <div className="user-box">
                                 <div className="flex">
-                                    <input type="checkbox" class="ui-checkbox" />
-                                    <p class="sisi">Recordar tarjeta</p>
+                                    <input type="checkbox" className="ui-checkbox" />
+                                    <p className="sisi">Recordar tarjeta</p>
                                 </div>
                             </div>
                             <center>
