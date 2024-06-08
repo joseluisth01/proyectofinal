@@ -40,7 +40,10 @@ export const Main = () => {
         </section>
 
         <section className='team-promotion'>
-          <img src={teamImage} alt='Equipo de trabajo' className='team-img' />
+          <div className="imgmain">
+            <img src={teamImage} alt='Equipo de trabajo' className='team-img' />
+
+          </div>
           <div className='team-content'>
             <h3>TAPACOS AUTOCINEMAS</h3>
             <h2>Compra entradas de cine para recompensar el trabajo bien hecho de tu equipo</h2>
@@ -95,8 +98,8 @@ export const Main = () => {
             </div>
             <div class="map-section">
               <iframe
+                className='mapita2'
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5295046748156!2d-4.7708828246453345!3d37.87129790659489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d207d83074089%3A0xc8ca16fc101afb4a!2sC.%20del%20Guadalquivir%2C%2014010%20C%C3%B3rdoba!5e0!3m2!1ses!2ses!4v1715812890043!5m2!1ses!2ses"
-                style={{ border: 0, width: '300px', height: '300px' }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
