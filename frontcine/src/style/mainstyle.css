@@ -1,3 +1,13 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 .sliderfull {
     position: relative;
     width: 100%;
@@ -389,4 +399,90 @@
   max-width: 400px;
   height: auto;
   width: 50%;
+}
+
+
+@media (max-width: 768px) {
+  .garfield-content, .team-content {
+      max-width: 100%;
+      margin-left: 1em;
+      margin-right: 1em;
+  }
+
+  .garfield-img, .team-img {
+      max-width: 100%;
+      padding: 1em;
+  }
+
+  .form-container {
+      width: 90%;
+      margin: 0.5rem;
+  }
+
+  .info-section, .map-section {
+      width: 100%;
+  }
+
+  .team-img, .garfield-img {
+      margin-left: 0;
+  }
+}
+
+/* Media queries para móviles */
+@media (max-width: 480px) {
+  .sliderfull {
+      height: 300px;
+  }
+
+  .titulocentral {
+      font-size: 40px;
+      line-height: 50px;
+  }
+
+  .boton1_slider_inicio, .boton2_slider_inicio {
+      width: 200px;
+      height: 40px;
+  }
+
+  .team-content h3, .garfield-content h3 {
+      font-size: 22px;
+  }
+
+  .team-content h2, .garfield-content h2 {
+      font-size: 20px;
+  }
+
+  .team-content p, .garfield-content p, .team-content ul, .garfield-content ul {
+      font-size: 14px;
+  }
+
+  .form-title {
+      font-size: 1.25rem;
+  }
+
+  .contact-btn {
+      padding: 8px 16px;
+  }
+}
+
+.garfield-promotion, .team-promotion {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+.garfield-content, .team-content {
+  align-items: center;
+  text-align: center;
+  max-width: 90%;
+}
+
+.map-section iframe {
+  width: 100%;
+  height: auto;
+}
+
+.container, .fondoContacto {
+  flex-direction: column;
 }
