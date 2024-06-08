@@ -347,7 +347,7 @@ html, body {
 
 
 /* datos */
-.container {
+.container3 {
   display: flex;
   flex-direction: row;
   background-color: black;
@@ -360,7 +360,7 @@ html, body {
   align-items: center;
   /* height: 100vh; */
   color: white;
-  width: 100%;
+  width: 100% !important;
 }
 
 .info-section {
@@ -505,7 +505,7 @@ html, body {
       height: auto;
   }
 
-  .container, .fondoContacto {
+  .container3, .fondoContacto {
       flex-direction: column;
   }
 }
@@ -529,7 +529,7 @@ html, body {
       height: auto;
   }
 
-  .container, .fondoContacto {
+  .container3, .fondoContacto {
       flex-direction: column;
   }
 }
