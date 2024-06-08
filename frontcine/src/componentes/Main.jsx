@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const garfieldImg = '/img/GARFIELD.jpg';
-const teamImage = '/img/empleados.jpg';
+const teamImage = '/img/tapacosautocinemas2et.jpg';
 
 export const Main = () => {
 
