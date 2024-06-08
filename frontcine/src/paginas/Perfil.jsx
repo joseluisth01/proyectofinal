@@ -156,9 +156,10 @@ export const Perfil = () => {
 
             setTarjetas(prevTarjetas => prevTarjetas.filter(tarjeta => tarjeta.id !== tarjetaId));
             toast.success('Tarjeta eliminada exitosamente');
+            setSelectedCard(null); // Desseleccionar la tarjeta eliminada
         } catch (error) {
             console.error('Error deleting card:', error);
-            toast.error('Ocurrió un error al eliminar la tarjeta. Por favor, inténtalo de nuevo más tarde.');
+            toast.error('Datos introducidos incorrectamente');
         }
     };
 
@@ -174,6 +175,7 @@ export const Perfil = () => {
 
     return (
         <div className="fondo">
+            <ToastContainer />
             <div className="perfill-container">
                 <div className="user-head">
                     <div className="usuariolog">
@@ -204,21 +206,42 @@ export const Perfil = () => {
 
                     <div id="Settings" className={`tabcontent ${activeTab === 'Settings' ? 'active' : ''}`}>
                         <br />
-                        <p>Estas son tus tarjetas:</p>
-                        <select onChange={handleCardSelection}>
-                            <option value="">Selecciona una tarjeta</option>
-                            {tarjetas.map((tarjeta) => (
-                                <option key={tarjeta.id} value={tarjeta.id}>
-                                    {tarjeta.numero} - {new Date(tarjeta.fecha_caducidad).toLocaleDateString()}
-                                </option>
-                            ))}
-                        </select>
+                        <div className="flex6">
+                            <div className='izqtarjetas'>
+                                <p>Estas son tus tarjetas:</p>
+                                <select className="selecttarjetas" onChange={handleCardSelection}>
+                                    <option value="">Selecciona una tarjeta</option>
+                                    {tarjetas.map((tarjeta) => (
+                                        <option key={tarjeta.id} value={tarjeta.id}>
+                                            {tarjeta.numero} - {new Date(tarjeta.fecha_caducidad).toLocaleDateString()}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className='dertarjetas'>
+                                <button onClick={handleAddCardClick} className="animated-button">
+                                    <svg viewBox="0 0 24 24" className="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span className="text">Añadir tarjeta</span>
+                                    <span className="circle"></span>
+                                    <svg viewBox="0 0 24 24" className="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
                         {selectedCard && (
                             <div className="card-item">
                                 <Cards
                                     number={selectedCard.numero}
                                     name={user.nombre}
-                                    expiry={`${selectedCard.fecha_caducidad_mes}${selectedCard.fecha_caducidad_anio}`}
+                                    expiry={selectedCard.fecha_caducidad}
                                     cvc="***"
                                     focused="number"
                                 />
@@ -226,29 +249,12 @@ export const Perfil = () => {
                             </div>
                         )}
                         <br />
-                        <button onClick={handleAddCardClick} class="animated-button">
-                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                            <span class="text">Añadir tarjeta</span>
-                            <span class="circle"></span>
-                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                        </button>
-
-                        {/* <button className="botonAniadirAdmin" onClick={handleAddCardClick}>Añadir Tarjeta</button> */}
                     </div>
 
                     <div id="CerrarSesion" className={`tabcontent ${activeTab === 'CerrarSesion' ? 'active' : ''}`}>
-                        <h3>Cerrar Sesión</h3>
-                        <br />
-                        <p>¿Estás seguro que quieres cerrar sesión?</p>
                         <br /><br />
+                        <p>¿Estás seguro que quieres cerrar sesión?</p>
+                        <br />
                         <button className='botonCerrar'><a onClick={logout}>Cerrar sesión</a></button>
                     </div>
                 </div>
@@ -275,10 +281,12 @@ export const Perfil = () => {
                         <label>CVV</label>
                         <input className='campoForm' type="text" value={newCard.cvv} onChange={(e) => setNewCard({ ...newCard, cvv: e.target.value })} required />
                     </div>
-                    <button type="submit">Añadir</button>
+                    <div className="centrado2">
+                        <button className='reservar-btn2' type="submit">AÑADIR</button>
+
+                    </div>
                 </form>
             </Modal>
-
         </div>
     );
 };
