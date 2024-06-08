@@ -447,3 +447,9 @@
   
 /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
 
+
+@media (max-width: 450px) {
+    .enlaceestrenos {
+        margin-right: 18%;
+    }
+  }
