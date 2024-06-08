@@ -175,7 +175,6 @@ export const Perfil = () => {
 
     return (
         <div className="fondo">
-            <ToastContainer />
             <div className="perfill-container">
                 <div className="user-head">
                     <div className="usuariolog">
