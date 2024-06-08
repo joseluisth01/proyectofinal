@@ -216,6 +216,17 @@
     flex-direction: column;
   }
 
+  .carteleraizq{
+    width: 100%;
+  }
+
+  .carteleraderch{
+    width: 90%;
+    margin: 0 auto;
+  }
+
+
+
 }
 
 @media (max-width: 600px) {
@@ -244,3 +255,10 @@
     padding: 10px;
   }
 }
+
+@media (max-width: 600px) {
+  .cartelerapatida{
+    padding-top: 30%;
+  }
+}
+

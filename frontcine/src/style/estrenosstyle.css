@@ -71,3 +71,27 @@
     }
 
 }
+
+@media (max-width: 700px) {
+    .mapita{
+        width: 400px !important;
+        height: 400px !important;
+    }
+
+    .estreno-card {
+        width: 300px;
+    }
+
+}
+
+@media (max-width: 420px) {
+    .mapita{
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+    .estreno-card {
+        width: 250px;
+    }
+
+}
