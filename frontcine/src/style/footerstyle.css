@@ -9,6 +9,8 @@
     color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding-top: 2%;
 }
 
 .bloque1footer>div {
@@ -22,6 +24,10 @@
 .linkfooter:hover {
     color: #37FF8B;
     cursor: pointer;
+}
+
+.titfooter{
+    font-size: 20px
 }
 
 .partners{
@@ -40,7 +46,7 @@
 }
 
 .avisoslegales_footer{
-    margin-top: 2%;
+    margin-top: 4%;
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
@@ -53,4 +59,12 @@
 .linkavisoslegales:hover{
     color: #37FF8B;
     cursor: pointer;
+}
+
+.infotapacos p{
+    margin-top: 8px;
+}
+
+.acercadenosotros p{
+    margin-top: 8px;
 }
