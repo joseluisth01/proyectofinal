@@ -206,7 +206,7 @@ html, body {
   .team-img {
     max-width: 40%;
     border-radius: 8px;
-    margin-left: 8em;
+    margin-left: 12em;
   }
   
   .team-content {
@@ -351,7 +351,6 @@ html, body {
   display: flex;
   flex-direction: row;
   background-color: black;
-  box-shadow: 0 0 10px rgba(87, 87, 87, 0.938);
   overflow: hidden;
   font-family: Arial, sans-serif;
   margin: 0;
@@ -431,7 +430,7 @@ html, body {
 /* Media queries para móviles */
 @media (max-width: 480px) {
   .sliderfull {
-      height: 400px;
+      height: 300px;
   }
 
   .titulocentral {
@@ -535,6 +534,9 @@ html, body {
   }
 }
 
+.mapas{
+  background-color: black;
+}
 
 @media (max-width: 430px){
   .botones_slider_inicio {
