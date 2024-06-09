@@ -8,7 +8,7 @@
 }
 
 .fondo{
-    background-image: url('../public/img/fondo15.png');
+    background-image: url('../back/public/img/fondo15.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
