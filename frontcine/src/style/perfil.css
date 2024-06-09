@@ -269,14 +269,15 @@ body {
     overflow: hidden;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     margin: 0 auto;
-    margin-top: 30px;
-
+    margin-left: 40px !important;
 }
 
 .flex6 {
     display: inline-flex;
     align-items: center;
 }
+
+
 
 .animated-button svg {
     position: absolute;
@@ -376,18 +377,13 @@ body {
 }
 
 .selecttarjetas {
-    display: flex;
-    align-items: center;
-
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    box-sizing: border-box;
 }
 
-.selecttarjetas select {
-    margin-right: 10px;
-    border: none;
-    padding: 5px;
-    font-size: 16px;
-    margin-right: 2%;
-}
 
 .selecttarjetas button {
     background-color: #38ff8b;
