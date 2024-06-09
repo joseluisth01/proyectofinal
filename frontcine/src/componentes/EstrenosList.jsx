@@ -75,7 +75,7 @@ export const EstrenosList = () => {
         };
 
         try {
-            const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarEstrenos', datosPelicula);
+            const response = await fetch('https://proyecto6.medacarena.com.es/back/public/api/borrarEstrenos', datosPelicula);
             if (!response.ok) {
                 throw new Error('Error al borrar estreno');
             }

@@ -93,7 +93,7 @@ const PeliculasList = () => {
         };
 
         try {
-            const response = await fetch('https://proyecto6.medacarena.com.es/back/public/api/borrarPeliculas', datosPelicula);
+            const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarPeliculas', datosPelicula);
             if (!response.ok) {
                 throw new Error('Error al borrar película');
             }
