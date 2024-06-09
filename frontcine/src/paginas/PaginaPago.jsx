@@ -94,9 +94,9 @@ export const PaginaPago = () => {
                 cerrarModal();
                 toast.success('Reserva realizada correctamente');
                 if (isLoggedIn) {
-                    navigate('https://proyecto6.medacarena.com.es/Entradas', { state: { message: 'Reserva realizada correctamente' } });
+                    navigate('/Entradas', { state: { message: 'Reserva realizada correctamente' } });
                 } else {
-                    navigate('https://proyecto6.medacarena.com.es/', { state: { message: 'Reserva realizada correctamente' } });
+                    navigate('/', { state: { message: 'Reserva realizada correctamente' } });
                 }
             } else {
                 toast.warn(responseData.error || 'Ocurrió un error al reservar los asientos');
