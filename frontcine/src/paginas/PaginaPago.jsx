@@ -59,7 +59,7 @@ export const PaginaPago = () => {
 
     const handleReservar = async () => {
         try {
-            const userIdResponse = await fetch('http://localhost/proyectofinal/back/public/api/getId', {
+            const userIdResponse = await fetch('https://proyecto6.medacarena.com.es/back/public/api/getId', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -68,7 +68,7 @@ export const PaginaPago = () => {
             const userIdData = await userIdResponse.json();
             const fetchedUserId = userIdData.id;
 
-            const response = await fetch('http://localhost/proyectofinal/back/public/api/reservarAsientos', {
+            const response = await fetch('https://proyecto6.medacarena.com.es/back/public/api/reservarAsientos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -94,9 +94,9 @@ export const PaginaPago = () => {
                 cerrarModal();
                 toast.success('Reserva realizada correctamente');
                 if (isLoggedIn) {
-                    navigate('/Entradas', { state: { message: 'Reserva realizada correctamente' } });
+                    navigate('https://proyecto6.medacarena.com.es/Entradas', { state: { message: 'Reserva realizada correctamente' } });
                 } else {
-                    navigate('/', { state: { message: 'Reserva realizada correctamente' } });
+                    navigate('https://proyecto6.medacarena.com.es/', { state: { message: 'Reserva realizada correctamente' } });
                 }
             } else {
                 toast.warn(responseData.error || 'Ocurrió un error al reservar los asientos');

@@ -31,7 +31,7 @@ export const Perfil = () => {
                     return;
                 }
 
-                const response = await fetch('http://localhost/proyectofinal/back/public/api/profile', {
+                const response = await fetch('https://proyecto6.medacarena.com.es/back/public/api/profile', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -65,7 +65,7 @@ export const Perfil = () => {
                     return;
                 }
 
-                const response = await fetch(`http://localhost/proyectofinal/back/public/api/tarjetas/${user.id}`, {
+                const response = await fetch(`https://proyecto6.medacarena.com.es/back/public/api/tarjetas/${user.id}`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -110,7 +110,7 @@ export const Perfil = () => {
         }
 
         try {
-            const response = await fetch('http://localhost/proyectofinal/back/public/api/tarjetas', {
+            const response = await fetch('https://proyecto6.medacarena.com.es/back/public/api/tarjetas', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -142,7 +142,7 @@ export const Perfil = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost/proyectofinal/back/public/api/tarjetas/${tarjetaId}`, {
+            const response = await fetch(`https://proyecto6.medacarena.com.es/back/public/api/tarjetas/${tarjetaId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
