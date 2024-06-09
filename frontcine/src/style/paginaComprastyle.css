@@ -27,7 +27,7 @@
 .reservar-btn:disabled,
 .reservar-btn.disabled {
     cursor: not-allowed;
-    opacity: 0.5; /* or any other styling to indicate it's disabled */
+    opacity: 0.5;
 }
 
 .asiento.seleccionado::after {
@@ -35,7 +35,7 @@
     position: absolute;
     width: 100px;
     height: 100px;
-    background-image: url('../public/img/ESCOGIDO.png'); /* Cambia el path a la imagen de tu coche */
+    background-image: url('/img/ESCOGIDO.png');
     background-size: cover;
     animation: slideUp 0.5s forwards;
     top: 0;
@@ -50,7 +50,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../back/public/img/plaza-aparcamiento2.png');
+    background-image: url('/img/plaza-aparcamiento2.png');
     border: 1px solid #ccc;
     cursor: pointer;
     color: white;
@@ -58,12 +58,12 @@
 }
 
 .asiento.ocupado {
-    background-image: url('../back/public/img/plaza-aparcamiento-OCUPADO2.png');
+    background-image: url('/img/plaza-aparcamiento-OCUPADO2.png');
     cursor: not-allowed;
 }
 
 .asiento.seleccionado {
-    background-image: url('../back/public/img/plaza-aparcamiento2.png');
+    background-image: url('/img/plaza-aparcamiento2.png');
 }
 
 .asiento .car {
@@ -72,7 +72,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../back/public/img/coche.png');
+    background-image: url('/img/coche.png');
     background-size: cover;
     opacity: 0;
     transition: opacity 0.5s ease;
