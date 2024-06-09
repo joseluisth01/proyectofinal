@@ -204,7 +204,6 @@ export const Perfil = () => {
                     </div>
 
                     <div id="Settings" className={`tabcontent ${activeTab === 'Settings' ? 'active' : ''}`}>
-                        <br />
                         <div className="flex6">
                             <div className='izqtarjetas'>
                                 <p>Estas son tus tarjetas:</p>
