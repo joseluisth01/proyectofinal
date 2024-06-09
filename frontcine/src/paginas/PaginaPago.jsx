@@ -17,6 +17,7 @@ export const PaginaPago = () => {
 
     const [email, setEmail] = useState('');
     const [tarjeta, setTarjeta] = useState('');
+    const [tarjetas, setTarjetas] = useState([]);
     const [aceptar, setAceptar] = useState(false);
     const [totalEntradas, setTotalEntradas] = useState(0); // Estado para el total de las entradas
     const [productos, setProductos] = useState([]); // Estado para los productos añadidos
@@ -26,7 +27,9 @@ export const PaginaPago = () => {
     const [matricula, setMatricula] = useState('');
     const [fechaCaducidad, setFechaCaducidad] = useState('');
     const [cvv, setCvv] = useState('');
+    const [selectedTarjeta, setSelectedTarjeta] = useState('');
     const [errors, setErrors] = useState({});
+    const [userId, setUserID] = useState('');
     const token = localStorage.getItem('token');
     const isLoggedIn = !!token;
     const navigate = useNavigate();
@@ -43,6 +46,42 @@ export const PaginaPago = () => {
             document.body.style.overflow = 'auto';
         }
     }, [showModal]);
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            fetch('http://localhost:80/tapacosautocinemas/back/public/api/getUser', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setNombre(data.nombre || '');
+                    setApellidos(data.apellidos || '');
+                    setEmail(data.email || '');
+                    setMatricula(data.matricula || '');
+                    setUserID(data.id || '');
+                })
+                .catch(error => {
+                    console.error('Error fetching user data:', error);
+                });
+        }
+    }, [isLoggedIn, token]);
+
+    useEffect(() => {
+        if (userId) {
+            fetch(`http://localhost:80/tapacosautocinemas/back/public/api/tarjetas/${userId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+                .then(response => response.json())
+                .then(data => setTarjetas(data.tarjetas || []))
+                .catch(error => {
+                    console.error('Error fetching tarjetas:', error);
+                });
+        }
+    }, [userId, token]);
 
     const handlePago = async () => {
         window.scrollTo(0, 0);
@@ -116,7 +155,7 @@ export const PaginaPago = () => {
 
     const isFormValid = () => {
         const newErrors = {};
-        
+
         if (email.trim() === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             newErrors.email = 'Correo no válido';
         }
@@ -186,6 +225,24 @@ export const PaginaPago = () => {
         }
 
         setErrors(newErrors);
+    };
+
+    const handleCardSelection = (e) => {
+        const selectedNumber = e.target.value;
+        setSelectedTarjeta(selectedNumber);
+        if (selectedNumber === '') {
+            setTarjeta('');
+            setFechaCaducidad('');
+            setCvv('');
+        } else {
+            const selectedCard = tarjetas.find(t => t.numero === selectedNumber);
+            if (selectedCard) {
+                setTarjeta(selectedCard.numero);
+                const [year, month] = selectedCard.fecha_caducidad.split('-');
+                setFechaCaducidad(`${month}/${year.slice(-2)}`);
+                setCvv(selectedCard.cvv); // Ensure this value is also stored in the API and returned
+            }
+        }
     };
 
     const totalProductos = productos.reduce((acc, producto) => acc + producto.precio, 0);
@@ -320,6 +377,21 @@ export const PaginaPago = () => {
                                 <label>Matrícula</label>
                                 {errors.matricula && <small className="error-message">{errors.matricula}</small>}
                             </div>
+
+                            {isLoggedIn && (
+                                <div className="user-box">
+                                    <label>Tarjeta</label><br /><br />
+                                    <select className='input2select' required value={selectedTarjeta} onChange={handleCardSelection}>
+                                        <option value="">Insertar tarjeta nueva</option>
+                                        {tarjetas.map((tarjeta, index) => (
+                                            <option key={index} value={tarjeta.numero}>
+                                                {tarjeta.numero} (Expira: {tarjeta.fecha_caducidad})
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+
                             <div className="user-box">
                                 <input className='input2' type="text" required value={tarjeta} onChange={(e) => setTarjeta(e.target.value)} onBlur={() => handleBlur('tarjeta')} />
                                 <label>Num de Tarjeta</label>

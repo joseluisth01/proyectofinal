@@ -220,6 +220,26 @@ input[type="checkbox"] {
     background: transparent;
 }
 
+.input2select{
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: black;
+}
+
+.input2select :hover{
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: black;
+}
+
 .login-box .user-box label {
     position: absolute;
     top: 0;
