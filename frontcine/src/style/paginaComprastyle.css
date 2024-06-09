@@ -226,6 +226,9 @@
     background-position: center;
 }
 
+.flex30{
+    display: flex !important;
+}
 
 @media (max-width: 768px) {
     .asiento {
@@ -251,9 +254,7 @@
         flex-direction: column;
     }
 
-    .flex30{
-        display: flex;
-    }
+
 
     .datosleyenda {
         position: static;
