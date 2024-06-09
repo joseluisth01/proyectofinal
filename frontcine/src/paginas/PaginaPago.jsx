@@ -211,21 +211,21 @@ export const PaginaPago = () => {
                             <div className="">
                                 <div className="">
                                     <div className='flex'>
-                                        <p>Entradas: {totalEntradas}€</p>
+                                        <p><b>Entradas:</b> {totalEntradas}€</p>
                                     </div>
                                 </div>
                             </div>
                             {productos.map((producto, index) => (
                                 <div key={index} className='flex'>
-                                    <p>{producto.nombre}: {producto.precio}€</p>
+                                    <p><b>{producto.nombre}:</b> {producto.precio}€</p>
                                 </div>
                             ))}
                             <div className='flex'>
-                                <p>Gastos de gestión: 1€</p>
+                                <p><b>Gastos de gestión:</b> 1€</p>
                             </div>
-                            <hr className='hrlistas'/>
+                            <hr className='hrlistas2'/>
                             <p className='descripcioncomida'>
-                                TOTAL: {total}€
+                                <b>TOTAL:</b> {total}€
                             </p>
                         </div>
                     </div>
@@ -257,7 +257,7 @@ export const PaginaPago = () => {
                                 <input className='input2' type="text" required value={tarjeta} onChange={(e) => setTarjeta(e.target.value)} />
                                 <label>Num de Tarjeta</label>
                             </div>
-                            <div className="flex">
+                            <div className="flex20">
                                 <div className="user-box mr-3">
                                     <input className='input2' type="text" required value={fechaCaducidad} onChange={(e) => setFechaCaducidad(e.target.value)} />
                                     <label>Fecha de Caducidad</label>
