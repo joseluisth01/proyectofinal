@@ -63,7 +63,7 @@
 }
 
 .asiento.seleccionado {
-    /* background-image: url('/img/plaza-aparcamiento2.png'); */
+    background-image: url('/img/plaza-aparcamiento2.png');
 }
 
 .asiento .car {
