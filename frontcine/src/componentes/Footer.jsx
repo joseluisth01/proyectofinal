@@ -8,7 +8,7 @@ export const Footer = () => {
     <div className='divfooter'>
       <div className="bloque1footer">
         <div className="nuestroscines">
-          <a href='/' className="logoheader" data-text="Awesome">
+          <a href='/' className="logoheader centrao" data-text="Awesome">
             <span className="actual-text">&nbsp;TAPACOS</span>
             <span aria-hidden="true" className="hover-text">&nbsp;&nbsp;</span>
           </a>

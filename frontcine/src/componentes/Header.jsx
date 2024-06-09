@@ -62,7 +62,7 @@ export const Header = () => {
 
     const loginUsuario = (e) => {
         e.preventDefault();
-        const url = 'http://localhost/proyectofinal/back/public/api/login';
+        const url = 'https://proyecto6.medacarena.com.es/back/public/api/login';
         cerrarModal();
         fetch(url, datoslogin)
             .then((resultado) => {
@@ -98,7 +98,7 @@ export const Header = () => {
 
     const registroUsuario = (e) => {
         e.preventDefault();
-        const url = 'http://localhost/proyectofinal/back/public/api/register';
+        const url = 'https://proyecto6.medacarena.com.es/back/public/api/register';
         cerrarModal();
         fetch(url, datosregistro)
             .then((resultado) => resultado.json())

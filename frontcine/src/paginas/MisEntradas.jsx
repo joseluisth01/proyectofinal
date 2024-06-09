@@ -21,7 +21,7 @@ const MisEntradas = () => {
             }
 
             try {
-                const entradasResponse = await fetch(`http://localhost/proyectofinal/back/public/api/reservasPorUsuario`, {
+                const entradasResponse = await fetch(`https://proyecto6.medacarena.com.es/back/public/api/reservasPorUsuario`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -38,7 +38,7 @@ const MisEntradas = () => {
                 for (const entrada of entradasData.reservas) {
                     const idPelicula = entrada.idPelicula;
 
-                    const peliculaResponse = await fetch(`http://localhost/proyectofinal/back/public/api/pelicula/${idPelicula}`, {
+                    const peliculaResponse = await fetch(`https://proyecto6.medacarena.com.es/back/public/api/pelicula/${idPelicula}`, {
                         headers: {
                             'Authorization': `Bearer ${token}`
                         }
@@ -69,7 +69,7 @@ const MisEntradas = () => {
 
     const handleCancelarReserva = async (idReserva) => {
         try {
-            const response = await fetch(`http://localhost/proyectofinal/back/public/api/cancelarReserva/${idReserva}`, {
+            const response = await fetch(`https://proyecto6.medacarena.com.es/back/public/api/cancelarReserva/${idReserva}`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -131,7 +131,7 @@ const MisEntradas = () => {
                                         <button className="mis-entradas-cancel-button" onClick={() => openModal(entrada)}>
                                             <i className="fas fa-trash"></i>
                                         </button>
-                                        <div className="flex2">
+                                        <div className="flex10">
                                             <div className="ladoizq">
                                                 {posterUrls[entrada.idPelicula] && (
                                                     <img

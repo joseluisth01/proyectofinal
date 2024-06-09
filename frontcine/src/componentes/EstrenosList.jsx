@@ -13,7 +13,7 @@ export const EstrenosList = () => {
         const fetchPeliculas = async () => {
             setLoading(true);
             try {
-                const response = await fetch('http://localhost/proyectofinal/back/public/api/estrenos');
+                const response = await fetch('https://proyecto6.medacarena.com.es/back/public/api/estrenos');
                 if (!response.ok) {
                     throw new Error('Failed to fetch peliculas');
                 }
@@ -75,7 +75,7 @@ export const EstrenosList = () => {
         };
 
         try {
-            const response = await fetch('http://localhost/proyectofinal/back/public/api/borrarEstrenos', datosPelicula);
+            const response = await fetch('https://proyecto6.medacarena.com.es/back/public/api/borrarEstrenos', datosPelicula);
             if (!response.ok) {
                 throw new Error('Error al borrar estreno');
             }

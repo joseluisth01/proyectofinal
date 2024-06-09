@@ -63,7 +63,7 @@ export const ModoAdmin = () => {
             body: JSON.stringify({ idPelicula, nombrePelicula, fecha, hora }),
         };
 
-        const url = 'http://localhost/proyectofinal/back/public/api/insertarPelicula';
+        const url = 'https://proyecto6.medacarena.com.es/back/public/api/insertarPelicula';
         fetch(url, datosPelicula)
             .then((resultado) => resultado.json())
             .then((respuesta) => {
@@ -86,7 +86,7 @@ export const ModoAdmin = () => {
             body: JSON.stringify({ idPelicula, nombrePelicula, fecha, hora }),
         };
 
-        const url2 = 'http://localhost/proyectofinal/back/public/api/insertarEstreno';
+        const url2 = 'https://proyecto6.medacarena.com.es/back/public/api/insertarEstreno';
         fetch(url2, datosPeliculaEstrenos)
             .then((resultado) => resultado.json())
             .then((respuesta) => {

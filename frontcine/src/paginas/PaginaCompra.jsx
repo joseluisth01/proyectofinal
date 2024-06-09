@@ -21,7 +21,7 @@ const PaginaCompra = () => {
     useEffect(() => {
         const fetchAsientos = async () => {
             try {
-                const response = await fetch(`http://localhost/proyectofinal/back/public/api/asientos/${id}`, {
+                const response = await fetch(`https://proyecto6.medacarena.com.es/back/public/api/asientos/${id}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
