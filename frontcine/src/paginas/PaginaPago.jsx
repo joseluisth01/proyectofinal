@@ -242,10 +242,6 @@ export const PaginaPago = () => {
                                 <label>Nombre</label>
                             </div>
                             <div className="user-box">
-                                <input className='input2' type="text" required value={apellidos} onChange={(e) => setApellidos(e.target.value)} />
-                                <label>Apellidos</label>
-                            </div>
-                            <div className="user-box">
                                 <input className='input2' type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                                 <label>Correo</label>
                             </div>

@@ -66,6 +66,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/tarjetas/{tarjetaId}', [TarjetaController::class, 'deleteTarjeta']);
 });
 
+Route::middleware('auth:api')->get('/getUser', [UserController::class, 'getUser']);
+
 
 
 
