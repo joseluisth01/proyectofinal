@@ -86,7 +86,11 @@
     align-items: center;
     justify-content: center;
 }
-
+.flex10{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .datodrcha2{
     width: 40%;
@@ -184,4 +188,47 @@
     color: #333;
     font-size: 20px;
     font-weight: bold;
+}
+
+
+@media (max-width: 770px){
+    .mis-entradas-container{
+        padding-top: 15%;
+    }
+}
+
+@media (max-width: 670px){
+    .datoizq2{
+        width: 60%;
+    }
+    .mis-entradas-item-container{
+        padding: 30px;
+    }
+}
+
+@media (max-width: 500px){
+    .flex10{
+        flex-direction: column;
+    }
+    .ladoizq{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .ladodrech{
+        margin-top: 10%;
+        width: 100%;
+    }
+    .movie-poster2{
+        margin: 0 auto;
+    }
+    .mis-entradas-container{
+        padding-top: 18%;
+    }
+}
+
+@media (max-width: 500px){
+
+    .mis-entradas-container{
+        padding-top: 30%;
+    }
 }

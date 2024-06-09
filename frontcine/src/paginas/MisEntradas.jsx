@@ -131,7 +131,7 @@ const MisEntradas = () => {
                                         <button className="mis-entradas-cancel-button" onClick={() => openModal(entrada)}>
                                             <i className="fas fa-trash"></i>
                                         </button>
-                                        <div className="flex2">
+                                        <div className="flex10">
                                             <div className="ladoizq">
                                                 {posterUrls[entrada.idPelicula] && (
                                                     <img
