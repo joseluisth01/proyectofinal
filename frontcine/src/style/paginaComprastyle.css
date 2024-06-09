@@ -7,6 +7,7 @@
     margin: 0 auto;
     padding-top: 10%;
     text-align: center;
+    padding-bottom: 4%;
 }
 
 .asientos-container {
@@ -19,6 +20,7 @@
     from {
         transform: translateY(100%);
     }
+
     to {
         transform: translateY(0);
     }
@@ -129,6 +131,7 @@
     font-size: 18px;
     color: #333;
 }
+
 .datos-pelicula p {
     margin: 5px 0;
 }
@@ -188,11 +191,13 @@
     margin: 5px;
 }
 
-.asiento::after, .asiento.ocupado::after, .asiento.seleccionado::after {
+.asiento::after,
+.asiento.ocupado::after,
+.asiento.seleccionado::after {
     content: '';
     position: absolute;
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     z-index: 10;
@@ -201,7 +206,7 @@
 }
 
 .asiento.seleccionado::after {
-    background-image: url('/img/ESCOGIDO.png'); 
+    background-image: url('/img/ESCOGIDO.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -209,12 +214,13 @@
 }
 
 .asiento {
-    background-size: contain; 
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
 }
 
-.asiento.ocupado, .asiento.seleccionado {
+.asiento.ocupado,
+.asiento.seleccionado {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -225,23 +231,28 @@
     .asiento {
         width: 58px;
         height: 60px;
-        margin: 3px; 
+        margin: 3px;
     }
 
     .pantallacine {
-        width: 100%;
+        width: 60%;
     }
 
     .divpaginacompra {
-        padding-top: 5%; 
+        padding-top: 15%;
     }
 
-    .datosPantalla, .datosleyenda {
-        width: 100%; 
+    .datosPantalla,
+    .datosleyenda {
+        width: 100%;
     }
 
     .parteabajo {
-        flex-direction: column; 
+        flex-direction: column;
+    }
+
+    .flex30{
+        display: flex;
     }
 
     .datosleyenda {
@@ -249,24 +260,72 @@
         transform: none;
         margin-left: 0;
         margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5%;
+        padding-bottom: 4%;
+    }
+
+    .sinmargen {
+        margin-top: 0px !important;
+        margin-left: 20px;
     }
 
     .asiento.seleccionado::after {
-        width: 60px; 
+        width: 60px;
     }
 
+}
+
+@media (max-width: 520px) {
+    .flex30{
+        flex-direction: column;
+    }
+    .sinespacio {
+        margin-left: 0px !important;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .divpaginacompra {
+        padding-top: 22%;
+    }
+
+    .pantallacine {
+        width: 80%;
+    }
+
+    .sinespacio {
+        margin-left: 0px !important;
+    }
+
+    .datosleyenda {
+        width: 75%;
+    }
+
+    .datoscompra{
+        width: 90%;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .pantallacine {
+        width: 100%;
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
     .asiento {
-        width: 80px; 
-        height: 80px; 
-        margin: 4px; 
+        width: 80px;
+        height: 80px;
+        margin: 4px;
     }
 
-    .datosPantalla, .datosleyenda {
+    .datosPantalla,
+    .datosleyenda {
         width: 80%;
     }
 }
-
-

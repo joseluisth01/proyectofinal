@@ -92,17 +92,17 @@ const PaginaCompra = () => {
 
                 <div className="parteabajo">
                     <div className="datosleyenda">
-                        <div className='flex items-center'>
+                        <div className='flex30 items-center'>
                             <img className='imgleyenda' src={parcelalibre} alt='Parcela Libre' />
-                            <p className="ml-3">PARCELA DISPONIBLE</p>
+                            <p className="ml-3 sinespacio">PARCELA DISPONIBLE</p>
                         </div>
-                        <div className='flex mt-5 items-center'>
+                        <div className='flex30 mt-5 items-center sinmargen'>
                             <img className='imgleyenda' src={parcelaseleccionada} alt='Parcela Seleccionada' />
-                            <p className="ml-3">PARCELA SELECCIONADA</p>
+                            <p className="ml-3 sinespacio">PARCELA SELECCIONADA</p>
                         </div>
-                        <div className='flex mt-5 items-center'>
+                        <div className='flex30 mt-5 items-center sinmargen'>
                             <img className='imgleyenda' src={parcelaocupada} alt='Parcela Ocupada' />
-                            <p className="ml-3">PARCELA OCUPADA</p>
+                            <p className="ml-3 sinespacio">PARCELA OCUPADA</p>
                         </div>
                     </div>
 
