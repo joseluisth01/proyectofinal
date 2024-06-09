@@ -482,7 +482,7 @@ body {
 /* Media queries para móviles */
 @media (max-width: 480px) {
   .sliderfull {
-    height: 300px;
+    height: 450px;
   }
 
   .titulocentral {
