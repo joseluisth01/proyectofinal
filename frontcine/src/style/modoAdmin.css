@@ -1,13 +1,13 @@
+/* Estilos base */
 .movie-list-container {
     margin: 0 auto;
     padding: 30px;
-    /* width: 100%; */
     margin-left: 5%;
     margin-right: 5%;
     padding-top: 80px;
 }
 
-.fondo{
+.fondo {
     background-image: url('../back/public/img/fondo15.png');
     background-size: cover;
     background-position: center;
@@ -122,7 +122,6 @@ input[type="date"]:hover, select:hover {
     gap: 10px;
 }
 
-
 .botonAniadirAdmin {
     margin-right: 2%;
     padding: 5px;
@@ -130,10 +129,11 @@ input[type="date"]:hover, select:hover {
     background-color: #c0c0c0;
 }
 
-.botonAniadirAdmin:hover{
+.botonAniadirAdmin:hover {
     background-color: #9a9a9a;
 }
-.botonEstrenoAdmin:hover{
+
+.botonEstrenoAdmin:hover {
     background-color: #9a9a9a;
 }
 
@@ -143,3 +143,63 @@ input[type="date"]:hover, select:hover {
     background-color: #c0c0c0;
 }
 
+/* Media queries para dispositivos móviles y tablets */
+@media (max-width: 1024px) {
+    .movie-item {
+        width: 45%; /* 2 items por fila en tablets */
+    }
+
+    .buscadores {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .buscadores .input-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .search-container input[type="text"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .movie-item {
+        width: 48%; /* 2 items por fila en dispositivos móviles grandes */
+    }
+
+    .buscadores {
+        padding: 10px 0;
+    }
+
+    .buscadores .input-container {
+        width: 100%;
+    }
+
+    .search-container {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-item {
+        width: 100%; /* 1 item por fila en dispositivos móviles pequeños */
+    }
+
+    .buscadores {
+        padding: 10px 0;
+    }
+
+    .buscadores .input-container {
+        width: 100%;
+    }
+
+    .search-container {
+        margin-bottom: 10px;
+    }
+
+    .buttoncargaradmin {
+        width: 100%;
+    }
+}
