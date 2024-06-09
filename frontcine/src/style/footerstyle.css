@@ -78,8 +78,8 @@
         flex-direction: column;
     }
     .nuestroscines{
-        text-align: center;
-        margin: 0 auto;
+        width: 100% !important;
+        text-align: center !important;
     }
     .bloque1footer > div {
         width: 60%;
