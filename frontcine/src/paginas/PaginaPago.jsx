@@ -74,9 +74,9 @@ export const PaginaPago = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ 
-                    idPelicula: id, 
-                    asientosSeleccionados: seleccionados, 
+                body: JSON.stringify({
+                    idPelicula: id,
+                    asientosSeleccionados: seleccionados,
                     usuarioId: fetchedUserId,
                     nombre: nombre,
                     apellidos: apellidos,
@@ -89,7 +89,7 @@ export const PaginaPago = () => {
                 }),
             });
             const responseData = await response.json();
-            
+
             if (response.ok) {
                 cerrarModal();
                 toast.success('Reserva realizada correctamente');
@@ -108,20 +108,28 @@ export const PaginaPago = () => {
         }
     };
 
+
     const isFormValid = () => {
-        return (
-            nombre.trim() !== '' &&
-            apellidos.trim() !== '' &&
-            email.trim() !== '' &&
-            matricula.trim() !== '' &&
-            tarjeta.trim() !== '' &&
-            fechaCaducidad.trim() !== '' &&
-            cvv.trim() !== ''
-        );
+        const isValidName = nombre.trim() !== '' && /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre);
+
+        const isValidApellido = apellidos.trim() !== '' && /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(apellidos);
+
+        const isValidEmail = email.trim() !== '' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        const isValidMatricula = matricula.trim() !== '';
+
+        const isValidTarjeta = tarjeta.trim() !== '' && /^\d{16}$/.test(tarjeta);
+
+        const isValidFechaCaducidad = fechaCaducidad.trim() !== '' && /^(0[1-9]|1[0-2])\/\d{2}$/.test(fechaCaducidad);
+
+        const isValidCvv = cvv.trim() !== '' && /^\d{3,4}$/.test(cvv);
+
+        return isValidName && isValidApellido && isValidEmail && isValidMatricula &&
+            isValidTarjeta && isValidFechaCaducidad && isValidCvv;
     };
 
     const totalProductos = productos.reduce((acc, producto) => acc + producto.precio, 0);
-    const total = totalEntradas + totalProductos + 1; // Suma el gasto de gestión
+    const total = totalEntradas + totalProductos + 1;
 
     return (
         <div className='fondo'>
@@ -223,7 +231,7 @@ export const PaginaPago = () => {
                             <div className='flex'>
                                 <p><b>Gastos de gestión:</b> 1€</p>
                             </div>
-                            <hr className='hrlistas2'/>
+                            <hr className='hrlistas2' />
                             <p className='descripcioncomida'>
                                 <b>TOTAL:</b> {total}€
                             </p>
