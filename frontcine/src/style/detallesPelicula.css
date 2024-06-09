@@ -117,3 +117,35 @@
     border: 1px solid black;
     margin-top: 5px;
 }
+
+@media (max-width: 768px) {
+    .detalles-pelicula-container{
+        padding-top: 17%;
+    }
+    .detalles-pelicula{
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    .detalles-pelicula{
+        flex-direction: column;
+    }
+    .posterdetalles{
+        width: 90%;
+        order: 2;
+    }
+    .detalles-pelicula-info{
+        width: 90%;
+        order: 1;
+    }
+    .detalles-pelicula-container{
+        padding-top: 22%;
+    }
+}
+
+@media (max-width: 350px) {
+    .detalles-pelicula-container{
+        padding-top: 26%;
+    }
+}
