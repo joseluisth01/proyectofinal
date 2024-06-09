@@ -95,6 +95,7 @@ export const Perfil = () => {
     const logout = () => {
         localStorage.clear();
         navigate('/');
+        window.location.reload();
     };
 
     const handleAddCardClick = () => {
