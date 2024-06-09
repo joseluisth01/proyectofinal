@@ -26,6 +26,7 @@ export const PaginaPago = () => {
     const [matricula, setMatricula] = useState('');
     const [fechaCaducidad, setFechaCaducidad] = useState('');
     const [cvv, setCvv] = useState('');
+    const [errors, setErrors] = useState({});
     const token = localStorage.getItem('token');
     const isLoggedIn = !!token;
     const navigate = useNavigate();
@@ -57,7 +58,12 @@ export const PaginaPago = () => {
         setShowModal(false);
     };
 
-    const handleReservar = async () => {
+    const handleReservar = async (e) => {
+        e.preventDefault();
+        if (!isFormValid()) {
+            return;
+        }
+
         try {
             const userIdResponse = await fetch('https://proyecto6.medacarena.com.es/back/public/api/getId', {
                 method: 'POST',
@@ -108,24 +114,78 @@ export const PaginaPago = () => {
         }
     };
 
-
     const isFormValid = () => {
-        const isValidName = nombre.trim() !== '' && /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre);
+        const newErrors = {};
+        
+        if (email.trim() === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            newErrors.email = 'Correo no válido';
+        }
 
-        const isValidApellido = apellidos.trim() !== '' && /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(apellidos);
+        if (matricula.trim() === '') {
+            newErrors.matricula = 'Matrícula no puede estar vacía';
+        }
 
-        const isValidEmail = email.trim() !== '' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (tarjeta.trim() === '' || !/^\d{16}$/.test(tarjeta)) {
+            newErrors.tarjeta = 'Número de tarjeta no válido';
+        }
 
-        const isValidMatricula = matricula.trim() !== '';
+        if (fechaCaducidad.trim() === '' || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(fechaCaducidad)) {
+            newErrors.fechaCaducidad = 'Fecha de caducidad no válida';
+        }
 
-        const isValidTarjeta = tarjeta.trim() !== '' && /^\d{16}$/.test(tarjeta);
+        if (cvv.trim() === '' || !/^\d{3,4}$/.test(cvv)) {
+            newErrors.cvv = 'CVV no válido';
+        }
 
-        const isValidFechaCaducidad = fechaCaducidad.trim() !== '' && /^(0[1-9]|1[0-2])\/\d{2}$/.test(fechaCaducidad);
+        setErrors(newErrors);
 
-        const isValidCvv = cvv.trim() !== '' && /^\d{3,4}$/.test(cvv);
+        return Object.keys(newErrors).length === 0;
+    };
 
-        return isValidName && isValidApellido && isValidEmail && isValidMatricula &&
-            isValidTarjeta && isValidFechaCaducidad && isValidCvv;
+    const handleBlur = (field) => {
+        const newErrors = { ...errors };
+
+        switch (field) {
+            case 'email':
+                if (email.trim() === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    newErrors.email = 'Correo no válido';
+                } else {
+                    delete newErrors.email;
+                }
+                break;
+            case 'matricula':
+                if (matricula.trim() === '') {
+                    newErrors.matricula = 'Matrícula no puede estar vacía';
+                } else {
+                    delete newErrors.matricula;
+                }
+                break;
+            case 'tarjeta':
+                if (tarjeta.trim() === '' || !/^\d{16}$/.test(tarjeta)) {
+                    newErrors.tarjeta = 'Número de tarjeta no válido';
+                } else {
+                    delete newErrors.tarjeta;
+                }
+                break;
+            case 'fechaCaducidad':
+                if (fechaCaducidad.trim() === '' || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(fechaCaducidad)) {
+                    newErrors.fechaCaducidad = 'Fecha de caducidad no válida';
+                } else {
+                    delete newErrors.fechaCaducidad;
+                }
+                break;
+            case 'cvv':
+                if (cvv.trim() === '' || !/^\d{3,4}$/.test(cvv)) {
+                    newErrors.cvv = 'CVV no válido';
+                } else {
+                    delete newErrors.cvv;
+                }
+                break;
+            default:
+                break;
+        }
+
+        setErrors(newErrors);
     };
 
     const totalProductos = productos.reduce((acc, producto) => acc + producto.precio, 0);
@@ -246,29 +306,35 @@ export const PaginaPago = () => {
                         <button className="close-btn" onClick={cerrarModal}>X</button>
                         <form>
                             <div className="user-box">
-                                <input className='input2' type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
+                                <input className='input2' type="text" required value={nombre} onChange={(e) => setNombre(e.target.value)} onBlur={() => handleBlur('nombre')} />
                                 <label>Nombre</label>
+                                {errors.nombre && <small className="error-message">{errors.nombre}</small>}
                             </div>
                             <div className="user-box">
-                                <input className='input2' type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <input className='input2' type="email" required value={email} onChange={(e) => setEmail(e.target.value)} onBlur={() => handleBlur('email')} />
                                 <label>Correo</label>
+                                {errors.email && <small className="error-message">{errors.email}</small>}
                             </div>
                             <div className="user-box">
-                                <input className='input2' type="text" required value={matricula} onChange={(e) => setMatricula(e.target.value)} />
+                                <input className='input2' type="text" required value={matricula} onChange={(e) => setMatricula(e.target.value)} onBlur={() => handleBlur('matricula')} />
                                 <label>Matrícula</label>
+                                {errors.matricula && <small className="error-message">{errors.matricula}</small>}
                             </div>
                             <div className="user-box">
-                                <input className='input2' type="text" required value={tarjeta} onChange={(e) => setTarjeta(e.target.value)} />
+                                <input className='input2' type="text" required value={tarjeta} onChange={(e) => setTarjeta(e.target.value)} onBlur={() => handleBlur('tarjeta')} />
                                 <label>Num de Tarjeta</label>
+                                {errors.tarjeta && <small className="error-message">{errors.tarjeta}</small>}
                             </div>
                             <div className="flex20">
                                 <div className="user-box mr-3">
-                                    <input className='input2' type="text" required value={fechaCaducidad} onChange={(e) => setFechaCaducidad(e.target.value)} />
+                                    <input className='input2' type="text" required value={fechaCaducidad} onChange={(e) => setFechaCaducidad(e.target.value)} onBlur={() => handleBlur('fechaCaducidad')} />
                                     <label>Fecha de Caducidad</label>
+                                    {errors.fechaCaducidad && <small className="error-message">{errors.fechaCaducidad}</small>}
                                 </div>
                                 <div className="user-box">
-                                    <input className='input2' type="text" required value={cvv} onChange={(e) => setCvv(e.target.value)} />
+                                    <input className='input2' type="text" required value={cvv} onChange={(e) => setCvv(e.target.value)} onBlur={() => handleBlur('cvv')} />
                                     <label>CVV</label>
+                                    {errors.cvv && <small className="error-message">{errors.cvv}</small>}
                                 </div>
                             </div>
                             <div className="user-box">
@@ -278,7 +344,7 @@ export const PaginaPago = () => {
                                 </div>
                             </div>
                             <center>
-                                <a href="#" onClick={handleReservar} className={`comprar-link ${isFormValid() ? '' : 'disabled-link'}`}>
+                                <a href="#" onClick={handleReservar} className={`comprar-link ${Object.keys(errors).length > 0 ? 'disabled-link' : ''}`}>
                                     COMPRAR
                                     <span></span>
                                 </a>

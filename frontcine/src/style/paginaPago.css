@@ -207,13 +207,13 @@ input[type="checkbox"] {
 
 .login-box .user-box {
     position: relative;
+    margin-top: 15px;;
 }
 
 .login-box .user-box .input2 {
     width: 100%;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 20px;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -417,6 +417,13 @@ input[type="checkbox"] {
     pointer-events: none;
     color: gray;
 }
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
 
 .hrlistas2{
     margin-top: 18px;
