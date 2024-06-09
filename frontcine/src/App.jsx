@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/ModoAdmin' element={<ModoAdmin />} />
-        <Route path='/Cartelera' element={<Cartelera />} />
+        <Route path='https://proyecto6.medacarena.com.es/Cartelera' element={<Cartelera />} />
         <Route path='/Estrenos' element={<Estrenos />} />
         <Route path='/Perfil' element={<Perfil />} />
         <Route path='/Entradas' element={<MisEntradas />} />
