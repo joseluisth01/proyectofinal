@@ -68,6 +68,7 @@
 }
 
 .search-container {
+    margin-top: 10px;
     margin-bottom: 20px;
     background-color: #ccc;
     border-radius: 7px;
