@@ -30,6 +30,7 @@ export const PaginaPago = () => {
     const [selectedTarjeta, setSelectedTarjeta] = useState('');
     const [errors, setErrors] = useState({});
     const [userId, setUserID] = useState('');
+    const [recordar, setRecordar] = useState(false);
     const token = localStorage.getItem('token');
     const isLoggedIn = !!token;
     const navigate = useNavigate();
@@ -49,7 +50,7 @@ export const PaginaPago = () => {
 
     useEffect(() => {
         if (isLoggedIn) {
-            fetch('http://localhost:80/tapacosautocinemas/back/public/api/getUser', {
+            fetch('https://proyecto6.medacarena.com.es/back/public/api/getUser', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -70,7 +71,7 @@ export const PaginaPago = () => {
 
     useEffect(() => {
         if (userId) {
-            fetch(`http://localhost:80/tapacosautocinemas/back/public/api/tarjetas/${userId}`, {
+            fetch(`https://proyecto6.medacarena.com.es/back/public/api/tarjetas/${userId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -82,6 +83,44 @@ export const PaginaPago = () => {
                 });
         }
     }, [userId, token]);
+
+    const recordarTarjeta = () => {
+
+        const datosRecordarTarjeta = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                id_usuario: userId,
+                numero: tarjeta, 
+                fecha_caducidad: fechaCaducidad, 
+                cvv: cvv, 
+            }),
+        };
+
+        console.log('Enviando datos de la tarjeta:', datosRecordarTarjeta.body);  // Añadido para depuración
+
+        const url = 'https://proyecto6.medacarena.com.es/back/public/api/recordarTarjeta';
+        fetch(url, datosRecordarTarjeta)
+            .then((resultado) => {
+                if (!resultado.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+                return resultado.json();
+            })
+            .then((respuesta) => {
+                if (respuesta.success) {
+                    toast.success('Tarjeta recordada correctamente');
+                } else {
+                    toast.error('Error al recordar la tarjeta');
+                }
+            })
+            .catch((err) => {
+                console.log('Error:', err);
+                toast.error('Error al registrar tarjeta');
+            });
+    };
 
     const handlePago = async () => {
         window.scrollTo(0, 0);
@@ -136,6 +175,9 @@ export const PaginaPago = () => {
             const responseData = await response.json();
 
             if (response.ok) {
+                if (recordar) {
+                    recordarTarjeta();
+                }
                 cerrarModal();
                 toast.success('Reserva realizada correctamente');
                 if (isLoggedIn) {
@@ -186,7 +228,7 @@ export const PaginaPago = () => {
 
         switch (field) {
             case 'email':
-                if (email.trim() === '' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                if (email.trim() === '' || !/^[^\s@]+\@[^\s@]+\.[^\s@]+$/.test(email)) {
                     newErrors.email = 'Correo no válido';
                 } else {
                     delete newErrors.email;
@@ -409,12 +451,19 @@ export const PaginaPago = () => {
                                     {errors.cvv && <small className="error-message">{errors.cvv}</small>}
                                 </div>
                             </div>
-                            <div className="user-box">
-                                <div className="flex">
-                                    <input type="checkbox" className="ui-checkbox" />
-                                    <p className="sisi">Recordar tarjeta</p>
+                            {isLoggedIn && selectedTarjeta === '' && (
+                                <div className="user-box">
+                                    <div className="flex">
+                                        <input 
+                                            type="checkbox" 
+                                            className="ui-checkbox" 
+                                            checked={recordar}
+                                            onChange={() => setRecordar(!recordar)}
+                                        />
+                                        <p className="sisi">Recordar tarjeta</p>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                             <center>
                                 <a href="#" onClick={handleReservar} className={`comprar-link ${Object.keys(errors).length > 0 ? 'disabled-link' : ''}`}>
                                     COMPRAR
