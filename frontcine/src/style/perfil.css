@@ -405,6 +405,7 @@ body {
 @media (max-width: 768px) {
     .alineadoflex {
         flex-direction: column;
+        width: 90%;
     }
     .tab, .tabcontent {
         width: 100%;
@@ -424,6 +425,7 @@ body {
         align-items: center;
         justify-content: center;
         min-height: 100vh;
+        padding-top: 18%;
     }
 
     .perfil-info .field {

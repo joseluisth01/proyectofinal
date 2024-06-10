@@ -182,8 +182,10 @@ export const PaginaPago = () => {
                 toast.success('Reserva realizada correctamente');
                 if (isLoggedIn) {
                     navigate('/Entradas', { state: { message: 'Reserva realizada correctamente' } });
+                    window.location.reload();
                 } else {
                     navigate('/', { state: { message: 'Reserva realizada correctamente' } });
+                    window.location.reload();
                 }
             } else {
                 toast.warn(responseData.error || 'Ocurrió un error al reservar los asientos');
